@@ -1,6 +1,8 @@
-# React + Vite
+# Mateusz Pawlowski Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hello current I am a university Student at Depaul University in my senior year. I am majoring in Information Technology. A couple of my hobbies are play video games, reading, hiking, coding, and hanging with my friends. This is my portfolio that I will be working on during the summer. 
+
+Currently I am just intializing all of my components, I will be using React to build this project of mine. Hopefuly I will be doing constant updates for the projects.
 
 Currently, two official plugins are available:
 
