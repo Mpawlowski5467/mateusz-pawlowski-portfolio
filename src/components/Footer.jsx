@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer>
-      Footer placeholder
+      © 2024 Mateusz Pawlowski
     </footer>
   )
 }
