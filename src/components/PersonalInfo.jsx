@@ -1,6 +1,6 @@
 export default function PersonalInfo() {
   return (
-    <section>
+    <section id="about">
       <h2>About Me</h2>
       <p>
         I'm a senior Information Technology student at DePaul University and an AI intern

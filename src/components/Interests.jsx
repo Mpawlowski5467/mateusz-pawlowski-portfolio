@@ -1,6 +1,6 @@
 export default function Interests() {
   return (
-    <section>
+    <section id="interests">
       <h2>Interests</h2>
       <ul>
         <li>Chelsea FC supporter</li>

@@ -1,6 +1,6 @@
 export default function Experience() {
   return (
-    <section>
+    <section id="experience">
       <h2>Experience</h2>
       <h3>AI Intern — Reyes Holdings LLC</h3>
       <p>June 2024 – Present</p>
