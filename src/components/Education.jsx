@@ -1,6 +1,6 @@
 export default function Education() {
   return (
-    <section>
+    <section id="education">
       <h2>Education</h2>
       <ul>
         <li>
