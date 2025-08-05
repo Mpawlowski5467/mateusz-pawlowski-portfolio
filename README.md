@@ -2,7 +2,7 @@
 
 Hello current I am a university Student at Depaul University in my senior year. I am majoring in Information Technology. A couple of my hobbies are play video games, reading, hiking, coding, and hanging with my friends. This is my portfolio that I will be working on during the summer. 
 
-Currently I am just intializing all of my components, I will be using React to build this project of mine. Hopefuly I will be doing constant updates for the projects.
+Currently I am just initializing all of my components, I will be using React to build this project of mine. Hopefully I will be doing constant updates for the projects.
 
 Currently, two official plugins are available:
 
