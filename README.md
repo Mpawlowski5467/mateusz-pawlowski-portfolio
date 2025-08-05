@@ -4,10 +4,9 @@ Hello current I am a university Student at Depaul University in my senior year. 
 
 Currently I am just intializing all of my components, I will be using React to build this project of mine. Hopefuly I will be doing constant updates for the projects.
 
-Currently, two official plugins are available:
+This project uses the official React plugin for Vite:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh.
 
 ## Expanding the ESLint configuration
 
