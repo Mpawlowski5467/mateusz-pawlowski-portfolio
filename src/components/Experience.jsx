@@ -4,7 +4,10 @@ import { LanguageContext } from '../context/LanguageContext.jsx'
 export function Experience() {
   const { t } = useContext(LanguageContext)
   return (
-    <section id="experience" className="space-y-4">
+    <section
+      id="experience"
+      className="max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow space-y-4"
+    >
       <h2 className="text-2xl font-bold text-center">{t('experience.title')}</h2>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">

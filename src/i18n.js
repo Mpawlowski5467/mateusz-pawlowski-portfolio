@@ -9,8 +9,7 @@ export const translations = {
       experience: 'Experience',
       projects: 'Projects',
       education: 'Education',
-      skills: 'Skills',
-      interests: 'Interests'
+      skills: 'Skills'
     },
     about: {
       title: 'About Me',
@@ -73,7 +72,10 @@ export const translations = {
         { icon: '🍞', text: 'Baking' }
       ]
     },
-    footer: '© 2024 Mateusz Pawlowski'
+    footer: {
+      name: 'Mateusz Pawłowski',
+      updated: 'Last updated'
+    }
   },
   pl: {
     header: {
@@ -85,8 +87,7 @@ export const translations = {
       experience: 'Doświadczenie',
       projects: 'Projekty',
       education: 'Edukacja',
-      skills: 'Umiejętności',
-      interests: 'Zainteresowania'
+      skills: 'Umiejętności'
     },
     about: {
       title: 'O mnie',
@@ -149,6 +150,9 @@ export const translations = {
         { icon: '🍞', text: 'Pieczenie' }
       ]
     },
-    footer: '© 2024 Mateusz Pawłowski'
+    footer: {
+      name: 'Mateusz Pawłowski',
+      updated: 'Ostatnia aktualizacja'
+    }
   }
 };
