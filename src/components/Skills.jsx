@@ -1,112 +1,84 @@
+import { useContext } from 'react'
+import { LanguageContext } from '../context/LanguageContext.jsx'
+
+const backend = [
+  { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', level: 80 },
+  { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', level: 75 },
+  { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', level: 70 },
+  { name: 'PHP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg', level: 60 },
+  { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', level: 65 },
+  { name: 'C#', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg', level: 50 }
+]
+
+const frontend = [
+  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', level: 90 },
+  { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', level: 85 },
+  { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', level: 80 },
+  { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', level: 70 },
+  { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg', level: 60 }
+]
+
+const databases = [
+  { name: 'SQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', level: 80 },
+  { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', level: 70 }
+]
+
+const platforms = [
+  { name: 'OneReach.ai', emoji: '⚙️', level: 70 },
+  { name: 'OpenAI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg', level: 80 },
+  { name: 'Anthropic Claude', emoji: '🤖', level: 70 },
+  { name: 'Google Gemini', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg', level: 60 },
+  { name: 'Postman', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg', level: 75 }
+]
+
+const other = [
+  { name: 'Workflow Documentation', emoji: '📝', level: 80 },
+  { name: 'API Integration', emoji: '🔗', level: 75 },
+  { name: 'Frontend Development', emoji: '🎨', level: 70 }
+]
+
+const renderSkill = (skill) => (
+  <li key={skill.name} className="skill-item">
+    {skill.icon ? (
+      <img src={skill.icon} alt={skill.name} />
+    ) : (
+      <span role="img" aria-label={skill.name}>{skill.emoji}</span>
+    )}
+    <span>{skill.name}</span>
+    <div className="skill-bar"><span style={{ width: `${skill.level}%` }}></span></div>
+  </li>
+)
+
 export default function Skills() {
+  const { t } = useContext(LanguageContext)
   return (
     <section id="skills">
-      <h2>Skills</h2>
+      <h2>{t('skills.title')}</h2>
 
-      <h3>Backend</h3>
+      <h3>{t('skills.backend')}</h3>
       <ul className="skills-list">
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
-          <span>JavaScript</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
-          <span>Python</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
-          <span>Node.js</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" />
-          <span>PHP</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
-          <span>Java</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" />
-          <span>C#</span>
-        </li>
+        {backend.map(renderSkill)}
       </ul>
 
-      <h3>Frontend</h3>
+      <h3>{t('skills.frontend')}</h3>
       <ul className="skills-list">
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
-          <span>HTML5</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
-          <span>CSS3</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
-          <span>React</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" />
-          <span>Tailwind CSS</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" />
-          <span>Vue.js</span>
-        </li>
+        {frontend.map(renderSkill)}
       </ul>
 
-      <h3>Databases</h3>
+      <h3>{t('skills.databases')}</h3>
       <ul className="skills-list">
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" />
-          <span>SQL</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
-          <span>MongoDB</span>
-        </li>
+        {databases.map(renderSkill)}
       </ul>
 
-      <h3>Platforms &amp; APIs</h3>
+      <h3>{t('skills.platforms')}</h3>
       <ul className="skills-list">
-        <li>
-          <span role="img" aria-label="OneReach.ai">⚙️</span>
-          <span>OneReach.ai</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg" alt="OpenAI" />
-          <span>OpenAI</span>
-        </li>
-        <li>
-          <span role="img" aria-label="Anthropic Claude">🤖</span>
-          <span>Anthropic Claude</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Gemini" />
-          <span>Google Gemini</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman" />
-          <span>Postman</span>
-        </li>
+        {platforms.map(renderSkill)}
       </ul>
 
-      <h3>Other</h3>
+      <h3>{t('skills.other')}</h3>
       <ul className="skills-list">
-        <li>
-          <span role="img" aria-label="Documentation">📝</span>
-          <span>Workflow Documentation</span>
-        </li>
-        <li>
-          <span role="img" aria-label="API Integration">🔗</span>
-          <span>API Integration</span>
-        </li>
-        <li>
-          <span role="img" aria-label="Frontend Development">🎨</span>
-          <span>Frontend Development</span>
-        </li>
+        {other.map(renderSkill)}
       </ul>
     </section>
   )
 }
-
