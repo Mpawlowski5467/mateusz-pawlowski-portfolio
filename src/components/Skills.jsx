@@ -37,66 +37,37 @@ const other = [
   { name: 'Frontend Development', emoji: '🎨', level: 70 }
 ]
 
+const skills = [...backend, ...frontend, ...databases, ...platforms, ...other]
+
 const renderSkill = (skill) => (
   <li
     key={skill.name}
-    className="flex flex-col items-center justify-center p-4 border rounded-lg bg-white shadow-sm"
+    className="flex items-center p-3 border rounded-md bg-white shadow-sm"
   >
     {skill.icon ? (
       <img
         src={skill.icon}
         alt={skill.name}
-        className="w-12 h-12 mb-2 filter brightness-0"
+        className="w-6 h-6 filter brightness-0"
       />
     ) : (
-      <span role="img" aria-label={skill.name} className="text-4xl mb-2">
+      <span role="img" aria-label={skill.name} className="text-xl">
         {skill.emoji}
       </span>
     )}
-    <span className="text-sm text-center">{skill.name}</span>
+    <span className="mx-1">:</span>
+    <span className="text-sm">{skill.name}</span>
   </li>
 )
 
 export function Skills() {
   const { t } = useContext(LanguageContext)
   return (
-    <section id="skills" className="space-y-6">
-      <h2 className="text-2xl font-bold text-center">{t('skills.title')}</h2>
-
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{t('skills.backend')}</h3>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {backend.map(renderSkill)}
-        </ul>
-      </div>
-
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{t('skills.frontend')}</h3>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {frontend.map(renderSkill)}
-        </ul>
-      </div>
-
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{t('skills.databases')}</h3>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {databases.map(renderSkill)}
-        </ul>
-      </div>
-
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{t('skills.platforms')}</h3>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {platforms.map(renderSkill)}
-        </ul>
-      </div>
-
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{t('skills.other')}</h3>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {other.map(renderSkill)}
-        </ul>
-      </div>
+    <section id="skills" className="max-w-4xl mx-auto my-8">
+      <h2 className="text-2xl font-bold text-center mb-4">{t('skills.title')}</h2>
+      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        {skills.map(renderSkill)}
+      </ul>
     </section>
   )
 }
