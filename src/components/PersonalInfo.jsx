@@ -1,15 +1,16 @@
+import { useContext } from 'react'
+import { LanguageContext } from '../context/LanguageContext.jsx'
+
 export default function PersonalInfo() {
+  const { t } = useContext(LanguageContext)
   return (
     <section id="about">
-      <h2>About Me</h2>
+      <h2>{t('about.title')}</h2>
+      <p>{t('about.p1')}</p>
+      <p>{t('about.location')}</p>
       <p>
-        I'm a senior Information Technology student at DePaul University and an AI intern
-        at Reyes Holdings. I enjoy building intelligent systems that improve user
-        experience and efficiency.
-      </p>
-      <p>Prospect Heights, IL</p>
-      <p>
-        <a href="mailto:mpawlowski5467@gmail.com">mpawlowski5467@gmail.com</a> • <a href="https://www.linkedin.com/in/mateusz-pawlowski-823849302/">LinkedIn</a>
+        <a href="mailto:mpawlowski5467@gmail.com">{t('about.email')}</a> •{' '}
+        <a href="https://www.linkedin.com/in/mateusz-pawlowski-823849302/">{t('about.linkText')}</a>
       </p>
     </section>
   )
