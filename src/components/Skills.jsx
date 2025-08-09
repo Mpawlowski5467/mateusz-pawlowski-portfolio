@@ -38,47 +38,65 @@ const other = [
 ]
 
 const renderSkill = (skill) => (
-  <li key={skill.name} className="skill-item">
+  <li
+    key={skill.name}
+    className="flex flex-col items-center justify-center p-4 border rounded-lg bg-white shadow-sm"
+  >
     {skill.icon ? (
-      <img src={skill.icon} alt={skill.name} />
+      <img
+        src={skill.icon}
+        alt={skill.name}
+        className="w-12 h-12 mb-2 filter brightness-0"
+      />
     ) : (
-      <span role="img" aria-label={skill.name}>{skill.emoji}</span>
+      <span role="img" aria-label={skill.name} className="text-4xl mb-2">
+        {skill.emoji}
+      </span>
     )}
-    <span>{skill.name}</span>
-    <div className="skill-bar"><span style={{ width: `${skill.level}%` }}></span></div>
+    <span className="text-sm text-center">{skill.name}</span>
   </li>
 )
 
 export function Skills() {
   const { t } = useContext(LanguageContext)
   return (
-    <section id="skills">
-      <h2>{t('skills.title')}</h2>
+    <section id="skills" className="space-y-6">
+      <h2 className="text-2xl font-bold text-center">{t('skills.title')}</h2>
 
-      <h3>{t('skills.backend')}</h3>
-      <ul className="skills-list">
-        {backend.map(renderSkill)}
-      </ul>
+      <div>
+        <h3 className="text-xl font-semibold mb-2">{t('skills.backend')}</h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {backend.map(renderSkill)}
+        </ul>
+      </div>
 
-      <h3>{t('skills.frontend')}</h3>
-      <ul className="skills-list">
-        {frontend.map(renderSkill)}
-      </ul>
+      <div>
+        <h3 className="text-xl font-semibold mb-2">{t('skills.frontend')}</h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {frontend.map(renderSkill)}
+        </ul>
+      </div>
 
-      <h3>{t('skills.databases')}</h3>
-      <ul className="skills-list">
-        {databases.map(renderSkill)}
-      </ul>
+      <div>
+        <h3 className="text-xl font-semibold mb-2">{t('skills.databases')}</h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {databases.map(renderSkill)}
+        </ul>
+      </div>
 
-      <h3>{t('skills.platforms')}</h3>
-      <ul className="skills-list">
-        {platforms.map(renderSkill)}
-      </ul>
+      <div>
+        <h3 className="text-xl font-semibold mb-2">{t('skills.platforms')}</h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {platforms.map(renderSkill)}
+        </ul>
+      </div>
 
-      <h3>{t('skills.other')}</h3>
-      <ul className="skills-list">
-        {other.map(renderSkill)}
-      </ul>
+      <div>
+        <h3 className="text-xl font-semibold mb-2">{t('skills.other')}</h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {other.map(renderSkill)}
+        </ul>
+      </div>
     </section>
   )
 }
