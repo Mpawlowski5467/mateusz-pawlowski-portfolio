@@ -60,7 +60,10 @@ const renderSkill = (skill) => (
 export function Skills() {
   const { t } = useContext(LanguageContext)
   return (
-    <section id="skills" className="space-y-6">
+    <section
+      id="skills"
+      className="max-w-4xl mx-auto my-8 space-y-6"
+    >
       <h2 className="text-2xl font-bold text-center">{t('skills.title')}</h2>
 
       <div>
