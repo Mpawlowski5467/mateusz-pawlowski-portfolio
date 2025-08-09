@@ -1,18 +1,21 @@
+import { useContext } from 'react'
+import { LanguageContext } from '../context/LanguageContext.jsx'
+
 export default function Education() {
+  const { t } = useContext(LanguageContext)
   return (
-    <section id="education">
-      <h2>Education</h2>
-      <ul>
-        <li>
-          <strong>DePaul University</strong> — B.S. in Information Technology (Aug 2023 –
-          Present), GPA 3.67, Dean's List Fall 2023
-        </li>
-        <li>
-          <strong>Harper College</strong> — Associate in Business, Entrepreneurship, IT
-          (Aug 2021 – Aug 2023)
-        </li>
+    <section
+      id="education"
+      className="max-w-3xl mx-auto my-6 p-6 bg-white rounded-lg shadow"
+    >
+      <h2 className="text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-1 mb-4">
+        {t('education.title')}
+      </h2>
+      <ul className="list-disc list-inside space-y-2">
+        {t('education.items').map((item, idx) => (
+          <li key={idx}>{item}</li>
+        ))}
       </ul>
     </section>
   )
 }
-

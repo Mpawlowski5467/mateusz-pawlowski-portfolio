@@ -1,31 +1,33 @@
+import { useContext } from 'react'
+import { LanguageContext } from '../context/LanguageContext.jsx'
+
 export default function Experience() {
+  const { t } = useContext(LanguageContext)
   return (
-    <section id="experience">
-      <h2>Experience</h2>
-      <h3>AI Intern — Reyes Holdings LLC</h3>
-      <p>June 2024 – Present</p>
-      <ul>
-        <li>
-          Built an onboarding chatbot using retrieval-augmented generation to answer
-          new-hire FAQs.
-        </li>
-        <li>
-          Designed unified CSS templates and documentation for chatbot interfaces across
-          multiple business units.
-        </li>
-        <li>
-          Updated OneReach.ai frontend components and created custom loading animations.
-        </li>
-        <li>
-          Developed specialized Q&amp;A chatbots for pricing and security teams with
-          document parsing and report generation.
-        </li>
-        <li>
-          Testing a dynamic questionnaire tool for vendor price promotion requests and
-          deep deal grid reporting.
-        </li>
+    <section
+      id="experience"
+      className="max-w-3xl mx-auto my-6 p-6 bg-white rounded-lg shadow"
+    >
+      <h2 className="text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-1 mb-4">
+        {t('experience.title')}
+      </h2>
+      <div className="flex items-center mb-4">
+        <img
+          src="/reyes-holdings-logo.svg"
+          alt="Reyes Holdings Logo"
+          className="w-16 h-16 mr-4"
+        />
+        <div>
+          <p className="text-sm text-gray-500">{t('experience.date')}</p>
+          <p className="font-semibold">{t('experience.company')}</p>
+          <p className="italic">{t('experience.position')}</p>
+        </div>
+      </div>
+      <ul className="list-disc list-inside space-y-1">
+        {t('experience.bullets').map((item, idx) => (
+          <li key={idx}>{item}</li>
+        ))}
       </ul>
     </section>
   )
 }
-
