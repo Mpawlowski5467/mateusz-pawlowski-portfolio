@@ -1,13 +1,20 @@
+import { useContext } from 'react'
+import { LanguageContext } from '../context/LanguageContext.jsx'
+
 export default function Interests() {
+  const { t } = useContext(LanguageContext)
   return (
     <section id="interests">
-      <h2>Interests</h2>
-      <ul>
-        <li>Chelsea FC supporter</li>
-        <li>Homelabbing and self-hosting</li>
-        <li>Reading and hiking</li>
-        <li>Spending time with friends</li>
-        <li>Baking</li>
+      <h2>{t('interests.title')}</h2>
+      <ul className="interests-grid">
+        {t('interests.items').map((item, idx) => (
+          <li key={idx} className="interests-item">
+            <span className="icon" role="img" aria-label={item.text}>
+              {item.icon}
+            </span>
+            <span>{item.text}</span>
+          </li>
+        ))}
       </ul>
     </section>
   )

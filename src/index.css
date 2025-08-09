@@ -28,7 +28,7 @@ nav {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin: 0;
   background: #fff;
   padding: 0.5rem 1rem;
   border-radius: 0 0 8px 8px;
@@ -46,6 +46,19 @@ nav a {
 
 nav a:hover {
   color: var(--accent);
+}
+
+.lang-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lang-btn:hover {
+  background: var(--accent);
 }
 
 section {
@@ -94,11 +107,55 @@ footer {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex: 1 1 45%;
 }
 
 .skills-list img {
   width: 24px;
   height: 24px;
+}
+
+.skill-bar {
+  flex: 1;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-bar span {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+}
+
+.reyes-logo {
+  height: 40px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.interests-grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 0;
+}
+
+.interests-item {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.interests-item .icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .back-to-top {
