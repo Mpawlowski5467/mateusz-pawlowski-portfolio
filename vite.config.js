@@ -6,5 +6,11 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: 'jsdom'
+  },
+  esbuild: {
+    keepNames: true,
+  },
+  build: {
+    minify: false,
   }
 })

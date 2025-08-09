@@ -49,7 +49,7 @@ const renderSkill = (skill) => (
   </li>
 )
 
-export default function Skills() {
+export function Skills() {
   const { t } = useContext(LanguageContext)
   return (
     <section id="skills">

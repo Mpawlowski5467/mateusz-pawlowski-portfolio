@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { LanguageContext } from '../context/LanguageContext.jsx'
 
-export default function PersonalInfo() {
+export function PersonalInfo() {
   const { t } = useContext(LanguageContext)
   return (
     <section id="about">
