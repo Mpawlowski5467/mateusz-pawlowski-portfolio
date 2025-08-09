@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { LanguageContext } from '../context/LanguageContext.jsx'
 
-export default function Header() {
+export function Header() {
   const { t } = useContext(LanguageContext)
   return (
     <header>

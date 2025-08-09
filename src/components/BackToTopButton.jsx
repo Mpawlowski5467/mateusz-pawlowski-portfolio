@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function BackToTopButton() {
+export function BackToTopButton() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {

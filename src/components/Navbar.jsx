@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { LanguageContext } from '../context/LanguageContext.jsx';
 
-export default function Navbar() {
+export function Navbar() {
   const { lang, setLang, t } = useContext(LanguageContext);
   const toggleLang = () => setLang(lang === 'en' ? 'pl' : 'en');
 
