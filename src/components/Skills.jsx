@@ -1,111 +1,85 @@
+import { useContext } from 'react'
+import { LanguageContext } from '../context/LanguageContext.jsx'
+
+const backend = [
+  {
+    name: 'JavaScript',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
+  },
+  { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'PHP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
+  { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+  { name: 'C#', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg' }
+]
+
+const frontend = [
+  { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+  { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' }
+]
+
+const databases = [
+  { name: 'SQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+  { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' }
+]
+
+const platforms = [
+  { name: 'OpenAI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg' },
+  { name: 'Google', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
+  { name: 'Postman', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg' }
+]
+
+const renderSkill = (skill) => (
+  <div
+    key={skill.name}
+    className="flex flex-col items-center p-4 bg-gray-50 rounded shadow-sm"
+  >
+    {skill.icon ? (
+      <img
+        src={skill.icon}
+        alt={skill.name}
+        className="w-12 h-12 mb-2 filter brightness-0"
+      />
+    ) : (
+      <span className="text-3xl mb-2">{skill.emoji}</span>
+    )}
+    <span className="text-sm text-center">{skill.name}</span>
+  </div>
+)
+
 export default function Skills() {
+  const { t } = useContext(LanguageContext)
   return (
-    <section id="skills">
-      <h2>Skills</h2>
+    <section
+      id="skills"
+      className="max-w-3xl mx-auto my-6 p-6 bg-white rounded-lg shadow"
+    >
+      <h2 className="text-2xl font-semibold text-blue-900 border-b-2 border-blue-900 pb-1 mb-4">
+        {t('skills.title')}
+      </h2>
 
-      <h3>Backend</h3>
-      <ul className="skills-list">
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
-          <span>JavaScript</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
-          <span>Python</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
-          <span>Node.js</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" />
-          <span>PHP</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
-          <span>Java</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" />
-          <span>C#</span>
-        </li>
-      </ul>
+      <h3 className="mt-4 mb-2 font-semibold">{t('skills.backend')}</h3>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {backend.map(renderSkill)}
+      </div>
 
-      <h3>Frontend</h3>
-      <ul className="skills-list">
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
-          <span>HTML5</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
-          <span>CSS3</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
-          <span>React</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" />
-          <span>Tailwind CSS</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" />
-          <span>Vue.js</span>
-        </li>
-      </ul>
+      <h3 className="mt-6 mb-2 font-semibold">{t('skills.frontend')}</h3>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {frontend.map(renderSkill)}
+      </div>
 
-      <h3>Databases</h3>
-      <ul className="skills-list">
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" />
-          <span>SQL</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
-          <span>MongoDB</span>
-        </li>
-      </ul>
+      <h3 className="mt-6 mb-2 font-semibold">{t('skills.databases')}</h3>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {databases.map(renderSkill)}
+      </div>
 
-      <h3>Platforms &amp; APIs</h3>
-      <ul className="skills-list">
-        <li>
-          <span role="img" aria-label="OneReach.ai">⚙️</span>
-          <span>OneReach.ai</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg" alt="OpenAI" />
-          <span>OpenAI</span>
-        </li>
-        <li>
-          <span role="img" aria-label="Anthropic Claude">🤖</span>
-          <span>Anthropic Claude</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Gemini" />
-          <span>Google Gemini</span>
-        </li>
-        <li>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman" />
-          <span>Postman</span>
-        </li>
-      </ul>
-
-      <h3>Other</h3>
-      <ul className="skills-list">
-        <li>
-          <span role="img" aria-label="Documentation">📝</span>
-          <span>Workflow Documentation</span>
-        </li>
-        <li>
-          <span role="img" aria-label="API Integration">🔗</span>
-          <span>API Integration</span>
-        </li>
-        <li>
-          <span role="img" aria-label="Frontend Development">🎨</span>
-          <span>Frontend Development</span>
-        </li>
-      </ul>
+      <h3 className="mt-6 mb-2 font-semibold">{t('skills.platforms')}</h3>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {platforms.map(renderSkill)}
+      </div>
     </section>
   )
 }
