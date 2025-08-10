@@ -5,28 +5,26 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mateusz Pawlowski Portfolio</title>
+    <!-- Tailwind via CDN with custom color palette wired to CSS variables -->
     <script>
       tailwind.config = {
         theme: {
-            extend: {
-          colors: {
-                primary: '#339989',
-                secondary: '#7de2d1',
-                accent: '#7de2d1',
-                background: '#131515',
-                surface: '#2b2c28',
-                text: '#fffafb',
-                neutral: '#fffafb',
-                sunflow: '#f6ae2d'
-              }
-            }
-          }
-        }
-      </script>
-      <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="bg-background text-text">
-      <div id="root"></div>
-      <script type="module" src="/src/main.jsx"></script>
-    </body>
-  </html>
+          extend: {
+            colors: {
+              'dutch-white': 'var(--dutch-white)',
+              plum: 'var(--plum)',
+              'violet-jtc': 'var(--violet-jtc)',
+              black: 'var(--black)',
+              'cambridge-blue': 'var(--cambridge-blue)',
+            },
+          },
+        },
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-black text-dutch-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
