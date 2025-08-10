@@ -13,14 +13,14 @@ export function Projects() {
           <div
             key={idx}
             tabIndex="0"
-            className="p-4 rounded-lg bg-background text-foreground border border-neutral shadow"
+            className="p-4 rounded-lg bg-background text-foreground border border-neutral shadow motion-safe:hover:-translate-y-1 motion-safe:transition-transform"
           >
             {proj.link && (
               <a
                 href={proj.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-secondary underline focus:outline-none focus-visible:ring-2 ring-primary rounded"
+                className="inline-block no-underline bg-primary text-foreground rounded px-3 py-1 motion-safe:transition-colors hover:bg-secondary focus:outline-none focus-visible:ring-2 ring-primary"
               >
                 {t('projects.github')}
               </a>

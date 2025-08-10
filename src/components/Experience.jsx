@@ -9,11 +9,11 @@ export function Experience() {
       <div className="relative pl-10">
         {/* Vertical timeline line */}
         <div className="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-secondary" />
-        <div className="relative mb-8 p-6 bg-secondary text-foreground rounded-xl shadow">
+        <div className="relative mb-8 p-6 bg-secondary text-foreground rounded-lg border-2 border-neutral shadow">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center space-x-3">
               <img
-                src="https://media.licdn.com/dms/image/v2/C560BAQFz7AGAFLXN0A/company-logo_200_200/company-logo_200_200/0/1641580116422/reyes_holdings_logo?e=1757548800&v=beta&t=vwhRKm6AbE3K57Ehi5kVfCkeGYdDMh8RSut0N0lx9nM"
+                src="https://cdn.brandfetch.io/idmJWF3N06/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1721803173482"
                 alt="Reyes Holdings Logo"
                 className="w-12 h-12 object-contain"
               />

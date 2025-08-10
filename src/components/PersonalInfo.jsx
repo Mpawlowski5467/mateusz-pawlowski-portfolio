@@ -7,7 +7,7 @@ function IconLink({ href, label, children }) {
       href={href}
       aria-label={label}
       title={label}
-      className="w-8 h-8 flex items-center justify-center rounded hover:scale-110 transition-transform focus:outline-none focus-visible:ring-2 ring-primary"
+      className="w-8 h-8 flex items-center justify-center rounded no-underline motion-safe:hover:scale-110 motion-safe:transition-transform focus:outline-none focus-visible:ring-2 ring-primary"
       target="_blank"
       rel="noopener noreferrer"
     >
