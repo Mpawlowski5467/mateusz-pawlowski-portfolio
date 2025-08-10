@@ -1,7 +1,12 @@
 /*
   Global variables and spacing constants.
-  Adjust --clock-bar-height, --dock-height, --dock-gap and --footer-height
-  to keep content clear of the fixed clock bar, floating dock and footer.
+  Adjust these to keep content clear of the fixed clock bar,
+  floating dock, and footer.
+
+  - --clock-bar-h : height of the timezone bar
+  - --dock-h      : height of the floating dock navbar
+  - --dock-gap    : gap between clock bar and dock navbar
+  - --footer-h    : footer height
 */
 :root {
   /* Color tokens */
@@ -11,26 +16,27 @@
   --black: #000001ff;
   --cambridge-blue: #90aa86ff;
 
-  /* Layout constants */
-  --clock-bar-height: 2.5rem; /* slim top clock bar */
-  --dock-height: 4rem;        /* approximate height of the dock navbar */
-  --dock-gap: 0.5rem;         /* gap between clock bar and dock */
-  --footer-height: 3rem;      /* fixed footer height */
+  /* Layout dimensions */
+  --clock-bar-h: 1.75rem; /* slim top clock bar */
+  --dock-h: 4rem;         /* approximate height of the dock navbar */
+  --dock-gap: 0.5rem;     /* gap between clock bar and dock */
+  --footer-h: 3rem;       /* fixed footer height */
 }
 
 /* Base document styling using the color tokens */
 body {
-  background-color: var(--black);
-  color: var(--dutch-white);
+  margin: 0;
   font-family: system-ui, sans-serif;
   line-height: 1.6;
-  padding-top: calc(var(--clock-bar-height) + var(--dock-height) + var(--dock-gap));
-  padding-bottom: var(--footer-height);
-  margin: 0;
+  background-color: var(--black);
+  color: var(--dutch-white);
+  /* Ensure content is never hidden behind fixed bars */
+  padding-top: calc(var(--clock-bar-h) + var(--dock-gap) + var(--dock-h));
+  padding-bottom: var(--footer-h);
 }
 
+/* Clamp main content line length for comfortable reading */
 main {
-  /* Clamp line length for comfortable reading */
   max-width: 80ch;
   margin-left: auto;
   margin-right: auto;
@@ -49,4 +55,11 @@ main {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* Respect prefers-reduced-motion by disabling transitions */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+  }
 }
