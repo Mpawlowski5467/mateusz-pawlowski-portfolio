@@ -18,11 +18,6 @@ body {
   color: var(--sunglow);
 }
 
-*,
-*::before,
-*::after {
-  border-color: var(--sunglow);
-}
 
 h1,
 h2,
@@ -35,6 +30,29 @@ h6 {
 
 a {
   color: var(--teal);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--midnight-green);
+}
+
+button {
+  background-color: var(--teal);
+  color: var(--jet);
+  border: 1px solid var(--sunglow);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--midnight-green);
+  color: var(--sunglow);
+}
+
+*,
+*::before,
+*::after {
+  border-color: var(--sunglow);
 }
 
 a:hover,
