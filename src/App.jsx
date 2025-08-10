@@ -1,6 +1,5 @@
 
 import { useState } from 'react'
-import { Header } from './components/Header.jsx'
 import { PersonalInfo } from './components/PersonalInfo.jsx'
 import { Experience } from './components/Experience.jsx'
 import { Projects } from './components/Projects.jsx'
@@ -19,7 +18,6 @@ export function App() {
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>
       <Navbar />
-      <Header />
       <PersonalInfo />
       <Experience />
       <Projects />
