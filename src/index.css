@@ -18,6 +18,7 @@ body {
   color: var(--sunglow);
 }
 
+
 h1,
 h2,
 h3,
@@ -52,4 +53,24 @@ button:hover {
 *::before,
 *::after {
   border-color: var(--sunglow);
+}
+
+a:hover,
+a:focus {
+  color: var(--poppy);
+}
+
+button,
+input[type='button'],
+input[type='submit'] {
+  background-color: var(--midnight-green);
+  color: var(--sunglow);
+  border: 1px solid var(--sunglow);
+}
+
+button:hover,
+input[type='button']:hover,
+input[type='submit']:hover {
+  background-color: var(--poppy);
+  color: var(--jet);
 }
