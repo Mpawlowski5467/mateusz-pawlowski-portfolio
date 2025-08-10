@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { LanguageContext } from '../context/LanguageContext.jsx'
 
 const backend = [
@@ -38,80 +38,59 @@ const other = [
   { name: 'Frontend Development', emoji: '🎨' }
 ]
 
-// If you want a single “All Skills” grid instead, uncomment this:
-// const skills = [...backend, ...frontend, ...databases, ...platforms, ...other]
-
-const renderSkill = (skill) => (
-  <li
-    key={skill.name}
-    className="flex items-center p-3 border rounded-md bg-white shadow-sm"
-  >
-    {skill.icon ? (
-      <img
-        src={skill.icon}
-        alt={skill.name}
-        className="w-6 h-6 filter brightness-0"
-        loading="lazy"
-        width="24"
-        height="24"
-      />
-    ) : (
-      <span role="img" aria-label={skill.name} className="text-xl">
-        {skill.emoji}
-      </span>
-    )}
-    <span className="mx-1">:</span>
-    <span className="text-sm">{skill.name}</span>
-  </li>
-)
+const skills = [...backend, ...frontend, ...databases, ...platforms, ...other]
 
 export function Skills() {
   const { t } = useContext(LanguageContext)
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el || typeof window === 'undefined' || !('IntersectionObserver' in window)) return
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setVisible(true),
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="skills" className="max-w-4xl mx-auto my-8 space-y-6">
-      <h2 className="text-2xl font-bold text-center">{t('skills.title')}</h2>
-
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{t('skills.backend')}</h3>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {backend.map(renderSkill)}
-        </ul>
+    <section
+      id="skills"
+      ref={ref}
+      className={`max-w-4xl mx-auto my-20 p-8 rounded-xl shadow-lg bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 transition-all duration-700 ${
+        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+    >
+      <h2 className="text-3xl font-bold text-center mb-8">{t('skills.title')}</h2>
+      <div className="relative w-72 h-72 mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-white/70 shadow-inner">
+        {skills.map((skill) => (
+          <div key={skill.name} className="flex items-center justify-center">
+            {skill.icon ? (
+              <img
+                src={skill.icon}
+                alt={skill.name}
+                title={skill.name}
+                className="w-12 h-12 transition-transform hover:scale-110"
+                loading="lazy"
+                width="48"
+                height="48"
+              />
+            ) : (
+              <span
+                role="img"
+                aria-label={skill.name}
+                title={skill.name}
+                className="text-4xl"
+              >
+                {skill.emoji}
+              </span>
+            )}
+          </div>
+        ))}
       </div>
-
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{t('skills.frontend')}</h3>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {frontend.map(renderSkill)}
-        </ul>
-      </div>
-
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{t('skills.databases')}</h3>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {databases.map(renderSkill)}
-        </ul>
-      </div>
-
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{t('skills.platforms')}</h3>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {platforms.map(renderSkill)}
-        </ul>
-      </div>
-
-      <div>
-        <h3 className="text-xl font-semibold mb-2">{t('skills.other')}</h3>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {other.map(renderSkill)}
-        </ul>
-      </div>
-
-      {/* If you prefer one big grid, replace everything between <section> and </section> with:
-      <h2 className="text-2xl font-bold text-center mb-4">{t('skills.title')}</h2>
-      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {skills.map(renderSkill)}
-      </ul>
-      */}
     </section>
   )
 }

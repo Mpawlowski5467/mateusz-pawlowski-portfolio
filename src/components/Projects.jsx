@@ -8,7 +8,17 @@ export function Projects() {
       <h2 className="text-3xl font-bold text-center mb-6">{t('projects.title')}</h2>
       <div className="grid gap-6 md:grid-cols-2">
         {t('projects.items').map((proj, idx) => (
-          <div key={idx} className="p-4 bg-white rounded-lg shadow">
+          <div key={idx} className="relative p-4 bg-white rounded-lg shadow hover:shadow-lg transition-shadow">
+            {proj.link && (
+              <a
+                href={proj.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-2 right-2 text-sm bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700"
+              >
+                {t('projects.github')}
+              </a>
+            )}
             <h3 className="text-xl font-semibold mb-2">{proj.name}</h3>
             <p>{proj.desc}</p>
           </div>

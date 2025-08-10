@@ -31,6 +31,15 @@ export function PersonalInfo() {
         >
           {t('about.linkText')}
         </a>
+        <span aria-hidden>•</span>
+        <a
+          href="https://github.com/Mpawlowski5467"
+          className="text-blue-600 underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t('about.github')}
+        </a>
       </p>
 
       <div className="mt-6">
