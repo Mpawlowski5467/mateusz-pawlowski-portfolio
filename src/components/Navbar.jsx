@@ -30,7 +30,7 @@ export function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full flex justify-center pt-4 z-50">
-      <div className="flex items-center space-x-4 bg-white/80 backdrop-blur px-6 py-3 rounded-2xl shadow-lg">
+      <div className="flex space-x-4 bg-white/80 backdrop-blur px-6 py-3 rounded-2xl shadow-lg">
         {links.map((key) => (
           <a
             key={key}
@@ -42,32 +42,29 @@ export function Navbar() {
             {t(`nav.${key}`)}
           </a>
         ))}
-        <div className="relative">
-          <button
-            onClick={() => setOpen(!open)}
-            className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-2xl hover:scale-110 transition"
-          >
-            {lang === 'en' ? '🇺🇸' : '🇵🇱'}
-          </button>
-          {open && (
-            <ul className="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden">
-              {langs.map((l) => (
-                <li key={l.code}>
-                  <button
-                    onClick={() => {
-                      setLang(l.code)
-                      setOpen(false)
-                    }}
-                    className="flex items-center space-x-2 px-3 py-2 hover:bg-gray-100 w-full"
-                  >
-                    <span className="text-xl">{l.flag}</span>
-                    <span>{l.label}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+      </div>
+      <div className="absolute right-4 top-4">
+        <button onClick={() => setOpen(!open)} className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-2xl hover:scale-110 transition">
+          {lang === 'en' ? '🇺🇸' : '🇵🇱'}
+        </button>
+        {open && (
+          <ul className="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden">
+            {langs.map((l) => (
+              <li key={l.code}>
+                <button
+                  onClick={() => {
+                    setLang(l.code)
+                    setOpen(false)
+                  }}
+                  className="flex items-center space-x-2 px-3 py-2 hover:bg-gray-100 w-full"
+                >
+                  <span className="text-xl">{l.flag}</span>
+                  <span>{l.label}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </nav>
   )
