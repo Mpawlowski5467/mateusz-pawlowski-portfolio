@@ -19,7 +19,6 @@ export function PersonalInfo() {
         <p className="text-lg">{t('about.p1')}</p>
         <p className="text-[var(--rich-black)]">{t('about.location')}</p>
 
- q0edgz-codex/add-top-navbar-with-language-option
         <p className="space-x-2">
           <a href="mailto:mpawlowski5467@gmail.com" className="text-[var(--dark-purple)] underline">
             {t('about.email')}
@@ -44,31 +43,6 @@ export function PersonalInfo() {
           </a>
         </p>
       </div>
-
-      <p className="space-x-2">
-        <a href="mailto:mpawlowski5467@gmail.com" className="text-blue-600 underline">
-          {t('about.email')}
-        </a>
-        <span aria-hidden>•</span>
-        <a
-          href="https://www.linkedin.com/in/mateusz-pawlowski-823849302/"
-          className="text-blue-600 underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t('about.linkText')}
-        </a>
-        <span aria-hidden>•</span>
-        <a
-          href="https://github.com/Mpawlowski5467"
-          className="text-blue-600 underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {t('about.github')}
-        </a>
-      </p>
- main
 
       <div className="mt-6 md:mt-0 text-center md:text-left">
         <h3 className="text-2xl font-semibold text-[var(--dark-purple)]">{t('interests.title')}</h3>
