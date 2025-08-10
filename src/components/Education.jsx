@@ -6,9 +6,9 @@ export function Education() {
   return (
       <section
         id="education"
-        className="max-w-3xl mx-auto my-8 p-6 bg-[var(--honeydew)] rounded-lg shadow text-[var(--rich-black)]"
+        className="max-w-3xl mx-auto my-8 p-6 bg-teal-900 rounded-lg shadow text-jet-100"
       >
-        <h2 className="text-2xl font-bold mb-4 text-center text-[var(--dark-purple)]">
+        <h2 className="text-2xl font-bold mb-4 text-center text-midnight_green">
           {t('education.title')}
         </h2>
         <ul className="list-disc pl-5 space-y-2">

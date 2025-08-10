@@ -64,8 +64,8 @@ export function Skills() {
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <h2 className="text-3xl font-bold text-center mb-8">{t('skills.title')}</h2>
-      <div className="relative w-[28rem] h-[28rem] mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-[var(--honeydew)] overflow-hidden">
+      <h2 className="text-3xl font-bold text-center mb-8 text-midnight_green">{t('skills.title')}</h2>
+      <div className="relative w-[28rem] h-[28rem] mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-teal-900 overflow-hidden">
         {skills.map((skill) => (
           <div key={skill.name} className="relative group w-16 h-16 flex items-center justify-center">
             {skill.icon ? (
@@ -86,7 +86,7 @@ export function Skills() {
                 {skill.emoji}
               </span>
             )}
-            <span className="absolute top-full mt-1 px-2 py-1 rounded bg-[var(--rich-black)] text-[var(--honeydew)] text-xs opacity-0 group-hover:opacity-100 whitespace-nowrap">
+            <span className="absolute top-full mt-1 px-2 py-1 rounded bg-jet text-teal-900 text-xs opacity-0 group-hover:opacity-100 whitespace-nowrap">
               {skill.name}
             </span>
           </div>
