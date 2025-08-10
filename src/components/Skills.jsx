@@ -14,10 +14,7 @@ const frontend = [
   { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
   { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
   { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  {
-    name: 'Tailwind CSS',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg'
-  },
+  { name: 'Tailwind CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
   { name: 'Vue.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' }
 ]
 
@@ -28,6 +25,7 @@ const databases = [
 
 const platforms = [
   { name: 'OneReach.ai', emoji: '⚙️' },
+  // Heads-up: this OpenAI devicon sometimes 404s. Swap to a local asset if needed.
   { name: 'OpenAI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg' },
   { name: 'Anthropic Claude', emoji: '🤖' },
   { name: 'Google Gemini', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
@@ -40,7 +38,8 @@ const other = [
   { name: 'Frontend Development', emoji: '🎨' }
 ]
 
-const skills = [...backend, ...frontend, ...databases, ...platforms, ...other]
+// If you want a single “All Skills” grid instead, uncomment this:
+// const skills = [...backend, ...frontend, ...databases, ...platforms, ...other]
 
 const renderSkill = (skill) => (
   <li
@@ -52,6 +51,9 @@ const renderSkill = (skill) => (
         src={skill.icon}
         alt={skill.name}
         className="w-6 h-6 filter brightness-0"
+        loading="lazy"
+        width="24"
+        height="24"
       />
     ) : (
       <span role="img" aria-label={skill.name} className="text-xl">
@@ -66,11 +68,50 @@ const renderSkill = (skill) => (
 export function Skills() {
   const { t } = useContext(LanguageContext)
   return (
-    <section id="skills" className="max-w-4xl mx-auto my-8">
+    <section id="skills" className="max-w-4xl mx-auto my-8 space-y-6">
+      <h2 className="text-2xl font-bold text-center">{t('skills.title')}</h2>
+
+      <div>
+        <h3 className="text-xl font-semibold mb-2">{t('skills.backend')}</h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {backend.map(renderSkill)}
+        </ul>
+      </div>
+
+      <div>
+        <h3 className="text-xl font-semibold mb-2">{t('skills.frontend')}</h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {frontend.map(renderSkill)}
+        </ul>
+      </div>
+
+      <div>
+        <h3 className="text-xl font-semibold mb-2">{t('skills.databases')}</h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {databases.map(renderSkill)}
+        </ul>
+      </div>
+
+      <div>
+        <h3 className="text-xl font-semibold mb-2">{t('skills.platforms')}</h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {platforms.map(renderSkill)}
+        </ul>
+      </div>
+
+      <div>
+        <h3 className="text-xl font-semibold mb-2">{t('skills.other')}</h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {other.map(renderSkill)}
+        </ul>
+      </div>
+
+      {/* If you prefer one big grid, replace everything between <section> and </section> with:
       <h2 className="text-2xl font-bold text-center mb-4">{t('skills.title')}</h2>
       <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {skills.map(renderSkill)}
       </ul>
+      */}
     </section>
   )
 }
