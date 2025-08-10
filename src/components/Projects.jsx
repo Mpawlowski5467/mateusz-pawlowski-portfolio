@@ -10,7 +10,7 @@ export function Projects() {
         {t('projects.items').map((proj, idx) => (
           <div
             key={idx}
-            className="relative p-4 bg-teal-900 rounded-lg shadow hover:shadow-lg transition-shadow text-jet-100"
+            className="relative p-4 bg-poppy rounded-lg shadow hover:shadow-lg transition-shadow text-jet-100"
           >
             {proj.link && (
               <a
@@ -22,7 +22,7 @@ export function Projects() {
                 {t('projects.github')}
               </a>
             )}
-            <h3 className="text-xl font-semibold mb-2">{proj.name}</h3>
+            <h3 className="text-xl font-semibold mb-2 text-sunglow">{proj.name}</h3>
             <p>{proj.desc}</p>
           </div>
         ))}
