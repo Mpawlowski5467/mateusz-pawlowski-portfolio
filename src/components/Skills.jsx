@@ -65,7 +65,7 @@ export function Skills() {
       }`}
     >
       <h2 className="text-3xl font-bold text-center mb-8 text-poppy">{t('skills.title')}</h2>
-      <div className="relative w-[28rem] h-[28rem] mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-teal-900 border-4 border-poppy overflow-hidden">
+      <div className="relative w-[28rem] h-[28rem] mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-midnight_green border-4 border-sunglow overflow-hidden">
         {skills.map((skill) => (
           <div key={skill.name} className="relative group w-16 h-16 flex items-center justify-center">
             {skill.icon ? (
