@@ -1,106 +1,68 @@
 import { useRef, useState } from 'react'
 
-// Navigation links represented as icons
-const links = [
-  {
-    href: '#about',
-    label: 'About',
-    svg: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-           className="h-8 w-8 text-dutch-white" aria-hidden="true">
-        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
-      </svg>
-    ),
-  },
-  {
-    href: '#projects',
-    label: 'Projects',
-    svg: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-           className="h-8 w-8 text-dutch-white" aria-hidden="true">
-        <path d="M4 4h7v7H4zm9 0h7v7h-7zm0 9h7v7h-7zm-9 0h7v7H4z" fill="currentColor"/>
-      </svg>
-    ),
-  },
-  {
-    href: 'mailto:mpawlowski5467@gmail.com',
-    label: 'Email',
-    svg: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-           className="h-8 w-8 text-dutch-white" aria-hidden="true">
-        <path d="M2 4h20v16H2z" fill="none" />
-        <path d="M2 4h20v16H2z" stroke="currentColor" strokeWidth="2" />
-        <path d="m22 4-10 7L2 4" fill="none" stroke="currentColor" strokeWidth="2" />
-      </svg>
-    ),
-  },
+// Icons for sections; using emojis keeps the bundle small
+const items = [
+  { href: '#about', label: 'About', icon: '👤' },
+  { href: '#experience', label: 'Experience', icon: '💼' },
+  { href: '#projects', label: 'Projects', icon: '📁' },
+  { href: '#skills', label: 'Skills', icon: '🛠️' }
 ]
 
 export function Navbar() {
-  const dockRef = useRef(null)
-  const [scales, setScales] = useState(links.map(() => 1))
-  const prefersReduced =
-    typeof window !== 'undefined' &&
-    typeof window.matchMedia === 'function' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const iconRefs = useRef([])
+  const [mouseX, setMouseX] = useState(null)
 
-  // Scale icons based on cursor proximity (macOS Dock-like)
-  const handleMove = (e) => {
-    if (prefersReduced || !dockRef.current) return
-    const mouseX = e.clientX
-    const newScales = Array.from(dockRef.current.children).map((el) => {
-      const rect = el.getBoundingClientRect()
-      const center = rect.left + rect.width / 2
-      const distance = Math.abs(mouseX - center)
-      const maxDist = 100 // px radius for influence
-      const scale = 1 + Math.max(0, (maxDist - distance) / maxDist) * 0.5
-      return Math.min(scale, 1.5)
-    })
-    setScales(newScales)
+  // Track mouse position to scale icons based on proximity
+  const handleMove = (e) => setMouseX(e.clientX)
+  const handleLeave = () => setMouseX(null)
+
+  // Compute scale for a given icon index using distance from cursor
+  const scaleFor = (idx) => {
+    const el = iconRefs.current[idx]
+    if (!el || mouseX === null) return 1
+    const rect = el.getBoundingClientRect()
+    const center = rect.left + rect.width / 2
+    const distance = Math.abs(mouseX - center)
+    // Icons at cursor center scale to 1.5; neighbours shrink with distance
+    const max = 1.5
+    const min = 1
+    const scale = max - Math.min(distance / 100, 1) * (max - min)
+    return scale
   }
 
-  const reset = () => setScales(links.map(() => 1))
-
   return (
-    // Floating, centered, and always below the clock bar
-    <nav
+    // Floating container centered at top, below the clock bar
+    <div
       className="fixed top-[calc(var(--clock-bar-h)+var(--dock-gap))] left-1/2 -translate-x-1/2 z-40"
-      aria-label="Main navigation"
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
     >
-      <ul
-        ref={dockRef}
-        onMouseMove={handleMove}
-        onMouseLeave={reset}
-        className="flex gap-4 bg-plum/40 backdrop-blur-lg rounded-2xl px-4 py-2 shadow-lg ring-1 ring-dutch-white/20"
+      <nav
+        aria-label="Primary"
+        className="flex gap-4 rounded-3xl bg-dutch-white/40 backdrop-blur-md shadow-lg border border-white/20 px-4 py-2"
       >
-        {links.map((link, i) => (
-          <li
-            key={link.href}
-            style={{ transform: `scale(${scales[i]})` }}
-            className="transition-transform duration-150 ease-out"
+        {items.map((item, i) => (
+          <a
+            key={item.href}
+            ref={(el) => (iconRefs.current[i] = el)}
+            href={item.href}
+            title={item.label}
+            aria-label={item.label}
+            // Scale via inline style so neighbours react to cursor proximity
+            style={{ transform: `scale(${scaleFor(i)})` }}
+            className="w-8 h-8 flex items-center justify-center text-2xl transition-transform duration-150 ease-out focus:outline-none focus-visible:ring-2 ring-plum rounded-md"
+            onFocus={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect()
+              setMouseX(rect.left + rect.width / 2)
+            }}
+            onBlur={handleLeave}
           >
-            <a
-              href={link.href}
-              title={link.label}
-              aria-label={link.label}
-              className="block rounded-lg p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cambridge-blue"
-              onFocus={(e) => {
-                // Keyboard focus should mimic hover scale
-                if (prefersReduced || !dockRef.current) return
-                const rect = e.currentTarget.getBoundingClientRect()
-                const centerX = rect.left + rect.width / 2
-                handleMove({ clientX: centerX })
-              }}
-              onBlur={reset}
-              target={link.href.startsWith('http') ? '_blank' : undefined}
-              rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            >
-              <span className="sr-only">{link.label}</span>
-              {link.svg}
-            </a>
-          </li>
+            <span role="img" aria-hidden="true">
+              {item.icon}
+            </span>
+          </a>
         ))}
-      </ul>
-    </nav>
+      </nav>
+    </div>
   )
 }
