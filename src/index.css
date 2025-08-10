@@ -3,19 +3,19 @@ html {
 }
 
 :root {
-  --teal: #177e89ff;
-  --midnight-green: #084c61ff;
-  --poppy: #db3a34ff;
-  --sunglow: #ffc857ff;
-  --jet: #323031ff;
+  --primary: #339989ff;
+  --secondary: #7de2d1ff;
+  --background: #131515ff;
+  --surface: #2b2c28ff;
+  --text: #fffafbff;
 }
 
 body {
   margin: 0;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.6;
-  background-color: var(--jet);
-  color: var(--sunglow);
+  background-color: var(--background);
+  color: var(--text);
 }
 
 
@@ -25,52 +25,52 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--poppy);
+  color: var(--primary);
 }
 
 a {
-  color: var(--text);
+  color: var(--secondary);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--poppy);
+  color: var(--primary);
 }
 
 button {
-  background-color: var(--teal);
-  color: var(--jet);
-  border: 1px solid var(--sunglow);
+  background-color: var(--primary);
+  color: var(--background);
+  border: 1px solid var(--secondary);
   cursor: pointer;
 }
 
 button:hover {
-  background-color: var(--midnight-green);
-  color: var(--sunglow);
+  background-color: var(--secondary);
+  color: var(--background);
 }
 
 *,
 *::before,
 *::after {
-  border-color: var(--sunglow);
+  border-color: var(--secondary);
 }
 
 a:hover,
 a:focus {
-  color: var(--poppy);
+  color: var(--primary);
 }
 
 button,
 input[type='button'],
 input[type='submit'] {
-  background-color: var(--midnight-green);
-  color: var(--sunglow);
-  border: 1px solid var(--sunglow);
+  background-color: var(--primary);
+  color: var(--text);
+  border: 1px solid var(--secondary);
 }
 
 button:hover,
 input[type='button']:hover,
 input[type='submit']:hover {
-  background-color: var(--poppy);
-  color: var(--jet);
+  background-color: var(--secondary);
+  color: var(--background);
 }
