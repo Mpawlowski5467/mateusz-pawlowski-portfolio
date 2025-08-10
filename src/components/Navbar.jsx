@@ -33,7 +33,7 @@ export function Navbar() {
   return (
     // Floating container centered at top, below the clock bar
     <div
-      className="fixed top-[calc(var(--clock-bar-h)+var(--dock-gap))] left-1/2 -translate-x-1/2 z-40"
+      className="fixed top-[calc(var(--clock-bar-h)+var(--dock-gap)+0.5rem)] left-1/2 -translate-x-1/2 z-40"
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
     >
@@ -46,11 +46,10 @@ export function Navbar() {
             key={item.href}
             ref={(el) => (iconRefs.current[i] = el)}
             href={item.href}
-            title={item.label}
             aria-label={item.label}
             // Scale via inline style so neighbours react to cursor proximity
             style={{ transform: `scale(${scaleFor(i)})` }}
-            className="w-8 h-8 flex items-center justify-center text-2xl transition-transform duration-150 ease-out focus:outline-none focus-visible:ring-2 ring-primary rounded-md"
+            className="group relative w-8 h-8 flex items-center justify-center text-2xl transition-transform duration-150 ease-out focus:outline-none focus-visible:ring-2 ring-primary rounded-md"
             onFocus={(e) => {
               const rect = e.currentTarget.getBoundingClientRect()
               setMouseX(rect.left + rect.width / 2)
@@ -59,6 +58,9 @@ export function Navbar() {
           >
             <span role="img" aria-hidden="true">
               {item.icon}
+            </span>
+            <span className="pointer-events-none absolute bottom-full mb-2 whitespace-nowrap px-2 py-1 rounded bg-secondary text-foreground text-xs opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100">
+              {item.label}
             </span>
           </a>
         ))}

@@ -25,8 +25,14 @@ const databases = [
 
 const platforms = [
   { name: 'OneReach.ai', emoji: '⚙️' },
-  { name: 'OpenAI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg' },
-  { name: 'Anthropic Claude', emoji: '🤖' },
+  {
+    name: 'OpenAI',
+    icon: 'https://cdn.brandfetch.io/idR3duQxYl/w/800/h/800/theme/dark/symbol.png?c=1bxid64Mup7aczewSAYMX&t=1749527471692'
+  },
+  {
+    name: 'Anthropic Claude',
+    icon: 'https://cdn.brandfetch.io/idmJWF3N06/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1721803173482'
+  },
   { name: 'Google Gemini', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
   { name: 'Postman', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg' }
 ]

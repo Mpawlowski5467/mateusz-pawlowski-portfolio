@@ -37,7 +37,7 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   /* ensure content is never hidden behind fixed bars */
-  padding-top: calc(var(--clock-bar-h) + var(--dock-gap) + var(--dock-h));
+  padding-top: calc(var(--clock-bar-h) + var(--dock-gap) + var(--dock-h) + 0.5rem);
   padding-bottom: var(--footer-h);
 }
 
