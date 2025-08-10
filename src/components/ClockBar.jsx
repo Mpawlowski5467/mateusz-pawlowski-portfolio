@@ -35,7 +35,7 @@ export function ClockBar() {
 
   return (
     // Slim bar fixed to the very top
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-between px-4 h-[var(--clock-bar-h)] bg-violet-jtc/90 text-dutch-white font-mono text-[0.65rem] sm:text-xs">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-between px-4 h-[var(--clock-bar-h)] bg-secondary/90 text-foreground font-mono text-[0.65rem] sm:text-xs">
       {/* Left group: first two time zones */}
       <div className="flex gap-4 items-center">
         {times.slice(0, 2).map((tz) => (
@@ -55,7 +55,7 @@ export function ClockBar() {
 function Clock({ city, time }) {
   return (
     <div className="flex flex-col items-center" aria-label={city}>
-      <span className="text-cambridge-blue">{city}</span>
+      <span className="text-neutral">{city}</span>
       <span>{time}</span>
     </div>
   )

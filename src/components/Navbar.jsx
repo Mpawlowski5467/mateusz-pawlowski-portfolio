@@ -39,7 +39,7 @@ export function Navbar() {
     >
       <nav
         aria-label="Primary"
-        className="flex gap-4 rounded-3xl bg-dutch-white/40 backdrop-blur-md shadow-lg border border-white/20 px-4 py-2"
+        className="flex gap-4 rounded-3xl bg-foreground/40 backdrop-blur-md shadow-lg border border-white/20 px-4 py-2"
       >
         {items.map((item, i) => (
           <a
@@ -50,7 +50,7 @@ export function Navbar() {
             aria-label={item.label}
             // Scale via inline style so neighbours react to cursor proximity
             style={{ transform: `scale(${scaleFor(i)})` }}
-            className="w-8 h-8 flex items-center justify-center text-2xl transition-transform duration-150 ease-out focus:outline-none focus-visible:ring-2 ring-plum rounded-md"
+            className="w-8 h-8 flex items-center justify-center text-2xl transition-transform duration-150 ease-out focus:outline-none focus-visible:ring-2 ring-primary rounded-md"
             onFocus={(e) => {
               const rect = e.currentTarget.getBoundingClientRect()
               setMouseX(rect.left + rect.width / 2)

@@ -63,9 +63,9 @@ export function Skills() {
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <h2 className="text-3xl font-bold text-center mb-8 text-plum">{t('skills.title')}</h2>
+      <h2 className="text-3xl font-bold text-center mb-8 text-primary">{t('skills.title')}</h2>
       {/* Circular cloud of skill icons */}
-      <div className="relative w-[28rem] h-[28rem] mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-plum border-4 border-cambridge-blue overflow-hidden">
+      <div className="relative w-[28rem] h-[28rem] mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-primary border-4 border-neutral overflow-hidden">
         {skills.map((skill) => (
           <div key={skill.name} className="relative group w-16 h-16 flex items-center justify-center">
             {skill.icon ? (
@@ -86,7 +86,7 @@ export function Skills() {
                 {skill.emoji}
               </span>
             )}
-            <span className="absolute top-full mt-1 px-2 py-1 rounded bg-violet-jtc text-dutch-white text-xs opacity-0 group-hover:opacity-100 whitespace-nowrap">
+            <span className="absolute top-full mt-1 px-2 py-1 rounded bg-secondary text-foreground text-xs opacity-0 group-hover:opacity-100 whitespace-nowrap">
               {skill.name}
             </span>
           </div>

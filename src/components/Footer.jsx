@@ -7,7 +7,7 @@ function SocialLink({ href, label, children }) {
       href={href}
       aria-label={label}
       title={label}
-      className="w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform focus:outline-none focus-visible:ring-2 ring-plum rounded"
+      className="w-6 h-6 flex items-center justify-center hover:scale-110 transition-transform focus:outline-none focus-visible:ring-2 ring-primary rounded"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -37,7 +37,7 @@ export function Footer() {
 
   return (
     // Fixed footer anchored to bottom; padding is handled by global CSS
-    <footer className="fixed bottom-0 left-0 right-0 z-30 h-[var(--footer-h)] bg-violet-jtc/90 text-dutch-white flex items-center justify-center gap-6 text-sm">
+    <footer className="fixed bottom-0 left-0 right-0 z-30 h-[var(--footer-h)] bg-secondary/90 text-foreground flex items-center justify-center gap-6 text-sm">
       <SocialLink href="https://github.com/Mpawlowski5467" label={t('about.github')}>
         {gh}
       </SocialLink>

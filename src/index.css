@@ -8,11 +8,20 @@
   - --footer-h    : footer height
 */
 :root {
-  --dutch-white: #dccca3ff;
-  --plum: #824c71ff;
-  --violet-jtc: #4a2545ff;
-  --black: #000001ff;
-  --cambridge-blue: #90aa86ff;
+  /* Primary brand color – used for main accents, buttons, and links */
+  --primary: #62929eff; /* Blue Munsell */
+
+  /* Secondary brand color – used for highlights, hover states, or minor accents */
+  --secondary: #546a7bff; /* Paynes Gray */
+
+  /* Background – used for main page backgrounds */
+  --background: #393d3fff; /* Onyx */
+
+  /* Foreground text – used for primary readable text on background */
+  --foreground: #fdfdffff; /* White */
+
+  /* Neutral – used for borders, dividers, and subtle text */
+  --neutral: #c6c5b9ff; /* Silver */
 
   /* Layout dimensions */
   --clock-bar-h: 1.75rem;
@@ -25,8 +34,8 @@ body {
   margin: 0;
   font-family: system-ui, sans-serif;
   line-height: 1.6;
-  background-color: var(--black);
-  color: var(--dutch-white);
+  background-color: var(--background);
+  color: var(--foreground);
   /* ensure content is never hidden behind fixed bars */
   padding-top: calc(var(--clock-bar-h) + var(--dock-gap) + var(--dock-h));
   padding-bottom: var(--footer-h);
