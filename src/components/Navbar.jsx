@@ -29,28 +29,26 @@ export function Navbar() {
   const links = ['about', 'experience', 'projects', 'education', 'skills']
 
   return (
-      <nav className="fixed left-1/2 top-4 -translate-x-1/2 z-50">
-        <div className="flex items-center space-x-4 bg-primary/80 backdrop-blur px-6 py-3 rounded-2xl shadow-lg text-background">
+    <nav className="navbar">
+      <div className="nav-inner">
         {links.map((key) => (
           <a
             key={key}
             href={`#${key}`}
-              className={`px-3 py-2 rounded-md transition transform hover:scale-110 ${
-                active === key ? 'bg-secondary text-background' : ''
-              }`}
+            className={`nav-link ${active === key ? 'active' : ''}`}
           >
             {t(`nav.${key}`)}
           </a>
         ))}
         <div className="relative">
-            <button
-              onClick={() => setOpen(!open)}
-              className="w-12 h-12 rounded-full bg-secondary text-background shadow-lg flex items-center justify-center text-2xl hover:scale-110 transition"
-            >
+          <button
+            onClick={() => setOpen(!open)}
+            className="lang-btn"
+          >
             {lang === 'en' ? '🇺🇸' : '🇵🇱'}
           </button>
-            {open && (
-              <ul className="absolute right-0 mt-2 bg-primary rounded-md shadow-lg overflow-hidden text-background">
+          {open && (
+            <ul className="lang-menu">
               {langs.map((l) => (
                 <li key={l.code}>
                   <button
@@ -58,7 +56,7 @@ export function Navbar() {
                       setLang(l.code)
                       setOpen(false)
                     }}
-                      className="flex items-center space-x-2 px-3 py-2 hover:bg-secondary w-full"
+                    className="lang-option"
                   >
                     <span className="text-xl">{l.flag}</span>
                     <span>{l.label}</span>
