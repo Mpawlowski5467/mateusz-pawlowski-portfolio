@@ -15,5 +15,42 @@ body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   background-color: var(--jet);
-  color: var(--teal);
+  color: var(--sunglow);
+}
+
+*, *::before, *::after {
+  border-color: var(--sunglow);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: color-mix(in srgb, var(--poppy), white 70%);
+}
+
+a {
+  color: var(--jet);
+  background-color: var(--teal);
+  text-decoration-color: var(--sunglow);
+}
+
+a:hover,
+a:focus {
+  background-color: var(--midnight-green);
+  color: var(--sunglow);
+}
+
+button {
+  background-color: var(--midnight-green);
+  color: var(--sunglow);
+  border: 2px solid var(--sunglow);
+}
+
+button:hover,
+button:focus {
+  background-color: var(--teal);
+  color: var(--jet);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--poppy), white 70%);
+  color: var(--jet);
 }
