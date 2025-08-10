@@ -34,20 +34,11 @@ export function ClockBar() {
   }, [])
 
   return (
-    // Slim bar fixed to the very top
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-between px-4 h-[var(--clock-bar-h)] bg-secondary/90 text-foreground font-mono text-[0.65rem] sm:text-xs">
-      {/* Left group: first two time zones */}
-      <div className="flex gap-4 items-center">
-        {times.slice(0, 2).map((tz) => (
-          <Clock key={tz.tz} city={tz.city} time={tz.time} />
-        ))}
-      </div>
-      {/* Right group: remaining time zones */}
-      <div className="flex gap-4 items-center">
-        {times.slice(2).map((tz) => (
-          <Clock key={tz.tz} city={tz.city} time={tz.time} />
-        ))}
-      </div>
+    // Floating pill slightly below the top edge
+    <div className="fixed top-2 left-1/2 -translate-x-1/2 z-50 flex gap-6 px-4 py-1 rounded-full bg-secondary/90 text-foreground font-mono text-[0.65rem] sm:text-xs shadow-lg">
+      {times.map((tz) => (
+        <Clock key={tz.tz} city={tz.city} time={tz.time} />
+      ))}
     </div>
   )
 }

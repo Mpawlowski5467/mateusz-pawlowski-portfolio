@@ -6,7 +6,7 @@ export function Education() {
   return (
     <section
       id="education"
-      className="max-w-3xl mx-auto my-8 p-6 bg-secondary text-foreground rounded-lg shadow"
+      className="max-w-3xl mx-auto my-8 p-6 bg-secondary text-foreground rounded-lg shadow border border-neutral"
     >
       <h2 className="text-2xl font-bold mb-4 text-center text-primary">
         {t('education.title')}
