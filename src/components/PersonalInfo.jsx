@@ -12,21 +12,21 @@ export function PersonalInfo() {
   return (
     <section id="about" className="pt-24 max-w-5xl mx-auto my-8 grid gap-8 md:grid-cols-2 items-start">
       <div className="space-y-4 text-center md:text-left">
-        <h1 className="text-4xl font-bold">{t('header.name')}</h1>
-        <p className="text-xl text-[var(--ash-gray)]">{t('header.role')}</p>
+        <h1 className="text-4xl font-bold text-sunglow">{t('header.name')}</h1>
+        <p className="text-xl text-teal-300">{t('header.role')}</p>
 
         <h2 className="text-3xl font-bold mt-6">{t('about.title')}</h2>
         <p className="text-lg">{t('about.p1')}</p>
-        <p className="text-[var(--rich-black)]">{t('about.location')}</p>
+        <p className="text-jet-400">{t('about.location')}</p>
 
         <p className="space-x-2">
-          <a href="mailto:mpawlowski5467@gmail.com" className="text-[var(--dark-purple)] underline">
+          <a href="mailto:mpawlowski5467@gmail.com" className="text-midnight_green underline hover:text-teal-300">
             {t('about.email')}
           </a>
           <span aria-hidden>•</span>
           <a
             href="https://www.linkedin.com/in/mateusz-pawlowski-823849302/"
-            className="text-[var(--dark-purple)] underline"
+            className="text-midnight_green underline hover:text-teal-300"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -35,7 +35,7 @@ export function PersonalInfo() {
           <span aria-hidden>•</span>
           <a
             href="https://github.com/Mpawlowski5467"
-            className="text-[var(--dark-purple)] underline"
+            className="text-midnight_green underline hover:text-teal-300"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -45,10 +45,10 @@ export function PersonalInfo() {
       </div>
 
       <div className="mt-6 md:mt-0 text-center md:text-left">
-        <h3 className="text-2xl font-semibold text-[var(--dark-purple)]">{t('interests.title')}</h3>
+        <h3 className="text-2xl font-semibold text-poppy">{t('interests.title')}</h3>
         <ul className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
           {interestItems.map((item, idx) => (
-            <li key={item?.text ?? idx} className="flex items-center space-x-2">
+            <li key={item?.text ?? idx} className="flex items-center space-x-2 bg-midnight_green/60 text-sunglow px-2 py-1 rounded">
               {item?.icon && (
                 <span className="text-2xl" role="img" aria-label={item?.text ?? 'interest'}>
                   {item.icon}

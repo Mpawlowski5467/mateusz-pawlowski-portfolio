@@ -30,13 +30,13 @@ export function Navbar() {
 
   return (
     <nav className="fixed left-1/2 top-4 -translate-x-1/2 z-50">
-      <div className="flex items-center space-x-4 bg-[var(--honeydew)]/80 backdrop-blur px-6 py-3 rounded-2xl shadow-lg text-[var(--rich-black)]">
+      <div className="flex items-center space-x-4 bg-midnight_green/80 backdrop-blur px-6 py-3 rounded-2xl shadow-lg text-sunglow">
         {links.map((key) => (
           <a
             key={key}
             href={`#${key}`}
-            className={`px-3 py-2 rounded-md transition transform hover:scale-110 ${
-              active === key ? 'bg-[var(--naples-yellow)] text-[var(--rich-black)]' : ''
+            className={`px-3 py-2 rounded-md transition transform hover:scale-110 hover:text-teal-300 ${
+              active === key ? 'bg-poppy text-jet' : ''
             }`}
           >
             {t(`nav.${key}`)}
@@ -45,12 +45,12 @@ export function Navbar() {
         <div className="relative">
           <button
             onClick={() => setOpen(!open)}
-            className="w-12 h-12 rounded-full bg-[var(--naples-yellow)] text-[var(--rich-black)] shadow-lg flex items-center justify-center text-2xl hover:scale-110 transition"
+            className="w-12 h-12 rounded-full bg-poppy text-jet shadow-lg flex items-center justify-center text-2xl hover:scale-110 hover:bg-sunglow transition"
           >
             {lang === 'en' ? '🇺🇸' : '🇵🇱'}
           </button>
           {open && (
-            <ul className="absolute right-0 mt-2 bg-[var(--honeydew)] rounded-md shadow-lg overflow-hidden text-[var(--rich-black)]">
+            <ul className="absolute right-0 mt-2 bg-midnight_green rounded-md shadow-lg overflow-hidden text-sunglow">
               {langs.map((l) => (
                 <li key={l.code}>
                   <button
@@ -58,7 +58,7 @@ export function Navbar() {
                       setLang(l.code)
                       setOpen(false)
                     }}
-                    className="flex items-center space-x-2 px-3 py-2 hover:bg-[var(--naples-yellow)] w-full"
+                    className="flex items-center space-x-2 px-3 py-2 hover:bg-teal-700 w-full"
                   >
                     <span className="text-xl">{l.flag}</span>
                     <span>{l.label}</span>

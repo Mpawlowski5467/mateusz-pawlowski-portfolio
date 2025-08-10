@@ -5,10 +5,10 @@ export function Experience() {
   const { t } = useContext(LanguageContext)
   return (
     <section id="experience" className="max-w-3xl mx-auto my-16">
-      <h2 className="text-3xl font-bold text-center mb-8 text-[var(--dark-purple)]">{t('experience.title')}</h2>
+      <h2 className="text-3xl font-bold text-center mb-8 text-sunglow">{t('experience.title')}</h2>
       <div className="relative pl-10">
-        <div className="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-[var(--naples-yellow)] to-[var(--dark-purple)]"></div>
-        <div className="relative mb-8 p-6 bg-[var(--honeydew)] rounded-xl shadow">
+        <div className="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-poppy to-teal-500"></div>
+        <div className="relative mb-8 p-6 bg-midnight_green rounded-xl shadow text-jet-900">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center space-x-3">
               <img
@@ -18,9 +18,9 @@ export function Experience() {
               />
               <h3 className="text-xl font-semibold">{t('experience.role')}</h3>
             </div>
-            <span className="text-sm text-[var(--ash-gray)]">{t('experience.date')}</span>
+            <span className="text-sm text-jet-400">{t('experience.date')}</span>
           </div>
-          <ul className="list-disc pl-5 space-y-2 text-[var(--rich-black)]">
+          <ul className="list-disc pl-5 space-y-2 marker:text-sunglow">
             {t('experience.bullets').map((item, idx) => (
               <li key={idx}>{item}</li>
             ))}

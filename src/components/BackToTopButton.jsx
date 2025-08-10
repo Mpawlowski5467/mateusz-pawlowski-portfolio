@@ -19,7 +19,11 @@ export function BackToTopButton() {
   if (!visible) return null
 
   return (
-    <button className="back-to-top" onClick={scrollToTop} aria-label="Back to top">
+    <button
+      className="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-poppy text-sunglow shadow-lg flex items-center justify-center hover:bg-midnight_green hover:text-teal-100 transition"
+      onClick={scrollToTop}
+      aria-label="Back to top"
+    >
       ↑
     </button>
   )
