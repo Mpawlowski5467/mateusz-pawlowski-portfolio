@@ -34,8 +34,8 @@ export function ClockBar() {
   }, [])
 
   return (
-    // Slim bar fixed near the top with floating style
-    <div className="fixed top-2 left-0 right-0 z-50 mx-4 flex justify-between px-4 h-[var(--clock-bar-h)] bg-secondary/80 backdrop-blur-sm rounded-lg text-foreground font-mono text-[0.65rem] sm:text-xs">
+    // Slim bar positioned at the top with absolute positioning (scrolls away with page)
+    <div className="absolute top-2 left-0 right-0 z-50 mx-4 flex justify-between px-4 h-[var(--clock-bar-h)] bg-secondary/80 rounded-lg text-foreground font-mono text-[0.65rem] sm:text-xs">
       {/* Left group: first two time zones */}
       <div className="flex gap-4 items-center">
         {times.slice(0, 2).map((tz) => (
@@ -60,3 +60,6 @@ function Clock({ city, time }) {
     </div>
   )
 }
+
+// Export as default for the artifact to work
+export default ClockBar

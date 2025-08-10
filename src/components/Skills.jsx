@@ -4,7 +4,7 @@ import { LanguageContext } from '../context/LanguageContext.jsx'
 const backend = [
   { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
   { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-  { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'Node.js', icon: 'https://cdn.brandfetch.io/id7JRtQEAa/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1748370798050' },
   { name: 'PHP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
   { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
   { name: 'C#', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg' }
@@ -24,20 +24,20 @@ const databases = [
 ]
 
 const platforms = [
-  { name: 'OneReach.ai', emoji: '⚙️' },
-  { name: 'OpenAI', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openai/openai-original.svg' },
-  { name: 'Anthropic Claude', emoji: '🤖' },
+  { name: 'OneReach.ai', icon: 'https://avatars.githubusercontent.com/u/25886986?s=200&v=4' },
+  { name: 'OpenAI', icon: 'https://cdn.brandfetch.io/idR3duQxYl/theme/light/symbol.svg?c=1bxid64Mup7aczewSAYMX&t=1749527480180' },
+  { name: 'Anthropic Claude', icon: 'https://cdn.brandfetch.io/idmJWF3N06/theme/light/symbol.svg?c=1bxid64Mup7aczewSAYMX&t=1721803183866' },
   { name: 'Google Gemini', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg' },
   { name: 'Postman', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg' }
 ]
 
-const other = [
-  { name: 'Workflow Documentation', emoji: '📝' },
-  { name: 'API Integration', emoji: '🔗' },
-  { name: 'Frontend Development', emoji: '🎨' }
-]
+// const other = [
+//   { name: 'Workflow Documentation', emoji: '📝' },
+//   { name: 'API Integration', emoji: '🔗' },
+//   { name: 'Frontend Development', emoji: '🎨' }
+// ]
 
-const skills = [...backend, ...frontend, ...databases, ...platforms, ...other]
+const skills = [...backend, ...frontend, ...databases, ...platforms]
 
 export function Skills() {
   const { t } = useContext(LanguageContext)

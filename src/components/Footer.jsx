@@ -36,8 +36,8 @@ export function Footer() {
   )
 
   return (
-    // Fixed footer anchored to bottom; padding is handled by global CSS
-    <footer className="fixed bottom-0 left-0 right-0 z-30 h-[var(--footer-h)] bg-secondary text-foreground flex items-center justify-center gap-6 text-sm">
+    // Footer at the bottom of the page using relative positioning
+    <footer className="relative mt-auto w-full z-30 h-[var(--footer-h)] bg-secondary text-foreground flex items-center justify-center gap-6 text-sm">
       <SocialLink href="https://github.com/Mpawlowski5467" label={t('about.github')}>
         {gh}
       </SocialLink>
