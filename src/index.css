@@ -2,6 +2,14 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --teal: #177e89ff;
+  --midnight-green: #084c61ff;
+  --poppy: #db3a34ff;
+  --sunglow: #ffc857ff;
+  --jet: #323031ff;
+}
+
 body {
   margin: 0;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

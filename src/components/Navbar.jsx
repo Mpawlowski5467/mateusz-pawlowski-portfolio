@@ -30,7 +30,7 @@ export function Navbar() {
 
   return (
     <nav className="fixed left-1/2 top-4 -translate-x-1/2 z-50">
-      <div className="flex items-center space-x-4 bg-teal-900/80 backdrop-blur px-6 py-3 rounded-2xl shadow-lg text-jet-100">
+      <div className="flex items-center space-x-4 bg-midnight_green/80 backdrop-blur px-6 py-3 rounded-2xl shadow-lg text-teal-900">
         {links.map((key) => (
           <a
             key={key}
@@ -50,7 +50,7 @@ export function Navbar() {
             {lang === 'en' ? '🇺🇸' : '🇵🇱'}
           </button>
           {open && (
-            <ul className="absolute right-0 mt-2 bg-teal-900 rounded-md shadow-lg overflow-hidden text-jet-100">
+            <ul className="absolute right-0 mt-2 bg-midnight_green rounded-md shadow-lg overflow-hidden text-teal-900">
               {langs.map((l) => (
                 <li key={l.code}>
                   <button
