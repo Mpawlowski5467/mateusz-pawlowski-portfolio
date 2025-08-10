@@ -1,13 +1,15 @@
 /*
-  Global variables and layout helpers.
-  Adjust the values below to tweak spacing for the fixed clock bar,
-  floating dock navbar and footer heights.
-  - --clock-bar-h : height of timezone bar
+  Global variables and spacing constants.
+  Adjust these to keep content clear of the fixed clock bar,
+  floating dock, and footer.
+
+  - --clock-bar-h : height of the timezone bar
   - --dock-h      : height of the floating dock navbar
   - --dock-gap    : gap between clock bar and dock navbar
   - --footer-h    : footer height
 */
 :root {
+  /* Color tokens */
   --dutch-white: #dccca3ff;
   --plum: #824c71ff;
   --violet-jtc: #4a2545ff;
@@ -15,21 +17,44 @@
   --cambridge-blue: #90aa86ff;
 
   /* Layout dimensions */
-  --clock-bar-h: 1.75rem;
-  --dock-h: 4rem;
-  --dock-gap: 0.5rem;
-  --footer-h: 3rem;
+  --clock-bar-h: 1.75rem; /* slim top clock bar */
+  --dock-h: 4rem;         /* approximate height of the dock navbar */
+  --dock-gap: 0.5rem;     /* gap between clock bar and dock */
+  --footer-h: 3rem;       /* fixed footer height */
 }
 
+/* Base document styling using the color tokens */
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
   line-height: 1.6;
   background-color: var(--black);
   color: var(--dutch-white);
-  /* ensure content is never hidden behind fixed bars */
+  /* Ensure content is never hidden behind fixed bars */
   padding-top: calc(var(--clock-bar-h) + var(--dock-gap) + var(--dock-h));
   padding-bottom: var(--footer-h);
+}
+
+/* Clamp main content line length for comfortable reading */
+main {
+  max-width: 80ch;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Simple helper for screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* Respect prefers-reduced-motion by disabling transitions */

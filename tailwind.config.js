@@ -1,11 +1,6 @@
-/* global tailwind */
-/**
- * Tailwind configuration mapping custom CSS variables to theme colors.
- * This lets us use classes like `bg-plum` or `text-cambridge-blue`
- * in components while keeping the actual color values in CSS variables
- * for easy theming.
- */
-tailwind.config = {
+// tailwind.config.js
+export default {
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
@@ -13,8 +8,9 @@ tailwind.config = {
         plum: 'var(--plum)',
         'violet-jtc': 'var(--violet-jtc)',
         black: 'var(--black)',
-        'cambridge-blue': 'var(--cambridge-blue)'
-      }
-    }
-  }
+        'cambridge-blue': 'var(--cambridge-blue)',
+      },
+    },
+  },
+  plugins: [],
 }
