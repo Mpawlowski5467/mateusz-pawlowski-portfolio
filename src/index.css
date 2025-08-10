@@ -15,7 +15,7 @@ body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   color: var(--rich-black);
-  background-color: var(--honeydew);
+  background-color: var(--ash-gray);
 }
 
 header {

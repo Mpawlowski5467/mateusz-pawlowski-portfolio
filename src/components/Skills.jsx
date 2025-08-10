@@ -60,12 +60,12 @@ export function Skills() {
     <section
       id="skills"
       ref={ref}
-      className={`max-w-4xl mx-auto my-20 p-8 rounded-xl shadow-lg bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 transition-all duration-700 ${
+      className={`max-w-4xl mx-auto my-20 p-8 transition-all duration-700 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
       <h2 className="text-3xl font-bold text-center mb-8">{t('skills.title')}</h2>
-      <div className="relative w-80 h-80 mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-[var(--honeydew)] shadow-inner overflow-hidden">
+      <div className="relative w-[28rem] h-[28rem] mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-[var(--honeydew)] overflow-hidden">
         {skills.map((skill) => (
           <div key={skill.name} className="relative group w-16 h-16 flex items-center justify-center">
             {skill.icon ? (
