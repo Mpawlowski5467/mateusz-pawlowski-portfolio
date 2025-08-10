@@ -3,24 +3,31 @@ import { LanguageContext } from '../context/LanguageContext.jsx'
 
 export function Projects() {
   const { t } = useContext(LanguageContext)
+  const borderColors = ['border-plum', 'border-violet-jtc', 'border-cambridge-blue']
+
   return (
-    <section id="projects" className="projects-section">
-      <h2 className="section-title">{t('projects.title')}</h2>
-      <div className="projects-grid">
+    <section id="projects" className="max-w-5xl mx-auto my-8 px-4">
+      <h2 className="text-3xl font-bold text-plum text-center mb-6">{t('projects.title')}</h2>
+      {/* Responsive grid: 1 col on mobile, 2 on small screens, 3 on large */}
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {t('projects.items').map((proj, idx) => (
-          <div key={idx} className="project-card" tabIndex="0">
+          <div
+            key={idx}
+            tabIndex="0"
+            className={`p-4 rounded-lg bg-violet-jtc/20 text-dutch-white border ${borderColors[idx % borderColors.length]} shadow`}
+          >
             {proj.link && (
               <a
                 href={proj.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="project-link"
+                className="text-sm text-cambridge-blue underline focus:outline-none focus-visible:ring-2 ring-plum rounded"
               >
                 {t('projects.github')}
               </a>
             )}
-            <h3 className="project-title">{proj.name}</h3>
-            <p className="project-desc">{proj.desc}</p>
+            <h3 className="text-xl font-semibold mt-2">{proj.name}</h3>
+            <p className="mt-1 text-sm leading-relaxed">{proj.desc}</p>
           </div>
         ))}
       </div>

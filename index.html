@@ -5,28 +5,13 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mateusz Pawlowski Portfolio</title>
-    <script>
-      tailwind.config = {
-        theme: {
-            extend: {
-          colors: {
-                primary: '#339989',
-                secondary: '#7de2d1',
-                accent: '#7de2d1',
-                background: '#131515',
-                surface: '#2b2c28',
-                text: '#fffafb',
-                neutral: '#fffafb',
-                sunflow: '#f6ae2d'
-              }
-            }
-          }
-        }
-      </script>
-      <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="bg-background text-text">
-      <div id="root"></div>
-      <script type="module" src="/src/main.jsx"></script>
-    </body>
-  </html>
+    <!-- Load Tailwind config mapping our CSS variables to theme colors -->
+    <script src="/tailwind.config.js"></script>
+    <!-- Tailwind via CDN for rapid prototyping -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="font-sans antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
