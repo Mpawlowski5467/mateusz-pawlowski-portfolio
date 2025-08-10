@@ -15,5 +15,44 @@ body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.6;
   background-color: var(--jet);
+  color: var(--sunglow);
+}
+
+*,
+*::before,
+*::after {
+  border-color: var(--sunglow);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--poppy);
+}
+
+a {
   color: var(--teal);
+}
+
+a:hover,
+a:focus {
+  color: var(--poppy);
+}
+
+button,
+input[type='button'],
+input[type='submit'] {
+  background-color: var(--midnight-green);
+  color: var(--sunglow);
+  border: 1px solid var(--sunglow);
+}
+
+button:hover,
+input[type='button']:hover,
+input[type='submit']:hover {
+  background-color: var(--poppy);
+  color: var(--jet);
 }
