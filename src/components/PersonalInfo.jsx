@@ -7,7 +7,7 @@ function IconLink({ href, label, children }) {
       href={href}
       aria-label={label}
       title={label}
-      className="w-8 h-8 flex items-center justify-center rounded hover:scale-110 transition-transform focus:outline-none focus-visible:ring-2 ring-plum"
+      className="w-8 h-8 flex items-center justify-center rounded hover:scale-110 transition-transform focus:outline-none focus-visible:ring-2 ring-primary"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -25,12 +25,12 @@ export function PersonalInfo() {
   return (
     <section id="about" className="max-w-5xl mx-auto my-8 grid gap-8 px-4 md:grid-cols-2 items-start">
       <div className="space-y-4 text-center md:text-left">
-        <h1 className="text-4xl font-bold text-plum">{t('header.name')}</h1>
-        <p className="text-xl text-cambridge-blue">{t('header.role')}</p>
+        <h1 className="text-4xl font-bold text-primary">{t('header.name')}</h1>
+        <p className="text-xl text-secondary">{t('header.role')}</p>
 
-        <h2 className="text-3xl font-bold mt-6 text-plum">{t('about.title')}</h2>
+        <h2 className="text-3xl font-bold mt-6 text-primary">{t('about.title')}</h2>
         <p className="text-lg max-w-prose mx-auto md:mx-0">{t('about.p1')}</p>
-        <p className="text-cambridge-blue">{t('about.location')}</p>
+        <p className="text-neutral">{t('about.location')}</p>
 
         {/* Contact icons with accessible labels */}
         <div className="flex gap-4 justify-center md:justify-start mt-4">
@@ -55,7 +55,7 @@ export function PersonalInfo() {
 
       {/* Interests list */}
       <div className="mt-6 md:mt-0 text-center md:text-left">
-        <h3 className="text-2xl font-semibold text-plum">{t('interests.title')}</h3>
+        <h3 className="text-2xl font-semibold text-primary">{t('interests.title')}</h3>
         <ul className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
           {interestItems.map((item, idx) => (
             <li key={item?.text ?? idx} className="flex items-center space-x-2">
