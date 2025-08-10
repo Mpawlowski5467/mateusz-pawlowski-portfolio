@@ -16,7 +16,8 @@ export const translations = {
       p1: "I'm a senior Information Technology student at DePaul University and an AI intern at Reyes Holdings. I enjoy building intelligent systems that improve user experience and efficiency.",
       location: 'Prospect Heights, IL',
       email: 'mpawlowski5467@gmail.com',
-      linkText: 'LinkedIn'
+      linkText: 'LinkedIn',
+      github: 'GitHub'
     },
     experience: {
       title: 'Experience',
@@ -32,18 +33,22 @@ export const translations = {
     },
     projects: {
       title: 'Projects',
+      github: 'GitHub',
       items: [
         {
           name: 'Jan III Sobieski Polish School Website',
-          desc: 'Redesigned the public site with modern UI themes and improved navigation.'
+          desc: 'Redesigned the public site with modern UI themes and improved navigation.',
+          link: 'https://github.com/Mpawlowski5467'
         },
         {
           name: 'Car Parts E-commerce Platform',
-          desc: 'Full-stack application using JavaScript, Node.js, and MongoDB for online auto-parts sales.'
+          desc: 'Full-stack application using JavaScript, Node.js, and MongoDB for online auto-parts sales.',
+          link: 'https://github.com/Mpawlowski5467'
         },
         {
           name: 'Chicago Event-Ticketing Website',
-          desc: 'Developing a platform for browsing and purchasing tickets to Chicago-area events.'
+          desc: 'Developing a platform for browsing and purchasing tickets to Chicago-area events.',
+          link: 'https://github.com/Mpawlowski5467'
         }
       ]
     },
@@ -94,7 +99,8 @@ export const translations = {
       p1: 'Jestem starszym studentem informatyki na Uniwersytecie DePaul oraz stażystą AI w Reyes Holdings. Lubię tworzyć inteligentne systemy, które poprawiają doświadczenie użytkownika i zwiększają wydajność.',
       location: 'Prospect Heights, IL',
       email: 'mpawlowski5467@gmail.com',
-      linkText: 'LinkedIn'
+      linkText: 'LinkedIn',
+      github: 'GitHub'
     },
     experience: {
       title: 'Doświadczenie',
@@ -110,18 +116,22 @@ export const translations = {
     },
     projects: {
       title: 'Projekty',
+      github: 'GitHub',
       items: [
         {
           name: 'Strona szkoły polskiej im. Jana III Sobieskiego',
-          desc: 'Przeprojektowana witryna publiczna z nowoczesnym interfejsem i ulepszoną nawigacją.'
+          desc: 'Przeprojektowana witryna publiczna z nowoczesnym interfejsem i ulepszoną nawigacją.',
+          link: 'https://github.com/Mpawlowski5467'
         },
         {
           name: 'Platforma e-commerce z częściami samochodowymi',
-          desc: 'Aplikacja full-stack wykorzystująca JavaScript, Node.js i MongoDB do sprzedaży części samochodowych online.'
+          desc: 'Aplikacja full-stack wykorzystująca JavaScript, Node.js i MongoDB do sprzedaży części samochodowych online.',
+          link: 'https://github.com/Mpawlowski5467'
         },
         {
           name: 'Witryna z biletami na wydarzenia w Chicago',
-          desc: 'Tworzenie platformy do przeglądania i kupowania biletów na wydarzenia w okolicach Chicago.'
+          desc: 'Tworzenie platformy do przeglądania i kupowania biletów na wydarzenia w okolicach Chicago.',
+          link: 'https://github.com/Mpawlowski5467'
         }
       ]
     },
