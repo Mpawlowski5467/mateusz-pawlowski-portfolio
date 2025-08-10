@@ -1,4 +1,8 @@
-
+/*
+  Main application layout. Fixed UI elements (clock bar, dock navbar, footer)
+  rely on CSS variables declared in index.css: --clock-bar-h, --dock-h,
+  --dock-gap and --footer-h. Adjust those variables to tweak global spacing.
+*/
 import { useState } from 'react'
 import { PersonalInfo } from './components/PersonalInfo.jsx'
 import { Experience } from './components/Experience.jsx'

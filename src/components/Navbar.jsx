@@ -1,89 +1,68 @@
-import { useContext, useEffect, useState } from 'react'
-import { LanguageContext } from '../context/LanguageContext.jsx'
+import { useRef, useState } from 'react'
+
+// Icons for sections; using emojis keeps the bundle small
+const items = [
+  { href: '#about', label: 'About', icon: '👤' },
+  { href: '#experience', label: 'Experience', icon: '💼' },
+  { href: '#projects', label: 'Projects', icon: '📁' },
+  { href: '#skills', label: 'Skills', icon: '🛠️' }
+]
 
 export function Navbar() {
-  const { lang, setLang, t } = useContext(LanguageContext)
-  const [active, setActive] = useState('about')
-  const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const iconRefs = useRef([])
+  const [mouseX, setMouseX] = useState(null)
 
-  useEffect(() => {
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return
-    const sections = document.querySelectorAll('section[id]')
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id)
-        })
-      },
-      { threshold: 0.5 }
-    )
-    sections.forEach((section) => observer.observe(section))
-    return () => sections.forEach((section) => observer.unobserve(section))
-  }, [])
+  // Track mouse position to scale icons based on proximity
+  const handleMove = (e) => setMouseX(e.clientX)
+  const handleLeave = () => setMouseX(null)
 
-  const langs = [
-    { code: 'en', flag: '🇺🇸', label: 'English' },
-    { code: 'pl', flag: '🇵🇱', label: 'Polski' }
-  ]
-
-  const links = ['about', 'experience', 'projects', 'education', 'skills']
-
-  useEffect(() => {
-    let ticking = false
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 0)
-          ticking = false
-        })
-        ticking = true
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  // Compute scale for a given icon index using distance from cursor
+  const scaleFor = (idx) => {
+    const el = iconRefs.current[idx]
+    if (!el || mouseX === null) return 1
+    const rect = el.getBoundingClientRect()
+    const center = rect.left + rect.width / 2
+    const distance = Math.abs(mouseX - center)
+    // Icons at cursor center scale to 1.5; neighbours shrink with distance
+    const max = 1.5
+    const min = 1
+    const scale = max - Math.min(distance / 100, 1) * (max - min)
+    return scale
+  }
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="nav-inner">
-        {links.map((key) => (
+    // Floating container centered at top, below the clock bar
+    <div
+      className="fixed top-[calc(var(--clock-bar-h)+var(--dock-gap))] left-1/2 -translate-x-1/2 z-40"
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+    >
+      <nav
+        aria-label="Primary"
+        className="flex gap-4 rounded-3xl bg-dutch-white/40 backdrop-blur-md shadow-lg border border-white/20 px-4 py-2"
+      >
+        {items.map((item, i) => (
           <a
-            key={key}
-            href={`#${key}`}
-            className={`nav-link ${active === key ? 'active' : ''}`}
+            key={item.href}
+            ref={(el) => (iconRefs.current[i] = el)}
+            href={item.href}
+            title={item.label}
+            aria-label={item.label}
+            // Scale via inline style so neighbours react to cursor proximity
+            style={{ transform: `scale(${scaleFor(i)})` }}
+            className="w-8 h-8 flex items-center justify-center text-2xl transition-transform duration-150 ease-out focus:outline-none focus-visible:ring-2 ring-plum rounded-md"
+            onFocus={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect()
+              setMouseX(rect.left + rect.width / 2)
+            }}
+            onBlur={handleLeave}
           >
-            {t(`nav.${key}`)}
+            <span role="img" aria-hidden="true">
+              {item.icon}
+            </span>
           </a>
         ))}
-        <div className="relative">
-          <button
-            onClick={() => setOpen(!open)}
-            className="lang-btn"
-          >
-            {lang === 'en' ? '🇺🇸' : '🇵🇱'}
-          </button>
-          {open && (
-            <ul className="lang-menu">
-              {langs.map((l) => (
-                <li key={l.code}>
-                  <button
-                    onClick={() => {
-                      setLang(l.code)
-                      setOpen(false)
-                    }}
-                    className="lang-option"
-                  >
-                    <span className="text-xl">{l.flag}</span>
-                    <span>{l.label}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   )
 }
