@@ -44,6 +44,7 @@ export function Skills() {
   const { t } = useContext(LanguageContext)
   const ref = useRef(null)
   const [visible, setVisible] = useState(false)
+ q0edgz-codex/add-top-navbar-with-language-option
 
   useEffect(() => {
     const el = ref.current
@@ -56,6 +57,20 @@ export function Skills() {
     return () => observer.disconnect()
   }, [])
 
+
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el || typeof window === 'undefined' || !('IntersectionObserver' in window)) return
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && setVisible(true),
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+ main
   return (
     <section
       id="skills"
@@ -65,6 +80,36 @@ export function Skills() {
       }`}
     >
       <h2 className="text-3xl font-bold text-center mb-8">{t('skills.title')}</h2>
+ q0edgz-codex/add-top-navbar-with-language-option
+        <div className="relative w-80 h-80 mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-[var(--honeydew)] shadow-inner overflow-hidden">
+          {skills.map((skill) => (
+            <div key={skill.name} className="relative group w-16 h-16 flex items-center justify-center">
+              {skill.icon ? (
+                <img
+                  src={skill.icon}
+                  alt={skill.name}
+                  className="w-12 h-12 transition-transform group-hover:scale-110"
+                  loading="lazy"
+                  width="48"
+                  height="48"
+                />
+              ) : (
+                <span
+                  role="img"
+                  aria-label={skill.name}
+                  className="text-4xl transition-transform group-hover:scale-110"
+                >
+                  {skill.emoji}
+                </span>
+              )}
+              <span className="absolute top-full mt-1 px-2 py-1 rounded bg-[var(--rich-black)] text-[var(--honeydew)] text-xs opacity-0 group-hover:opacity-100 whitespace-nowrap">
+                {skill.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <div className="relative w-72 h-72 mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-white/70 shadow-inner">
         {skills.map((skill) => (
           <div key={skill.name} className="flex items-center justify-center">
@@ -92,5 +137,6 @@ export function Skills() {
         ))}
       </div>
     </section>
+ main
   )
 }
