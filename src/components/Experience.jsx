@@ -12,7 +12,7 @@ export function Experience() {
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center space-x-3">
               <img
-                src="/reyes-holdings-logo.svg"
+                src="https://media.licdn.com/dms/image/v2/C560BAQFz7AGAFLXN0A/company-logo_200_200/company-logo_200_200/0/1641580116422/reyes_holdings_logo?e=1757548800&v=beta&t=vwhRKm6AbE3K57Ehi5kVfCkeGYdDMh8RSut0N0lx9nM"
                 alt="Reyes Holdings Logo"
                 className="w-12 h-12 object-contain"
               />
