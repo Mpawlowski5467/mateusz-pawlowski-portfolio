@@ -13,6 +13,7 @@ import { BackToTopButton } from './components/BackToTopButton.jsx'
 import { Footer } from './components/Footer.jsx'
 import { ClockBar } from './components/ClockBar.jsx'
 import { Navbar } from './components/Navbar.jsx'
+import { CodeBackground } from './components/CodeBackground.jsx'
 import { LanguageContext } from './context/LanguageContext.jsx'
 import { translations } from './i18n.js'
 
@@ -22,15 +23,20 @@ export function App() {
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>
-      <ClockBar />
-      <Navbar />
-      <PersonalInfo />
-      <Experience />
-      <Projects />
-      <Education />
-      <Skills />
-      <BackToTopButton />
-      <Footer />
+      <CodeBackground />
+      <div className="relative z-10">
+        <ClockBar />
+        <Navbar />
+        <main className="space-y-16">
+          <PersonalInfo />
+          <Experience />
+          <Projects />
+          <Education />
+          <Skills />
+        </main>
+        <BackToTopButton />
+        <Footer />
+      </div>
     </LanguageContext.Provider>
   )
 }

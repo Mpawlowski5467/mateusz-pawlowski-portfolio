@@ -59,38 +59,181 @@ export function Skills() {
     <section
       id="skills"
       ref={ref}
-      className={`max-w-4xl mx-auto my-20 p-8 transition-all duration-700 ${
+      className={`max-w-6xl mx-auto my-20 px-6 transition-all duration-700 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <h2 className="text-3xl font-bold text-center mb-8 text-primary">{t('skills.title')}</h2>
-      {/* Circular cloud of skill icons */}
-      <div className="relative w-[28rem] h-[28rem] mx-auto flex flex-wrap content-center justify-center gap-4 rounded-full bg-primary border-4 border-neutral overflow-hidden">
-        {skills.map((skill) => (
-          <div key={skill.name} className="relative group w-16 h-16 flex items-center justify-center">
-            {skill.icon ? (
-              <img
-                src={skill.icon}
-                alt={skill.name}
-                className="w-12 h-12 transition-transform group-hover:scale-110"
-                loading="lazy"
-                width="48"
-                height="48"
-              />
-            ) : (
-              <span
-                role="img"
-                aria-label={skill.name}
-                className="text-4xl transition-transform group-hover:scale-110"
-              >
-                {skill.emoji}
-              </span>
-            )}
-            <span className="absolute top-full mt-1 px-2 py-1 rounded bg-secondary text-foreground text-xs opacity-0 group-hover:opacity-100 whitespace-nowrap">
-              {skill.name}
-            </span>
+      <div className="text-center mb-16">
+        <div className="inline-block p-1 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 mb-6">
+          <div className="bg-background rounded-xl px-6 py-2">
+            <span className="text-sm font-medium text-neutral">🛠️ Tech Stack</span>
           </div>
-        ))}
+        </div>
+        <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+          {t('skills.title')}
+        </h2>
+        <p className="text-lg text-neutral max-w-2xl mx-auto">
+          Technologies and tools I use to bring ideas to life
+        </p>
+      </div>
+
+      {/* Skills in code-like pattern */}
+      <div className="relative bg-foreground/5 backdrop-blur-lg rounded-2xl p-8 border border-neutral/10 shadow-2xl">
+        {/* Code-like layout with staggered positioning */}
+        <div className="relative min-h-[500px] overflow-hidden">
+          {/* Simulate code indentation patterns */}
+          <div className="space-y-3">
+            {/* Line 1: Backend skills */}
+            <div className="flex items-center gap-3 pl-0">
+              <span className="text-primary/60 font-mono text-sm">01</span>
+              <span className="text-secondary/80 font-mono text-sm">const</span>
+              <span className="text-neutral/80 font-mono text-sm">backend = [</span>
+            </div>
+            <div className="flex flex-wrap gap-3 pl-8">
+              {backend.map((skill, idx) => (
+                <div
+                  key={skill.name}
+                  className="group relative flex items-center gap-2 px-3 py-2 bg-primary/10 backdrop-blur-sm rounded-lg border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all duration-200 touch-manipulation"
+                >
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-6 h-6 transition-transform group-hover:scale-110"
+                    loading="lazy"
+                    width="24"
+                    height="24"
+                  />
+                  <span className="text-sm font-medium text-foreground/90">
+                    {skill.name}
+                  </span>
+                  {idx < backend.length - 1 && <span className="text-neutral/60 font-mono">,</span>}
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center gap-3 pl-0">
+              <span className="text-primary/60 font-mono text-sm">02</span>
+              <span className="text-neutral/80 font-mono text-sm">];</span>
+            </div>
+
+            {/* Line 2: Frontend skills */}
+            <div className="flex items-center gap-3 pl-0 mt-6">
+              <span className="text-primary/60 font-mono text-sm">03</span>
+              <span className="text-secondary/80 font-mono text-sm">const</span>
+              <span className="text-neutral/80 font-mono text-sm">frontend = [</span>
+            </div>
+            <div className="flex flex-wrap gap-3 pl-8">
+              {frontend.map((skill, idx) => (
+                <div
+                  key={skill.name}
+                  className="group relative flex items-center gap-2 px-3 py-2 bg-secondary/10 backdrop-blur-sm rounded-lg border border-secondary/20 hover:bg-secondary/20 hover:border-secondary/40 transition-all duration-200 touch-manipulation"
+                >
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-6 h-6 transition-transform group-hover:scale-110"
+                    loading="lazy"
+                    width="24"
+                    height="24"
+                  />
+                  <span className="text-sm font-medium text-foreground/90">
+                    {skill.name}
+                  </span>
+                  {idx < frontend.length - 1 && <span className="text-neutral/60 font-mono">,</span>}
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center gap-3 pl-0">
+              <span className="text-primary/60 font-mono text-sm">04</span>
+              <span className="text-neutral/80 font-mono text-sm">];</span>
+            </div>
+
+            {/* Line 3: Databases - nested like an object */}
+            <div className="flex items-center gap-3 pl-0 mt-6">
+              <span className="text-primary/60 font-mono text-sm">05</span>
+              <span className="text-secondary/80 font-mono text-sm">const</span>
+              <span className="text-neutral/80 font-mono text-sm">databases = {`{`}</span>
+            </div>
+            <div className="flex flex-wrap gap-3 pl-8">
+              {databases.map((skill, idx) => (
+                <div
+                  key={skill.name}
+                  className="group relative flex items-center gap-2 px-3 py-2 bg-neutral/10 backdrop-blur-sm rounded-lg border border-neutral/20 hover:bg-neutral/20 hover:border-neutral/40 transition-all duration-200 touch-manipulation"
+                >
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-6 h-6 transition-transform group-hover:scale-110"
+                    loading="lazy"
+                    width="24"
+                    height="24"
+                  />
+                  <span className="text-sm font-medium text-foreground/90">
+                    {skill.name}
+                  </span>
+                  {idx < databases.length - 1 && <span className="text-neutral/60 font-mono">,</span>}
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center gap-3 pl-0">
+              <span className="text-primary/60 font-mono text-sm">06</span>
+              <span className="text-neutral/80 font-mono text-sm">{`};`}</span>
+            </div>
+
+            {/* Line 4: Platforms as function call */}
+            <div className="flex items-center gap-3 pl-0 mt-6">
+              <span className="text-primary/60 font-mono text-sm">07</span>
+              <span className="text-secondary/80 font-mono text-sm">function</span>
+              <span className="text-neutral/80 font-mono text-sm">getPlatforms() {`{`}</span>
+            </div>
+            <div className="flex items-center gap-3 pl-4">
+              <span className="text-primary/60 font-mono text-sm">08</span>
+              <span className="text-secondary/80 font-mono text-sm">return</span>
+              <span className="text-neutral/80 font-mono text-sm">[</span>
+            </div>
+            <div className="flex flex-wrap gap-3 pl-12">
+              {platforms.map((skill, idx) => (
+                <div
+                  key={skill.name}
+                  className="group relative flex items-center gap-2 px-3 py-2 bg-primary/10 backdrop-blur-sm rounded-lg border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all duration-200 touch-manipulation"
+                >
+                  <img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-6 h-6 transition-transform group-hover:scale-110"
+                    loading="lazy"
+                    width="24"
+                    height="24"
+                  />
+                  <span className="text-sm font-medium text-foreground/90">
+                    {skill.name}
+                  </span>
+                  {idx < platforms.length - 1 && <span className="text-neutral/60 font-mono">,</span>}
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center gap-3 pl-4">
+              <span className="text-primary/60 font-mono text-sm">09</span>
+              <span className="text-neutral/80 font-mono text-sm">];</span>
+            </div>
+            <div className="flex items-center gap-3 pl-0">
+              <span className="text-primary/60 font-mono text-sm">10</span>
+              <span className="text-neutral/80 font-mono text-sm">{`}`}</span>
+            </div>
+
+            {/* Closing comment */}
+            <div className="flex items-center gap-3 pl-0 mt-6">
+              <span className="text-primary/60 font-mono text-sm">11</span>
+              <span className="text-neutral/50 font-mono text-sm italic">// Ready to build amazing things! 🚀</span>
+            </div>
+          </div>
+
+          {/* Code editor style decorations */}
+          <div className="absolute top-4 right-4 flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-400/60"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-400/60"></div>
+            <div className="w-3 h-3 rounded-full bg-green-400/60"></div>
+          </div>
+        </div>
       </div>
     </section>
   )

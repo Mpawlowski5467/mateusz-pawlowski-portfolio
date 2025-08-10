@@ -8,20 +8,27 @@
   - --footer-h    : footer height
 */
 :root {
+  /* New color palette - inspired by nature and sophistication */
+  --tea-green: #ccf5acff;
+  --celadon: #bad29fff;
+  --cool-gray: #808a9fff;
+  --yinmn-blue: #2c497fff;
+  --russian-violet: #3d2b56ff;
+
   /* Primary brand color – used for main accents, buttons, and links */
-  --primary: #62929eff; /* Blue Munsell */
+  --primary: var(--yinmn-blue); /* Deep blue for trust and professionalism */
 
   /* Secondary brand color – used for highlights, hover states, or minor accents */
-  --secondary: #546a7bff; /* Paynes Gray */
+  --secondary: var(--celadon); /* Soft green for growth and innovation */
 
   /* Background – used for main page backgrounds */
-  --background: #393d3fff; /* Onyx */
+  --background: var(--russian-violet); /* Rich violet for depth and creativity */
 
   /* Foreground text – used for primary readable text on background */
-  --foreground: #fdfdffff; /* White */
+  --foreground: var(--tea-green); /* Light green for excellent contrast */
 
   /* Neutral – used for borders, dividers, and subtle text */
-  --neutral: #c6c5b9ff; /* Silver */
+  --neutral: var(--cool-gray); /* Balanced gray for subtle elements */
 
   /* Layout dimensions */
   --clock-bar-h: 1.75rem;
@@ -32,19 +39,107 @@
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   background-color: var(--background);
   color: var(--foreground);
   /* ensure content is never hidden behind fixed bars */
-  padding-top: calc(var(--clock-bar-h) + var(--dock-gap) + var(--dock-h));
+  padding-top: calc(var(--clock-bar-h) + var(--dock-gap) + var(--dock-h) + 1rem);
   padding-bottom: var(--footer-h);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Global micro-interactions and smooth transitions */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+/* Focus ring improvements */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Smooth hover effects for links and buttons */
+a, button {
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+a:hover, button:hover {
+  transform: translateY(-1px);
+}
+
+/* Loading states */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Staggered animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
 
 /* Respect prefers-reduced-motion by disabling transitions */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition: none !important;
     animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

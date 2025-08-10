@@ -1,14 +1,18 @@
-import { useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
+import { LanguageToggle } from './LanguageToggle.jsx'
+import { LanguageContext } from '../context/LanguageContext.jsx'
 
 // Icons for sections; using emojis keeps the bundle small
 const items = [
-  { href: '#about', label: 'About', icon: '👤' },
-  { href: '#experience', label: 'Experience', icon: '💼' },
-  { href: '#projects', label: 'Projects', icon: '📁' },
-  { href: '#skills', label: 'Skills', icon: '🛠️' }
+  { href: '#about', key: 'nav.about', icon: '👤' },
+  { href: '#experience', key: 'nav.experience', icon: '💼' },
+  { href: '#projects', key: 'nav.projects', icon: '📁' },
+  { href: '#education', key: 'nav.education', icon: '🎓' },
+  { href: '#skills', key: 'nav.skills', icon: '🛠️' }
 ]
 
 export function Navbar() {
+  const { t } = useContext(LanguageContext)
   const iconRefs = useRef([])
   const [mouseX, setMouseX] = useState(null)
   const reduceMotion =
@@ -47,35 +51,46 @@ export function Navbar() {
     >
       <nav
         aria-label="Primary"
-        className="flex gap-4 rounded-3xl bg-foreground/40 backdrop-blur-md shadow-lg border border-white/20 px-4 py-2"
+        className="flex items-center gap-3 sm:gap-6 rounded-3xl bg-foreground/10 backdrop-blur-xl shadow-xl border border-white/20 px-3 sm:px-6 py-3 max-w-[calc(100vw-2rem)] overflow-hidden"
       >
-        {items.map((item, i) => (
-          <div key={item.href} className="relative group">
-            <a
-              ref={(el) => (iconRefs.current[i] = el)}
-              href={item.href}
-              title={item.label}
-              aria-label={item.label}
-              // Scale via inline style so neighbours react to cursor proximity
-              style={{ transform: `scale(${scaleFor(i)})` }}
-              className="w-8 h-8 flex items-center justify-center text-2xl no-underline motion-safe:transition-transform duration-150 ease-out focus:outline-none focus-visible:ring-2 ring-primary rounded-md"
-              onFocus={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect()
-                setMouseX(rect.left + rect.width / 2)
-              }}
-              onBlur={handleLeave}
-            >
-              <span role="img" aria-hidden="true">
-                {item.icon}
+        {/* Navigation items */}
+        <div className="flex gap-1 sm:gap-3">
+          {items.map((item, i) => (
+            <div key={item.href} className="relative group">
+              <a
+                ref={(el) => (iconRefs.current[i] = el)}
+                href={item.href}
+                title={t(item.key)}
+                aria-label={t(item.key)}
+                // Scale via inline style so neighbours react to cursor proximity
+                style={{ transform: `scale(${scaleFor(i)})` }}
+                className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-xl sm:text-2xl no-underline motion-safe:transition-all duration-200 ease-out focus:outline-none focus-visible:ring-2 ring-primary rounded-xl hover:bg-primary/20 active:scale-95 touch-manipulation"
+                onFocus={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  setMouseX(rect.left + rect.width / 2)
+                }}
+                onBlur={handleLeave}
+              >
+                <span role="img" aria-hidden="true">
+                  {item.icon}
+                </span>
+              </a>
+              <span
+                className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-3 px-3 py-1.5 rounded-lg bg-background/90 backdrop-blur-sm text-foreground text-sm font-medium shadow-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-200 whitespace-nowrap border border-neutral/20 z-50"
+              >
+                {t(item.key)}
               </span>
-            </a>
-            <span
-              className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-neutral text-background text-xs shadow-lg opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
-            >
-              {item.label}
-            </span>
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
+        
+        {/* Language toggle separator */}
+        <div className="hidden sm:block h-8 w-px bg-white/20"></div>
+        
+        {/* Language toggle */}
+        <div className="ml-auto sm:ml-0">
+          <LanguageToggle />
+        </div>
       </nav>
     </div>
   )
