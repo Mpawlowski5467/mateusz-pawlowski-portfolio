@@ -1,11 +1,6 @@
-
 import { useState } from 'react'
 import { PersonalInfo } from './components/PersonalInfo.jsx'
-import { Experience } from './components/Experience.jsx'
 import { Projects } from './components/Projects.jsx'
-import { Education } from './components/Education.jsx'
-import { Skills } from './components/Skills.jsx'
-import { BackToTopButton } from './components/BackToTopButton.jsx'
 import { Footer } from './components/Footer.jsx'
 import { ClockBar } from './components/ClockBar.jsx'
 import { Navbar } from './components/Navbar.jsx'
@@ -18,14 +13,16 @@ export function App() {
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>
+      {/* Fixed clock bar and floating dock navbar */}
       <ClockBar />
       <Navbar />
-      <PersonalInfo />
-      <Experience />
-      <Projects />
-      <Education />
-      <Skills />
-      <BackToTopButton />
+
+      {/* Main content spaced so fixed elements never overlap */}
+      <main className="max-w-7xl mx-auto p-4 space-y-20">
+        <PersonalInfo />
+        <Projects />
+      </main>
+
       <Footer />
     </LanguageContext.Provider>
   )
