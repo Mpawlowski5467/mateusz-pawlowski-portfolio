@@ -5,6 +5,7 @@ export function Navbar() {
   const { lang, setLang, t } = useContext(LanguageContext)
   const [active, setActive] = useState('about')
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return
@@ -28,8 +29,24 @@ export function Navbar() {
 
   const links = ['about', 'experience', 'projects', 'education', 'skills']
 
+  useEffect(() => {
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 0)
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-inner">
         {links.map((key) => (
           <a

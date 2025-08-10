@@ -10,6 +10,10 @@ html {
   --surface: #2b2c28;
   --sunflow: #f6ae2d;
   --sunflow-rgb: 246, 174, 45;
+  --background-rgb: 19, 21, 21;
+
+  --clock-bar-height: 2.5rem;
+  --navbar-height: 3rem;
 
   --radius-sm: 10px;
   --radius-md: 12px;
@@ -25,7 +29,7 @@ body {
   line-height: 1.6;
   background-color: var(--background);
   color: var(--neutral);
-  padding-top: 4rem;
+  padding-top: calc(var(--clock-bar-height) + var(--navbar-height));
   overflow-x: hidden;
 }
 
@@ -196,35 +200,52 @@ input[type='submit']:focus {
   color: var(--accent);
 }
 
-.top-row {
+
+.clock-bar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: var(--space-md);
   padding: var(--space-sm) var(--space-md);
   background-color: var(--background);
   z-index: 50;
   flex-wrap: wrap;
+  border-bottom: 1px solid var(--sunflow);
+}
+
+.clock-group {
+  display: flex;
+  gap: var(--space-md);
 }
 
 .navbar {
+  position: sticky;
+  top: var(--clock-bar-height);
+  z-index: 40;
   display: flex;
-  order: 3;
+  justify-content: center;
+  align-items: center;
+  height: var(--navbar-height);
+  color: var(--neutral);
+  background-color: transparent;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgba(var(--background-rgb), 0.7);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--sunflow);
 }
 
 .nav-inner {
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  background-color: var(--primary);
-  color: var(--background);
   padding: var(--space-sm) var(--space-md);
-  border-radius: var(--radius-md);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .nav-link {
@@ -301,9 +322,12 @@ input[type='submit']:focus {
 }
 
 @media (max-width: 600px) {
-  .navbar {
-    flex-basis: 100%;
-    order: 5;
+  .clock-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .clock-group {
+    width: 100%;
     justify-content: center;
   }
 }
@@ -312,7 +336,8 @@ input[type='submit']:focus {
   .project-card,
   .icon-link,
   .nav-link,
-  .lang-btn {
+  .lang-btn,
+  .navbar {
     transition: none;
   }
   .project-card:hover,

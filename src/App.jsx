@@ -7,7 +7,8 @@ import { Education } from './components/Education.jsx'
 import { Skills } from './components/Skills.jsx'
 import { BackToTopButton } from './components/BackToTopButton.jsx'
 import { Footer } from './components/Footer.jsx'
-import { TopRow } from './components/TopRow.jsx'
+import { ClockBar } from './components/ClockBar.jsx'
+import { Navbar } from './components/Navbar.jsx'
 import { LanguageContext } from './context/LanguageContext.jsx'
 import { translations } from './i18n.js'
 
@@ -17,7 +18,8 @@ export function App() {
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>
-      <TopRow />
+      <ClockBar />
+      <Navbar />
       <PersonalInfo />
       <Experience />
       <Projects />

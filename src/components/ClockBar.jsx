@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Navbar } from './Navbar.jsx'
 
 const zones = [
   { city: 'Chicago', tz: 'America/Chicago' },
-  { city: 'Krak\u00f3w', tz: 'Europe/Warsaw' },
+  { city: 'Kraków', tz: 'Europe/Warsaw' },
   { city: 'Beijing', tz: 'Asia/Shanghai' },
   { city: 'Sydney', tz: 'Australia/Sydney' }
 ]
@@ -18,8 +17,10 @@ function formatTime(zone) {
   }).format(new Date())
 }
 
-export function TopRow() {
-  const [times, setTimes] = useState(() => zones.map((z) => ({ ...z, time: formatTime(z.tz) })))
+export function ClockBar() {
+  const [times, setTimes] = useState(() =>
+    zones.map((z) => ({ ...z, time: formatTime(z.tz) }))
+  )
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -29,15 +30,18 @@ export function TopRow() {
   }, [])
 
   return (
-    <header className="top-row">
-      {times.slice(0, 2).map((tz) => (
-        <Clock key={tz.tz} city={tz.city} time={tz.time} />
-      ))}
-      <Navbar />
-      {times.slice(2).map((tz) => (
-        <Clock key={tz.tz} city={tz.city} time={tz.time} />
-      ))}
-    </header>
+    <div className="clock-bar" role="group" aria-label="World clocks">
+      <div className="clock-group">
+        {times.slice(0, 2).map((tz) => (
+          <Clock key={tz.tz} city={tz.city} time={tz.time} />
+        ))}
+      </div>
+      <div className="clock-group">
+        {times.slice(2).map((tz) => (
+          <Clock key={tz.tz} city={tz.city} time={tz.time} />
+        ))}
+      </div>
+    </div>
   )
 }
 
