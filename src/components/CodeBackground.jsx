@@ -41,7 +41,7 @@ function CodeLine({ text, delay, duration }) {
 
   return (
     <div
-      className={`absolute font-mono text-xs transition-all ease-out text-primary/10 select-none pointer-events-none ${
+      className={`absolute font-mono text-xs transition-all ease-out select-none pointer-events-none ${
         visible ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
@@ -49,7 +49,11 @@ function CodeLine({ text, delay, duration }) {
         top: `${position.y}%`,
         animationDuration: `${duration}s`,
         transform: visible ? 'translateY(0)' : 'translateY(20px)',
-        transitionDuration: '2s'
+        transitionDuration: '2s',
+        color: ['var(--red-crayola)', 'var(--naples-yellow)', 'var(--mint-cream)', 'var(--charcoal)'][Math.floor(Math.random() * 4)],
+        opacity: visible ? 0.4 : 0,
+        textShadow: `0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor`,
+        filter: 'blur(0.5px)'
       }}
     >
       {text}
@@ -97,7 +101,7 @@ export function CodeBackground() {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5">
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-oxford-blue to-charcoal/30">
         {lines.map((line) => (
           <CodeLine
             key={line.id}
@@ -107,17 +111,35 @@ export function CodeBackground() {
           />
         ))}
       </div>
-      {/* Subtle grid pattern overlay */}
+      {/* Enhanced grid pattern overlay with glow */}
       <div 
-        className="absolute inset-0 opacity-[0.015]"
+        className="absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(98, 146, 158, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(98, 146, 158, 0.1) 1px, transparent 1px)
+            linear-gradient(var(--red-crayola) 1px, transparent 1px),
+            linear-gradient(90deg, var(--naples-yellow) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px'
+          backgroundSize: '60px 60px',
+          filter: 'drop-shadow(0 0 8px var(--red-crayola))'
         }}
       />
+      {/* Animated floating particles */}
+      <div className="absolute inset-0">
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 rounded-full animate-pulse"
+            style={{
+              left: `${20 + i * 15}%`,
+              top: `${10 + i * 20}%`,
+              backgroundColor: ['var(--red-crayola)', 'var(--naples-yellow)', 'var(--mint-cream)'][i % 3],
+              boxShadow: `0 0 15px ${['var(--red-crayola)', 'var(--naples-yellow)', 'var(--mint-cream)'][i % 3]}`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: '3s'
+            }}
+          />
+        ))}
+      </div>
     </div>
   )
 }

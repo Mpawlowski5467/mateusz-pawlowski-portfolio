@@ -25,10 +25,18 @@ export function Projects() {
         {t('projects.items').map((proj, idx) => (
           <div
             key={idx}
-            className="group relative bg-foreground/5 backdrop-blur-sm rounded-2xl p-8 border border-neutral/10 hover:border-primary/30 motion-safe:hover:-translate-y-2 motion-safe:hover:shadow-2xl motion-safe:transition-all duration-300"
+            className={`group relative bg-foreground/5 backdrop-blur-sm rounded-2xl p-8 border border-neutral/10 motion-safe:hover:-translate-y-2 motion-safe:hover:shadow-2xl motion-safe:transition-all duration-300 ${
+              idx % 3 === 0 ? 'hover:border-red-crayola/40 hover:shadow-red-crayola/20' :
+              idx % 3 === 1 ? 'hover:border-naples-yellow/40 hover:shadow-naples-yellow/20' :
+              'hover:border-charcoal/40 hover:shadow-mint-cream/10'
+            }`}
           >
             {/* Project number badge */}
-            <div className="absolute -top-4 -left-4 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-background font-bold text-sm">
+            <div className={`absolute -top-4 -left-4 w-8 h-8 rounded-full flex items-center justify-center text-background font-bold text-sm shadow-lg ${
+              idx % 3 === 0 ? 'bg-red-crayola shadow-red-crayola/50' :
+              idx % 3 === 1 ? 'bg-naples-yellow shadow-naples-yellow/50' :
+              'bg-charcoal shadow-charcoal/50'
+            }`}>
               {(idx + 1).toString().padStart(2, '0')}
             </div>
 
@@ -45,23 +53,23 @@ export function Projects() {
             <div className="flex flex-wrap gap-2 mb-6">
               {idx === 0 && (
                 <>
-                  <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-lg">React</span>
-                  <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-lg">CSS</span>
-                  <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-lg">UI/UX</span>
+                  <span className="px-2 py-1 text-xs font-medium bg-red-crayola/15 text-red-crayola rounded-lg border border-red-crayola/30">React</span>
+                  <span className="px-2 py-1 text-xs font-medium bg-naples-yellow/15 text-naples-yellow rounded-lg border border-naples-yellow/30">CSS</span>
+                  <span className="px-2 py-1 text-xs font-medium bg-charcoal/15 text-mint-cream rounded-lg border border-charcoal/30">UI/UX</span>
                 </>
               )}
               {idx === 1 && (
                 <>
-                  <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-lg">JavaScript</span>
-                  <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-lg">Node.js</span>
-                  <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-lg">MongoDB</span>
+                  <span className="px-2 py-1 text-xs font-medium bg-naples-yellow/15 text-naples-yellow rounded-lg border border-naples-yellow/30">JavaScript</span>
+                  <span className="px-2 py-1 text-xs font-medium bg-charcoal/15 text-mint-cream rounded-lg border border-charcoal/30">Node.js</span>
+                  <span className="px-2 py-1 text-xs font-medium bg-red-crayola/15 text-red-crayola rounded-lg border border-red-crayola/30">MongoDB</span>
                 </>
               )}
               {idx === 2 && (
                 <>
-                  <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-lg">Full Stack</span>
-                  <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-lg">API</span>
-                  <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-lg">Database</span>
+                  <span className="px-2 py-1 text-xs font-medium bg-charcoal/15 text-mint-cream rounded-lg border border-charcoal/30">Full Stack</span>
+                  <span className="px-2 py-1 text-xs font-medium bg-red-crayola/15 text-red-crayola rounded-lg border border-red-crayola/30">API</span>
+                  <span className="px-2 py-1 text-xs font-medium bg-naples-yellow/15 text-naples-yellow rounded-lg border border-naples-yellow/30">Database</span>
                 </>
               )}
             </div>

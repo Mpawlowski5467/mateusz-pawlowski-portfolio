@@ -28,7 +28,7 @@ export function PersonalInfo() {
     <section id="about" className="max-w-6xl mx-auto my-16 px-6">
       {/* Hero section */}
       <div className="text-center mb-16">
-        <div className="inline-block p-1 rounded-2xl bg-gradient-to-r from-primary/20 to-secondary/20 mb-6">
+        <div className="inline-block p-1 rounded-2xl gradient-bg mb-6 float-animation">
           <div className="bg-background rounded-xl px-6 py-2">
             <span className="text-sm font-medium text-neutral">👋 Hello, I'm</span>
           </div>
@@ -43,18 +43,18 @@ export function PersonalInfo() {
         {/* Contact icons with accessible labels */}
         <div className="flex gap-4 justify-center mb-8">
           <IconLink href="mailto:mpawlowski5467@gmail.com" label={t('about.email')}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 text-primary" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 text-red-crayola" aria-hidden="true">
               <rect x="2" y="4" width="20" height="16" />
               <path d="m22 4-10 7L2 4" />
             </svg>
           </IconLink>
           <IconLink href="https://www.linkedin.com/in/mateusz-pawlowski-823849302/" label={t('about.linkText')}>
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-primary" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-naples-yellow" aria-hidden="true">
               <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4zM8.5 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.7c0-1.84-.03-4.2-2.56-4.2-2.56 0-2.95 2-2.95 4.1V24h-4z" />
             </svg>
           </IconLink>
           <IconLink href="https://github.com/Mpawlowski5467" label={t('about.github')}>
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-primary" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-mint-cream" aria-hidden="true">
               <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.89.58.11.79-.25.79-.56v-2c-3.2.69-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.77 2.72 1.26 3.38.96.11-.75.41-1.26.75-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.43-2.69 5.41-5.26 5.69.42.36.8 1.07.8 2.16v3.2c0 .31.21.68.8.56A10.51 10.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
             </svg>
           </IconLink>
@@ -71,30 +71,38 @@ export function PersonalInfo() {
       {/* About & Interests grid */}
       <div className="grid md:grid-cols-2 gap-12 items-start">
         {/* About section */}
-        <div className="bg-foreground/5 backdrop-blur-sm rounded-2xl p-8 border border-neutral/10">
+        <div className="bg-foreground/5 backdrop-blur-lg rounded-2xl p-8 border border-neutral/10 hover:border-red-crayola/40 hover:shadow-2xl hover:shadow-red-crayola/10 transition-all duration-300 group">
           <h2 className="text-3xl font-bold text-primary mb-6 flex items-center gap-3">
-            <span className="text-2xl">✨</span>
+            <span className="text-2xl group-hover:scale-110 transition-transform duration-300">✨</span>
             {t('about.title')}
           </h2>
-          <p className="text-lg leading-relaxed text-foreground/90">
-            {t('about.p1')}
-          </p>
+          <div className="shimmer-bg rounded-xl p-1">
+            <div className="bg-background/50 rounded-lg p-4 border border-charcoal/20">
+              <p className="text-lg leading-relaxed text-foreground/90">
+                {t('about.p1')}
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Interests section */}
-        <div className="bg-foreground/5 backdrop-blur-sm rounded-2xl p-8 border border-neutral/10">
-          <h3 className="text-3xl font-bold text-primary mb-6 flex items-center gap-3">
-            <span className="text-2xl">🌟</span>
+        <div className="bg-foreground/5 backdrop-blur-lg rounded-2xl p-8 border border-neutral/10 hover:border-naples-yellow/40 hover:shadow-2xl hover:shadow-naples-yellow/10 transition-all duration-300 group">
+          <h3 className="text-3xl font-bold text-secondary mb-6 flex items-center gap-3">
+            <span className="text-2xl group-hover:scale-110 transition-transform duration-300">🌟</span>
             {t('interests.title')}
           </h3>
           <div className="grid grid-cols-1 gap-4">
             {interestItems.map((item, idx) => (
               <div 
                 key={item?.text ?? idx} 
-                className="flex items-center gap-4 p-3 rounded-xl bg-primary/5 border border-primary/10 hover:bg-primary/10 transition-colors duration-200"
+                className={`flex items-center gap-4 p-3 rounded-xl ${
+                  idx % 3 === 0 ? 'bg-red-crayola/10 border border-red-crayola/20 hover:bg-red-crayola/20 hover:border-red-crayola/40 hover:shadow-lg hover:shadow-red-crayola/20' :
+                  idx % 3 === 1 ? 'bg-naples-yellow/10 border border-naples-yellow/20 hover:bg-naples-yellow/20 hover:border-naples-yellow/40 hover:shadow-lg hover:shadow-naples-yellow/20' :
+                  'bg-charcoal/10 border border-charcoal/20 hover:bg-charcoal/20 hover:border-charcoal/40 hover:shadow-lg hover:shadow-charcoal/20'
+                } transition-all duration-200 ${idx % 2 === 0 ? 'stagger-1' : 'stagger-2'} fade-in`}
               >
                 {item?.icon && (
-                  <span className="text-2xl flex-shrink-0" role="img" aria-label={item?.text ?? 'interest'}>
+                  <span className="text-2xl flex-shrink-0 hover:scale-110 transition-transform duration-200" role="img" aria-label={item?.text ?? 'interest'}>
                     {item.icon}
                   </span>
                 )}

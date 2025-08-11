@@ -1,7 +1,7 @@
 /*
-  Main application layout. Fixed UI elements (clock bar, dock navbar, footer)
-  rely on CSS variables declared in index.css: --clock-bar-h, --dock-h,
-  --dock-gap and --footer-h. Adjust those variables to tweak global spacing.
+  Main application layout. Fixed UI elements (dock navbar, footer)
+  rely on CSS variables declared in index.css: --dock-h and --footer-h.
+  Adjust those variables to tweak global spacing.
 */
 import { useState } from 'react'
 import { PersonalInfo } from './components/PersonalInfo.jsx'
@@ -11,7 +11,6 @@ import { Education } from './components/Education.jsx'
 import { Skills } from './components/Skills.jsx'
 import { BackToTopButton } from './components/BackToTopButton.jsx'
 import { Footer } from './components/Footer.jsx'
-import { ClockBar } from './components/ClockBar.jsx'
 import { Navbar } from './components/Navbar.jsx'
 import { CodeBackground } from './components/CodeBackground.jsx'
 import { LanguageContext } from './context/LanguageContext.jsx'
@@ -24,10 +23,9 @@ export function App() {
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>
       <CodeBackground />
-      <div className="relative z-10">
-        <ClockBar />
+      <div className="min-h-screen flex flex-col relative z-10">
         <Navbar />
-        <main className="space-y-16">
+        <main className="flex-1 space-y-16 pb-16">
           <PersonalInfo />
           <Experience />
           <Projects />

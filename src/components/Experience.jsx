@@ -54,9 +54,14 @@ export function Experience() {
         {/* Achievements list without individual boxes */}
         <div className="space-y-4">
           {Array.isArray(experienceBullets) && experienceBullets.map((item, idx) => (
-            <div key={idx} className="flex items-start gap-4 group">
-              <div className="flex-shrink-0 w-8 h-8 bg-primary/20 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:bg-primary/30 transition-all duration-200 mt-1">
-                <span className="text-primary font-bold text-sm">
+            <div key={idx} className="flex items-start gap-4 group hover:bg-foreground/5 rounded-xl p-4 -mx-4 transition-all duration-200">
+              <div className={`flex-shrink-0 w-10 h-10 backdrop-blur-sm rounded-lg flex items-center justify-center group-hover:scale-110 transition-all duration-200 mt-1 shadow-lg ${
+                idx % 4 === 0 ? 'bg-red-crayola/20 text-red-crayola group-hover:bg-red-crayola/30 group-hover:shadow-red-crayola/20' :
+                idx % 4 === 1 ? 'bg-naples-yellow/20 text-naples-yellow group-hover:bg-naples-yellow/30 group-hover:shadow-naples-yellow/20' :
+                idx % 4 === 2 ? 'bg-mint-cream/20 text-mint-cream group-hover:bg-mint-cream/30 group-hover:shadow-mint-cream/20' :
+                'bg-charcoal/30 text-charcoal group-hover:bg-charcoal/40 group-hover:shadow-charcoal/20'
+              }`}>
+                <span className="font-bold text-sm">
                   {(idx + 1).toString().padStart(2, '0')}
                 </span>
               </div>
@@ -68,14 +73,18 @@ export function Experience() {
         </div>
 
         {/* Skills highlighted from experience */}
-        <div className="mt-8 pt-6 border-t border-neutral/20">
-          <div className="backdrop-blur-sm rounded-xl p-4 bg-primary/5 border border-primary/10">
+        <div className="mt-8 pt-6 border-t border-naples-yellow/30">
+          <div className="backdrop-blur-sm rounded-xl p-4 bg-gradient-to-r from-red-crayola/5 via-naples-yellow/5 to-mint-cream/5 border border-naples-yellow/20">
             <div className="flex flex-wrap gap-2">
-              <span className="text-sm font-semibold text-primary mb-3 w-full">Key Technologies & Skills:</span>
-              {['OneReach.ai', 'Retrieval-Augmented Generation', 'Frontend Development', 'CSS Design Systems', 'Document Processing', 'Chatbot Development'].map((skill) => (
+              <span className="text-sm font-semibold text-naples-yellow mb-3 w-full">🚀 Key Technologies & Skills:</span>
+              {['OneReach.ai', 'Retrieval-Augmented Generation', 'Frontend Development', 'CSS Design Systems', 'Document Processing', 'Chatbot Development'].map((skill, idx) => (
                 <span
                   key={skill}
-                  className="px-3 py-1 text-xs font-medium bg-primary/20 text-primary rounded-full border border-primary/30 backdrop-blur-sm hover:bg-primary/30 transition-colors duration-200"
+                  className={`px-3 py-1 text-xs font-medium rounded-full border backdrop-blur-sm hover:scale-105 transition-all duration-200 cursor-default ${
+                    idx % 3 === 0 ? 'bg-red-crayola/15 text-red-crayola border-red-crayola/30 hover:bg-red-crayola/25' :
+                    idx % 3 === 1 ? 'bg-naples-yellow/15 text-naples-yellow border-naples-yellow/30 hover:bg-naples-yellow/25' :
+                    'bg-mint-cream/15 text-mint-cream border-mint-cream/30 hover:bg-mint-cream/25'
+                  }`}
                 >
                   {skill}
                 </span>

@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import { LanguageContext } from '../context/LanguageContext.jsx'
+import { SkillIcon } from './SkillIcon.jsx'
 
 const backend = [
   { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
@@ -37,7 +38,7 @@ const platforms = [
 //   { name: 'Frontend Development', emoji: '🎨' }
 // ]
 
-const skills = [...backend, ...frontend, ...databases, ...platforms]
+// const skills = [...backend, ...frontend, ...databases, ...platforms]
 
 export function Skills() {
   const { t } = useContext(LanguageContext)
@@ -78,54 +79,48 @@ export function Skills() {
       </div>
 
       {/* Skills in code-like pattern */}
-      <div className="relative bg-foreground/5 backdrop-blur-lg rounded-2xl p-8 border border-neutral/10 shadow-2xl">
+      <div className="relative bg-foreground/5 backdrop-blur-lg rounded-2xl p-4 sm:p-8 border border-neutral/10 shadow-2xl">
         {/* Code-like layout with staggered positioning */}
-        <div className="relative min-h-[500px] overflow-hidden">
+        <div className="relative min-h-[400px] sm:min-h-[500px] overflow-x-auto">
           {/* Simulate code indentation patterns */}
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3 min-w-[600px] sm:min-w-0">
             {/* Line 1: Backend skills */}
             <div className="flex items-center gap-3 pl-0">
-              <span className="text-primary/60 font-mono text-sm">01</span>
-              <span className="text-secondary/80 font-mono text-sm">const</span>
-              <span className="text-neutral/80 font-mono text-sm">backend = [</span>
+              <span className="text-charcoal/60 font-mono text-sm">01</span>
+              <span className="text-red-crayola font-mono text-sm font-semibold">const</span>
+              <span className="text-naples-yellow font-mono text-sm">backend = [</span>
             </div>
-            <div className="flex flex-wrap gap-3 pl-8">
+            <div className="flex flex-wrap gap-2 sm:gap-3 pl-4 sm:pl-8">
               {backend.map((skill, idx) => (
-                <div
-                  key={skill.name}
-                  className="group relative flex items-center gap-2 px-3 py-2 bg-primary/10 backdrop-blur-sm rounded-lg border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all duration-200 touch-manipulation"
-                >
-                  <img
-                    src={skill.icon}
-                    alt={skill.name}
-                    className="w-6 h-6 transition-transform group-hover:scale-110"
-                    loading="lazy"
-                    width="24"
-                    height="24"
-                  />
-                  <span className="text-sm font-medium text-foreground/90">
-                    {skill.name}
-                  </span>
-                  {idx < backend.length - 1 && <span className="text-neutral/60 font-mono">,</span>}
+                <div key={skill.name} className="flex items-center gap-1">
+                  <span className="text-mint-cream/80 font-mono text-xs sm:text-sm">"</span>
+                  <div className="group relative flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-red-crayola/10 backdrop-blur-sm rounded-lg border border-red-crayola/20 hover:bg-red-crayola/20 hover:border-red-crayola/40 hover:shadow-lg hover:shadow-red-crayola/20 transition-all duration-200 touch-manipulation">
+                    <SkillIcon skill={skill} />
+                    <span className="text-xs sm:text-sm font-medium text-foreground/90">
+                      {skill.name}
+                    </span>
+                  </div>
+                  <span className="text-mint-cream/80 font-mono text-xs sm:text-sm">"</span>
+                  {idx < backend.length - 1 && <span className="text-neutral/60 font-mono text-xs sm:text-sm">,</span>}
                 </div>
               ))}
             </div>
             <div className="flex items-center gap-3 pl-0">
-              <span className="text-primary/60 font-mono text-sm">02</span>
-              <span className="text-neutral/80 font-mono text-sm">];</span>
+              <span className="text-charcoal/60 font-mono text-sm">02</span>
+              <span className="text-mint-cream font-mono text-sm">];</span>
             </div>
 
             {/* Line 2: Frontend skills */}
             <div className="flex items-center gap-3 pl-0 mt-6">
-              <span className="text-primary/60 font-mono text-sm">03</span>
-              <span className="text-secondary/80 font-mono text-sm">const</span>
-              <span className="text-neutral/80 font-mono text-sm">frontend = [</span>
+              <span className="text-charcoal/60 font-mono text-sm">03</span>
+              <span className="text-red-crayola font-mono text-sm font-semibold">const</span>
+              <span className="text-naples-yellow font-mono text-sm">frontend = [</span>
             </div>
             <div className="flex flex-wrap gap-3 pl-8">
-              {frontend.map((skill, idx) => (
+              {frontend.map((skill, ) => (
                 <div
                   key={skill.name}
-                  className="group relative flex items-center gap-2 px-3 py-2 bg-secondary/10 backdrop-blur-sm rounded-lg border border-secondary/20 hover:bg-secondary/20 hover:border-secondary/40 transition-all duration-200 touch-manipulation"
+                  className="group relative flex items-center gap-2 px-3 py-2 bg-naples-yellow/10 backdrop-blur-sm rounded-lg border border-naples-yellow/20 hover:bg-naples-yellow/20 hover:border-naples-yellow/40 hover:shadow-lg hover:shadow-naples-yellow/20 transition-all duration-200 touch-manipulation"
                 >
                   <img
                     src={skill.icon}
@@ -138,26 +133,25 @@ export function Skills() {
                   <span className="text-sm font-medium text-foreground/90">
                     {skill.name}
                   </span>
-                  {idx < frontend.length - 1 && <span className="text-neutral/60 font-mono">,</span>}
                 </div>
               ))}
             </div>
             <div className="flex items-center gap-3 pl-0">
-              <span className="text-primary/60 font-mono text-sm">04</span>
-              <span className="text-neutral/80 font-mono text-sm">];</span>
+              <span className="text-charcoal/60 font-mono text-sm">04</span>
+              <span className="text-mint-cream font-mono text-sm">];</span>
             </div>
 
             {/* Line 3: Databases - nested like an object */}
             <div className="flex items-center gap-3 pl-0 mt-6">
-              <span className="text-primary/60 font-mono text-sm">05</span>
-              <span className="text-secondary/80 font-mono text-sm">const</span>
-              <span className="text-neutral/80 font-mono text-sm">databases = {`{`}</span>
+              <span className="text-charcoal/60 font-mono text-sm">05</span>
+              <span className="text-red-crayola font-mono text-sm font-semibold">const</span>
+              <span className="text-naples-yellow font-mono text-sm">databases = {`{`}</span>
             </div>
             <div className="flex flex-wrap gap-3 pl-8">
-              {databases.map((skill, idx) => (
+              {databases.map((skill, ) => (
                 <div
                   key={skill.name}
-                  className="group relative flex items-center gap-2 px-3 py-2 bg-neutral/10 backdrop-blur-sm rounded-lg border border-neutral/20 hover:bg-neutral/20 hover:border-neutral/40 transition-all duration-200 touch-manipulation"
+                  className="group relative flex items-center gap-2 px-3 py-2 bg-charcoal/10 backdrop-blur-sm rounded-lg border border-charcoal/20 hover:bg-charcoal/20 hover:border-charcoal/40 hover:shadow-lg hover:shadow-mint-cream/10 transition-all duration-200 touch-manipulation"
                 >
                   <img
                     src={skill.icon}
@@ -170,31 +164,30 @@ export function Skills() {
                   <span className="text-sm font-medium text-foreground/90">
                     {skill.name}
                   </span>
-                  {idx < databases.length - 1 && <span className="text-neutral/60 font-mono">,</span>}
                 </div>
               ))}
             </div>
             <div className="flex items-center gap-3 pl-0">
-              <span className="text-primary/60 font-mono text-sm">06</span>
-              <span className="text-neutral/80 font-mono text-sm">{`};`}</span>
+              <span className="text-charcoal/60 font-mono text-sm">06</span>
+              <span className="text-mint-cream font-mono text-sm">{`};`}</span>
             </div>
 
             {/* Line 4: Platforms as function call */}
             <div className="flex items-center gap-3 pl-0 mt-6">
-              <span className="text-primary/60 font-mono text-sm">07</span>
-              <span className="text-secondary/80 font-mono text-sm">function</span>
-              <span className="text-neutral/80 font-mono text-sm">getPlatforms() {`{`}</span>
+              <span className="text-charcoal/60 font-mono text-sm">07</span>
+              <span className="text-red-crayola font-mono text-sm font-semibold">function</span>
+              <span className="text-naples-yellow font-mono text-sm">getPlatforms() {`{`}</span>
             </div>
             <div className="flex items-center gap-3 pl-4">
-              <span className="text-primary/60 font-mono text-sm">08</span>
-              <span className="text-secondary/80 font-mono text-sm">return</span>
-              <span className="text-neutral/80 font-mono text-sm">[</span>
+              <span className="text-charcoal/60 font-mono text-sm">08</span>
+              <span className="text-red-crayola font-mono text-sm font-semibold">return</span>
+              <span className="text-naples-yellow font-mono text-sm">[</span>
             </div>
             <div className="flex flex-wrap gap-3 pl-12">
-              {platforms.map((skill, idx) => (
+              {platforms.map((skill, ) => (
                 <div
                   key={skill.name}
-                  className="group relative flex items-center gap-2 px-3 py-2 bg-primary/10 backdrop-blur-sm rounded-lg border border-primary/20 hover:bg-primary/20 hover:border-primary/40 transition-all duration-200 touch-manipulation"
+                  className="group relative flex items-center gap-2 px-3 py-2 bg-red-crayola/10 backdrop-blur-sm rounded-lg border border-red-crayola/20 hover:bg-red-crayola/20 hover:border-red-crayola/40 hover:shadow-lg hover:shadow-red-crayola/20 transition-all duration-200 touch-manipulation"
                 >
                   <img
                     src={skill.icon}
@@ -207,23 +200,22 @@ export function Skills() {
                   <span className="text-sm font-medium text-foreground/90">
                     {skill.name}
                   </span>
-                  {idx < platforms.length - 1 && <span className="text-neutral/60 font-mono">,</span>}
                 </div>
               ))}
             </div>
             <div className="flex items-center gap-3 pl-4">
-              <span className="text-primary/60 font-mono text-sm">09</span>
-              <span className="text-neutral/80 font-mono text-sm">];</span>
+              <span className="text-charcoal/60 font-mono text-sm">09</span>
+              <span className="text-mint-cream font-mono text-sm">];</span>
             </div>
             <div className="flex items-center gap-3 pl-0">
-              <span className="text-primary/60 font-mono text-sm">10</span>
-              <span className="text-neutral/80 font-mono text-sm">{`}`}</span>
+              <span className="text-charcoal/60 font-mono text-sm">10</span>
+              <span className="text-mint-cream font-mono text-sm">{`}`}</span>
             </div>
 
             {/* Closing comment */}
             <div className="flex items-center gap-3 pl-0 mt-6">
-              <span className="text-primary/60 font-mono text-sm">11</span>
-              <span className="text-neutral/50 font-mono text-sm italic">// Ready to build amazing things! 🚀</span>
+              <span className="text-charcoal/60 font-mono text-sm">11</span>
+              <span className="text-charcoal/70 font-mono text-sm italic">// Ready to build amazing things! 🚀</span>
             </div>
           </div>
 
