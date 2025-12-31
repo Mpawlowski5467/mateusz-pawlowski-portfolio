@@ -20,7 +20,7 @@ export function BackToTopButton() {
 
   return (
     <button
-      className="fixed bottom-20 right-6 w-14 h-14 rounded-full bg-gradient-to-r from-red-crayola to-naples-yellow text-background border-2 border-mint-cream/20 shadow-xl flex items-center justify-center hover:from-naples-yellow hover:to-red-crayola hover:scale-110 hover:shadow-2xl hover:shadow-red-crayola/30 motion-safe:transition-all duration-300 focus:outline-none focus-visible:ring-2 ring-naples-yellow backdrop-blur-sm z-40"
+      className="fixed bottom-20 right-6 w-14 h-14 rounded-full bg-white/10 text-white border-2 border-white/20 shadow-xl flex items-center justify-center hover:bg-white/20 hover:scale-110 hover:shadow-2xl hover:shadow-white/30 motion-safe:transition-all duration-300 focus:outline-none focus-visible:ring-2 ring-white backdrop-blur-sm z-40"
       onClick={scrollToTop}
       aria-label="Back to top"
     >

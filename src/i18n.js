@@ -67,6 +67,13 @@ export const translations = {
       platforms: 'Platforms & APIs',
       other: 'Other'
     },
+    terminalPaths: {
+      about: 'about',
+      experience: 'work',
+      projects: 'projects',
+      education: 'edu',
+      skills: 'skills'
+    },
     interests: {
       title: 'Interests',
       items: [
@@ -149,6 +156,13 @@ export const translations = {
       databases: 'Bazy danych',
       platforms: 'Platformy i API',
       other: 'Inne'
+    },
+    terminalPaths: {
+      about: 'about',
+      experience: 'work',
+      projects: 'projects',
+      education: 'edu',
+      skills: 'skills'
     },
     interests: {
       title: 'Zainteresowania',

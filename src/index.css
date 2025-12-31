@@ -5,27 +5,38 @@
   - --footer-h    : footer height
 */
 :root {
-  /* Bold new color palette - vibrant and modern */
-  --red-crayola: #ed254eff;
-  --naples-yellow: #f9dc5cff;
-  --mint-cream: #f4fffdff;
-  --oxford-blue: #011936ff;
-  --charcoal: #465362ff;
+  /* Hyprland-inspired monochrome palette */
+  --black: #000000;
+  --white: #FFFFFF;
 
-  /* Primary brand color – used for main accents, buttons, and links */
-  --primary: var(--red-crayola); /* Bold red for energy and passion */
+  /* Gray scale for depth */
+  --gray-900: #0A0A0A;
+  --gray-800: #1A1A1A;
+  --gray-700: #2A2A2A;
+  --gray-600: #3A3A3A;
+  --gray-500: #5A5A5A;
+  --gray-400: #7A7A7A;
+  --gray-300: #9A9A9A;
+  --gray-200: #CFCFCF;
+  --gray-100: #E5E5E5;
 
-  /* Secondary brand color – used for highlights, hover states, or minor accents */
-  --secondary: var(--naples-yellow); /* Vibrant yellow for creativity and innovation */
+  /* Legacy color names (mapped to monochrome for compatibility) */
+  --red-crayola: var(--white);
+  --naples-yellow: var(--gray-300);
+  --mint-cream: var(--gray-100);
+  --oxford-blue: var(--black);
+  --charcoal: var(--gray-500);
 
-  /* Background – used for main page backgrounds */
-  --background: var(--oxford-blue); /* Deep navy for professionalism and depth */
+  /* Semantic colors */
+  --primary: var(--white);
+  --secondary: var(--gray-300);
+  --background: var(--black);
+  --foreground: var(--gray-100);
+  --neutral: var(--gray-500);
 
-  /* Foreground text – used for primary readable text on background */
-  --foreground: var(--mint-cream); /* Fresh mint for excellent contrast */
-
-  /* Neutral – used for borders, dividers, and subtle text */
-  --neutral: var(--charcoal); /* Sophisticated gray for balance */
+  /* Window/terminal chrome */
+  --window-border: var(--gray-600);
+  --window-titlebar: var(--gray-800);
 
   /* Layout dimensions */
   --dock-h: 4rem;
@@ -53,17 +64,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  text-shadow: 0 2px 10px rgba(237, 37, 78, 0.4), 0 0 20px rgba(249, 220, 92, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 h1 {
   font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 800;
-  background: linear-gradient(135deg, var(--red-crayola), var(--naples-yellow), var(--mint-cream));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 4px 8px rgba(237, 37, 78, 0.3));
+  color: var(--white);
 }
 
 h2 {
@@ -80,8 +87,8 @@ h3 {
 p {
   font-size: clamp(1rem, 2.5vw, 1.125rem);
   line-height: 1.8;
-  color: rgba(244, 255, 253, 0.95);
-  text-shadow: 0 1px 4px rgba(1, 25, 54, 0.6);
+  color: rgba(229, 229, 229, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 /* Global micro-interactions and smooth transitions */
@@ -97,7 +104,7 @@ p {
 
 /* Focus ring improvements */
 :focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--white);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -112,12 +119,12 @@ p {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: var(--gray-600);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
+  background: var(--gray-400);
 }
 
 /* Enhanced hover effects for links and buttons */
@@ -129,21 +136,21 @@ a, button {
 a:hover, button:hover {
   transform: translateY(-2px);
   filter: brightness(1.15);
-  box-shadow: 0 8px 25px rgba(237, 37, 78, 0.4), 0 4px 15px rgba(249, 220, 92, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1), 0 4px 15px rgba(255, 255, 255, 0.05);
 }
 
 /* Special hover effects for primary buttons */
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--red-crayola), var(--naples-yellow));
-  box-shadow: 0 12px 35px rgba(237, 37, 78, 0.5), 0 6px 20px rgba(249, 220, 92, 0.4);
+  background: var(--gray-700);
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.15), 0 6px 20px rgba(255, 255, 255, 0.08);
   transform: translateY(-3px) scale(1.02);
 }
 
 /* Enhanced focus states */
 *:focus-visible {
-  outline: 3px solid var(--naples-yellow);
+  outline: 3px solid var(--white);
   outline-offset: 3px;
-  box-shadow: 0 0 0 1px var(--red-crayola), 0 0 20px rgba(249, 220, 92, 0.6);
+  box-shadow: 0 0 0 1px var(--white), 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 /* Loading states */
@@ -174,17 +181,11 @@ a:hover, button:hover {
 
 /* Dynamic gradient animations */
 @keyframes gradientShift {
-  0%, 100% { 
-    background: linear-gradient(135deg, var(--red-crayola), var(--naples-yellow), var(--charcoal));
+  0%, 100% {
+    background: linear-gradient(135deg, var(--gray-900), var(--gray-700));
   }
-  25% { 
-    background: linear-gradient(135deg, var(--naples-yellow), var(--mint-cream), var(--oxford-blue));
-  }
-  50% { 
-    background: linear-gradient(135deg, var(--mint-cream), var(--charcoal), var(--red-crayola));
-  }
-  75% { 
-    background: linear-gradient(135deg, var(--oxford-blue), var(--red-crayola), var(--naples-yellow));
+  50% {
+    background: linear-gradient(135deg, var(--gray-800), var(--gray-600));
   }
 }
 
@@ -196,16 +197,16 @@ a:hover, button:hover {
 
 /* Animated gradient backgrounds */
 .gradient-bg {
-  background: linear-gradient(135deg, var(--red-crayola), var(--naples-yellow), var(--charcoal));
+  background: linear-gradient(135deg, var(--gray-900), var(--gray-700));
   background-size: 400% 400%;
   animation: gradientShift 10s ease-in-out infinite;
 }
 
 .shimmer-bg {
-  background: linear-gradient(90deg, 
-    rgba(237, 37, 78, 0.15) 0%, 
-    rgba(249, 220, 92, 0.25) 50%, 
-    rgba(244, 255, 253, 0.15) 100%);
+  background: linear-gradient(90deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.02) 100%);
   background-size: 200% 200%;
   animation: shimmer 3s linear infinite;
 }
@@ -222,16 +223,8 @@ a:hover, button:hover {
 }
 
 /* Glow effects for different elements */
-.glow-red {
-  box-shadow: 0 0 20px rgba(237, 37, 78, 0.3), 0 0 40px rgba(237, 37, 78, 0.1);
-}
-
-.glow-yellow {
-  box-shadow: 0 0 20px rgba(249, 220, 92, 0.3), 0 0 40px rgba(249, 220, 92, 0.1);
-}
-
-.glow-mint {
-  box-shadow: 0 0 20px rgba(244, 255, 253, 0.2), 0 0 40px rgba(244, 255, 253, 0.05);
+.glow, .glow-red, .glow-yellow, .glow-mint {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
 }
 
 /* Improved text contrast */
@@ -274,14 +267,14 @@ a:hover, button:hover {
 
 .typewriter {
   overflow: hidden;
-  border-right: 2px solid var(--red-crayola);
+  border-right: 2px solid var(--white);
   white-space: nowrap;
   animation: typewriter 2s steps(30, end), blink-caret 1s step-end infinite;
 }
 
 @keyframes blink-caret {
   from, to { border-color: transparent; }
-  50% { border-color: var(--red-crayola); }
+  50% { border-color: var(--white); }
 }
 
 /* Smooth scroll snap */
@@ -381,7 +374,7 @@ a:hover, button:hover {
 @media (prefers-color-scheme: dark) {
   /* Already using dark theme, but enhance shadows */
   .shadow-enhanced {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 4px 20px rgba(237, 37, 78, 0.2), 0 2px 10px rgba(249, 220, 92, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 4px 20px rgba(255, 255, 255, 0.05), 0 2px 10px rgba(255, 255, 255, 0.02);
   }
 }
 
@@ -392,11 +385,48 @@ a:hover, button:hover {
     animation: none !important;
     scroll-behavior: auto !important;
   }
-  
+
   .fade-in, .float-animation, .gradient-bg, .shimmer-bg {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
     background: var(--background) !important;
   }
+}
+
+/* Window frame styles for Hyprland aesthetic */
+.window-frame {
+  border: 2px solid var(--window-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.window-titlebar {
+  background: var(--window-titlebar);
+  border-bottom: 1px solid var(--window-border);
+  padding: 0.75rem 1rem;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.terminal-prompt {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.875rem;
+  color: var(--gray-300);
+}
+
+.window-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.window-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gray-700);
+  border: 1px solid var(--gray-600);
 }

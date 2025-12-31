@@ -50,7 +50,7 @@ function CodeLine({ text, delay, duration }) {
         animationDuration: `${duration}s`,
         transform: visible ? 'translateY(0)' : 'translateY(20px)',
         transitionDuration: '2s',
-        color: ['var(--red-crayola)', 'var(--naples-yellow)', 'var(--mint-cream)', 'var(--charcoal)'][Math.floor(Math.random() * 4)],
+        color: ['var(--white)', 'var(--gray-100)', 'var(--gray-200)', 'var(--gray-300)', 'var(--gray-400)'][Math.floor(Math.random() * 5)],
         opacity: visible ? 0.4 : 0,
         textShadow: `0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor`,
         filter: 'blur(0.5px)'
@@ -101,7 +101,7 @@ export function CodeBackground() {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-oxford-blue to-charcoal/30">
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-gray-900 to-gray-800/30">
         {lines.map((line) => (
           <CodeLine
             key={line.id}
@@ -112,15 +112,15 @@ export function CodeBackground() {
         ))}
       </div>
       {/* Enhanced grid pattern overlay with glow */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage: `
-            linear-gradient(var(--red-crayola) 1px, transparent 1px),
-            linear-gradient(90deg, var(--naples-yellow) 1px, transparent 1px)
+            linear-gradient(var(--gray-600) 1px, transparent 1px),
+            linear-gradient(90deg, var(--gray-500) 1px, transparent 1px)
           `,
           backgroundSize: '60px 60px',
-          filter: 'drop-shadow(0 0 8px var(--red-crayola))'
+          filter: 'drop-shadow(0 0 8px var(--gray-600))'
         }}
       />
       {/* Animated floating particles */}
@@ -132,8 +132,8 @@ export function CodeBackground() {
             style={{
               left: `${20 + i * 15}%`,
               top: `${10 + i * 20}%`,
-              backgroundColor: ['var(--red-crayola)', 'var(--naples-yellow)', 'var(--mint-cream)'][i % 3],
-              boxShadow: `0 0 15px ${['var(--red-crayola)', 'var(--naples-yellow)', 'var(--mint-cream)'][i % 3]}`,
+              backgroundColor: `rgba(255, 255, 255, ${0.1 + i * 0.05})`,
+              boxShadow: `0 0 15px rgba(255, 255, 255, ${0.1 + i * 0.05})`,
               animationDelay: `${i * 0.5}s`,
               animationDuration: '3s'
             }}

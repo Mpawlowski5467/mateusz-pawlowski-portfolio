@@ -1,13 +1,13 @@
 import { useContext } from 'react'
 import { LanguageContext } from '../context/LanguageContext.jsx'
 
-function SocialLink({ href, label, children, colorClass }) {
+function SocialLink({ href, label, children }) {
   return (
     <a
       href={href}
       aria-label={label}
       title={label}
-      className={`w-8 h-8 flex items-center justify-center no-underline motion-safe:hover:scale-110 motion-safe:transition-all duration-200 focus:outline-none focus-visible:ring-2 ring-naples-yellow rounded-lg hover:bg-foreground/10 ${colorClass}`}
+      className="w-8 h-8 flex items-center justify-center no-underline motion-safe:hover:scale-110 motion-safe:transition-all duration-200 focus:outline-none focus-visible:ring-2 ring-white rounded-lg hover:bg-foreground/10 text-white hover:text-gray-300"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -37,24 +37,24 @@ export function Footer() {
 
   return (
     // Footer at the bottom of the page using relative positioning
-    <footer className="mt-auto w-full z-30 h-[var(--footer-h)] bg-charcoal/95 backdrop-blur-md border-t border-naples-yellow/20 text-foreground flex items-center justify-between px-8 text-sm">
+    <footer className="mt-auto w-full z-30 h-[var(--footer-h)] bg-gray-900/95 backdrop-blur-md border-t border-gray-600/20 text-foreground flex items-center justify-between px-8 text-sm">
       <div className="flex items-center gap-4">
         <span className="text-neutral/70 text-xs">© 2025</span>
-        <span className="text-mint-cream font-medium">{t('footer.name')}</span>
+        <span className="text-gray-100 font-medium">{t('footer.name')}</span>
       </div>
-      
+
       <div className="flex items-center gap-4">
-        <SocialLink href="https://github.com/Mpawlowski5467" label={t('about.github')} colorClass="text-mint-cream hover:text-naples-yellow">
+        <SocialLink href="https://github.com/Mpawlowski5467" label={t('about.github')}>
           {gh}
         </SocialLink>
-        <SocialLink href="https://www.linkedin.com/in/mateusz-pawlowski-823849302/" label={t('about.linkText')} colorClass="text-naples-yellow hover:text-red-crayola">
+        <SocialLink href="https://www.linkedin.com/in/mateusz-pawlowski-823849302/" label={t('about.linkText')}>
           {li}
         </SocialLink>
-        <SocialLink href="mailto:mpawlowski5467@gmail.com" label={t('about.email')} colorClass="text-red-crayola hover:text-mint-cream">
+        <SocialLink href="mailto:mpawlowski5467@gmail.com" label={t('about.email')}>
           {mail}
         </SocialLink>
       </div>
-      
+
       <div className="text-xs text-neutral/60">
         {t('footer.updated')} {new Date().toLocaleDateString()}
       </div>

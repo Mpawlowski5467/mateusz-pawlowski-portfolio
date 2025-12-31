@@ -64,7 +64,7 @@ export function Navbar() {
                 aria-label={t(item.key)}
                 // Scale via inline style so neighbours react to cursor proximity
                 style={{ transform: `scale(${scaleFor(i)})` }}
-                className="w-12 h-12 sm:w-12 sm:h-12 flex items-center justify-center text-xl sm:text-2xl no-underline motion-safe:transition-all duration-200 ease-out focus:outline-none focus-visible:ring-2 ring-naples-yellow rounded-xl hover:bg-red-crayola/20 active:scale-95 touch-manipulation shadow-lg hover:shadow-xl hover:shadow-red-crayola/30"
+                className="w-12 h-12 sm:w-12 sm:h-12 flex items-center justify-center text-xl sm:text-2xl no-underline motion-safe:transition-all duration-200 ease-out focus:outline-none focus-visible:ring-2 ring-white rounded-xl hover:bg-white/20 active:scale-95 touch-manipulation shadow-lg hover:shadow-xl hover:shadow-white/30"
                 onFocus={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect()
                   setMouseX(rect.left + rect.width / 2)
