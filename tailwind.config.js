@@ -14,7 +14,11 @@ export default {
         background: '#000000', // --background (black)
         foreground: '#E5E5E5', // --foreground (gray-100)
         neutral: '#9A9A9A',    // --neutral (gray-300): secondary text, subtle borders
-        charcoal: '#5A5A5A',   // --charcoal (gray-500)
+      },
+      fontFamily: {
+        // Self-hosted via @fontsource-variable (imported in src/main.jsx)
+        sans: ['"Inter Variable"', 'Inter', 'system-ui', '-apple-system', '"Segoe UI"', 'Roboto', 'sans-serif'],
+        mono: ['"JetBrains Mono Variable"', '"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
       },
     },
   },

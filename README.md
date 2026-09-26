@@ -6,24 +6,26 @@ My personal portfolio site: who I am, where I've worked, what I've built, and th
 
 ## About me
 
-Hi, I'm Mateusz. I'm an AI / Automation Associate at Reyes Holdings and a DePaul University graduate in Information Technology (B.S., 2026). I joined Reyes as an AI intern in 2024, building chatbots, including a retrieval-augmented generation (RAG) onboarding assistant for new hires and Q&A bots for the pricing and security teams, and working on OneReach.ai front-end components and chatbot UI templates.
+Hi, I'm Mateusz. I'm an AI / Automation Associate at Reyes Holdings, where I started as an AI intern in 2024, and a DePaul University graduate in Information Technology (B.S., 2026).
 
-Outside of work I'm into homelabbing and self-hosting, Chelsea FC, reading, hiking, and baking.
+Outside of work I run a Proxmox homelab in a portable rack with 17 self-hosted services, reachable only on my LAN or over Tailscale and managed as code. I also build self-hosted tools like [Loom](https://github.com/Mpawlowski5467/Loom), [SportsDash](https://github.com/Mpawlowski5467/SportsDash), and [Argus](https://github.com/Mpawlowski5467/Argus). Other interests: Chelsea FC, reading, hiking, and baking.
 
 ## What's on the site
 
-- **About**: short bio, location, interests, and contact links
-- **Experience**: my roles at Reyes Holdings, from AI intern to AI / Automation Associate
-- **Projects**: a Polish school website redesign, a car-parts e-commerce platform, and a Chicago event-ticketing site
-- **Education**: DePaul University and Harper College
-- **Skills**: languages, frameworks, databases, and AI platforms, grouped by category
+- **Hero**: name, role, and location, typed out like a shell session, next to an ASCII drawing of my homelab rack
+- **01 about**: short bio (mostly homelab) and interests
+- **02 work**: my roles at Reyes Holdings, from AI intern to AI / Automation Associate
+- **03 projects**: Loom, SportsDash, and Argus, with screenshots
+- **04 edu**: DePaul University and Harper College
+- **05 skills**: my stack, shown as a `skills.json` file
 
 A few design details:
 
+- Black-and-white, terminal-inspired look: a sticky top bar with plain text links, numbered section headings, and monospace accents
+- **Terminal boot intro**: the hero types `whoami`, `cat role.txt`, and `cat location.txt` once per visit. Clicking or pressing any key skips it, and it's skipped entirely for visitors who prefer reduced motion
+- **ASCII homelab rack**: blinking LEDs, load bars, a network sparkline, and a scrolling list of my real services. It's decorative (random values, not live data) and pauses when off-screen
+- Project screenshots in grayscale that turn to color on hover
 - English ⇄ Polish language toggle
-- Floating dock navigation whose icons magnify as your cursor passes over them
-- Monochrome, Hyprland-inspired look, with content sections in terminal-style windows (`~/projects$`, `~/work$`, …)
-- Code snippets that fade in at random spots in the background
 
 ## Tech stack
 
@@ -32,6 +34,8 @@ A few design details:
 | Framework | [React 19](https://react.dev/) |
 | Build tool | [Vite 6](https://vite.dev/) |
 | Styling | [Tailwind CSS 3](https://v3.tailwindcss.com/) (built with PostCSS) + custom CSS in `src/index.css` |
+| Fonts | [Inter](https://rsms.me/inter/) and [JetBrains Mono](https://www.jetbrains.com/lp/mono/), self-hosted via [Fontsource](https://fontsource.org/) |
+| Icons | [Simple Icons](https://simpleicons.org/), drawn inline so they follow the text color |
 | Testing | [Vitest](https://vitest.dev/), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/), jsdom |
 | Linting | [ESLint 9](https://eslint.org/) |
 | Hosting | GitHub Pages, deployed with GitHub Actions |
@@ -59,13 +63,13 @@ Then open the URL Vite prints (<http://localhost:5173> by default).
 
 ## Updating content
 
-- **Text**: the wording for every section lives in [`src/i18n.js`](src/i18n.js), in both English (`en`) and Polish (`pl`). Update both when you change something. That includes the bio, your roles and dates, experience bullets and skill chips, education and highlights, section taglines, and interests.
-- **Projects**: each project in `src/i18n.js` has `name`, `desc`, `tags`, `link` (the repo, shown as the **GitHub** button), and an optional `demo` (a live site, shown as a **Live demo** button).
-- **Skills**: the skill lists, their icons, and the code-style labels (`const backend = [` …) are in [`src/components/Skills.jsx`](src/components/Skills.jsx).
-- **Background snippets**: in [`src/components/CodeBackground.jsx`](src/components/CodeBackground.jsx).
-- **Footer date**: "Last updated" is filled in automatically from the date of the latest commit when the site is built.
+- **Text**: all the wording lives in [`src/i18n.js`](src/i18n.js), in both English (`en`) and Polish (`pl`). Update both when you change something. That covers the hero, bio, interests, roles and dates, projects, education, and footer.
+- **Projects**: each project in `src/i18n.js` has `name`, `tagline`, `desc`, `tags`, `link` (the repo, shown as the **source** link), an optional `demo` (a live site, shown as a **live demo** link), and an `image` in [`public/projects/`](public/projects/) (1280×720 WebP).
+- **Skills**: the groups and items, with their icons, are at the top of [`src/components/Skills.jsx`](src/components/Skills.jsx). Icons come from `simple-icons`; anything missing there gets a short text mark, or a custom path in [`src/customIcons.js`](src/customIcons.js).
+- **Homelab rack**: the service names and hardware labels are in [`src/components/HomelabRack.jsx`](src/components/HomelabRack.jsx).
+- **Contact links**: in [`src/links.js`](src/links.js), used by the hero and the footer.
+- **Footer date**: "last updated" is filled in automatically from the date of the latest commit when the site is built.
 - **Link preview**: the image shown when the link is shared is [`public/og-image.png`](public/og-image.png), generated from [`scripts/og-image.html`](scripts/og-image.html) (instructions inside). The title and description are in [`index.html`](index.html).
-- **Contact links**: hard-coded in [`src/components/PersonalInfo.jsx`](src/components/PersonalInfo.jsx) and [`src/components/Footer.jsx`](src/components/Footer.jsx). The email also appears in `src/i18n.js` (`about.email`) as the link label.
 
 ## Deployment
 
@@ -83,18 +87,20 @@ After that, the site deploys automatically. Every push to `main` runs [`.github/
 ```
 ├── .github/workflows/deploy.yml   # Build + deploy to GitHub Pages
 ├── index.html                     # HTML entry point, page title, and link-preview tags
-├── public/                        # Static files copied into the build as-is (icons, preview image)
+├── public/                        # Static files copied as-is: icons, preview image, projects/ screenshots
 ├── scripts/og-image.html          # Source for the link-preview image
 ├── src/
 │   ├── main.jsx                   # React entry point
 │   ├── App.jsx                    # Page layout and language state
 │   ├── i18n.js                    # All site text, English + Polish
+│   ├── links.js                   # Contact links
+│   ├── customIcons.js             # Brand icons missing from simple-icons (OneReach.ai)
 │   ├── index.css                  # Theme variables and global styles
-│   ├── components/                # Section components, plus navbar, language toggle,
-│   │                              #   footer, back-to-top button, and code background
+│   ├── components/                # Header, Hero (terminal intro), HomelabRack (ASCII art),
+│   │                              #   one component per section, Footer, and small helpers
 │   ├── context/                   # Language context
 │   └── __tests__/                 # Vitest tests
-├── tailwind.config.js             # Tailwind theme: semantic colors (background, foreground, neutral)
+├── tailwind.config.js             # Tailwind theme: colors and fonts
 ├── postcss.config.js              # Runs Tailwind during the build
 ├── eslint.config.js
 ├── package.json

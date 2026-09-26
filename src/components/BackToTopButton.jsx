@@ -1,31 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { LanguageContext } from '../context/LanguageContext.jsx'
 
 export function BackToTopButton() {
+  const { t } = useContext(LanguageContext)
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      setVisible(window.pageYOffset > 300)
-    }
-
-    window.addEventListener('scroll', toggleVisibility)
+    const toggleVisibility = () => setVisible(window.scrollY > 400)
+    window.addEventListener('scroll', toggleVisibility, { passive: true })
     return () => window.removeEventListener('scroll', toggleVisibility)
   }, [])
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
 
   if (!visible) return null
 
   return (
     <button
-      className="fixed bottom-20 right-6 w-14 h-14 rounded-full bg-white/10 text-white border-2 border-white/20 shadow-xl flex items-center justify-center hover:bg-white/20 hover:scale-110 hover:shadow-2xl hover:shadow-white/30 motion-safe:transition-all duration-300 focus:outline-none focus-visible:ring-2 ring-white backdrop-blur-sm z-40"
-      onClick={scrollToTop}
-      aria-label="Back to top"
+      type="button"
+      className="fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded border border-white/25 bg-black/80 text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white hover:text-black"
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label={t('a11y.backToTop')}
     >
-      <svg className="w-6 h-6 font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
       </svg>
     </button>
   )

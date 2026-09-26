@@ -1,219 +1,191 @@
+// All visible wording, in English (en) and Polish (pl). Update both when you change something.
+// Skill names live in src/components/Skills.jsx; homelab service names in src/components/HomelabRack.jsx.
 export const translations = {
   en: {
-    header: {
-      name: 'Mateusz Pawłowski',
-      tagline: "👋 Hello, I'm",
-      role: 'AI / Automation Associate · Information Technology Graduate'
-    },
     nav: {
-      about: 'About',
-      experience: 'Experience',
-      projects: 'Projects',
-      education: 'Education',
-      skills: 'Skills'
+      about: 'about',
+      experience: 'work',
+      projects: 'projects',
+      education: 'edu',
+      skills: 'skills',
+      menu: 'menu',
+      close: 'close'
+    },
+    hero: {
+      name: 'Mateusz Pawłowski',
+      role: 'AI / Automation Associate',
+      company: 'Reyes Holdings',
+      location: 'Greater Chicago Area',
+      skip: 'click or press any key to skip',
+      rackCaption: '# my homelab, as an illustration (not live data)'
+    },
+    contact: {
+      email: 'email',
+      linkedin: 'linkedin',
+      github: 'github'
     },
     about: {
-      title: 'About Me',
-      p1: "I'm an AI / Automation Associate at Reyes Holdings, where I started as an AI intern in 2024, and a DePaul University graduate in Information Technology. I enjoy building intelligent systems that improve user experience and efficiency.",
-      location: 'Prospect Heights, IL',
-      email: 'mpawlowski5467@gmail.com',
-      linkText: 'LinkedIn',
-      github: 'GitHub'
+      p1: "I'm an AI / Automation Associate at Reyes Holdings, where I started as an AI intern in 2024, and a DePaul University graduate in Information Technology.",
+      p2: "Outside of work, you'll usually find me in my homelab: a Proxmox server in a portable rack running 17 self-hosted services, from photos and documents to automation and monitoring. Nothing is exposed to the internet; everything is reachable only on my LAN or over Tailscale, and the whole lab is managed as code. It's also where I run local LLMs and build self-hosted tools like Loom and SportsDash.",
+      interestsTitle: 'interests',
+      interests: [
+        { icon: '⚽', text: 'Chelsea FC supporter' },
+        { icon: '🖥️', text: 'Homelabbing and self-hosting' },
+        { icon: '📚', text: 'Reading and hiking' },
+        { icon: '🍞', text: 'Baking' }
+      ]
     },
     experience: {
-      title: 'Experience',
-      tagline: '💼 Professional Journey',
-      subtitle: 'Building the future with AI and intelligent systems',
       company: 'Reyes Holdings',
       location: 'Rosemont, IL',
-      current: 'Current',
+      current: 'current',
       roles: [
         { title: 'AI / Automation Associate', type: 'Full-time', date: 'Jun 2026 – Present', current: true },
         { title: 'AI Intern', type: 'Internship', date: 'Jun 2024 – Jun 2026' }
-      ],
-      bullets: [
-        'Built an onboarding chatbot using retrieval-augmented generation to answer new-hire FAQs.',
-        'Designed unified CSS templates and documentation for chatbot interfaces across multiple business units.',
-        'Updated OneReach.ai frontend components and created custom loading animations.',
-        'Developed specialized Q&A chatbots for pricing and security teams with document parsing and report generation.',
-        'Testing a dynamic questionnaire tool for vendor price promotion requests and deep deal grid reporting.'
-      ],
-      skillsTitle: '🚀 Key Technologies & Skills:',
-      skills: ['OneReach.ai', 'Retrieval-Augmented Generation', 'Frontend Development', 'CSS Design Systems', 'Document Processing', 'Chatbot Development']
+      ]
     },
     projects: {
-      title: 'Projects',
-      tagline: '🚀 Featured Work',
-      subtitle: "Here are some of the projects I've built with passion and dedication",
-      github: 'GitHub',
-      demo: 'Live demo',
-      // link: repository URL (GitHub button). demo: optional live site URL (Live demo button).
+      repo: 'source',
+      demo: 'live demo',
+      // link: repository URL. demo: optional live site URL. image: file in public/projects/.
       items: [
         {
-          name: 'Jan III Sobieski Polish School Website',
-          desc: 'Redesigned the public site with modern UI themes and improved navigation.',
-          tags: ['React', 'CSS', 'UI/UX'],
-          link: 'https://github.com/Mpawlowski5467'
+          name: 'Loom',
+          tagline: 'Local-first AI memory system',
+          desc: 'A personal knowledge system that keeps everything as plain Markdown on your own disk. A team of AI agents structures, links, summarizes, and validates your notes, and a graph view shows how they all connect. Runs on local models through Ollama or any provider you plug in.',
+          tags: ['FastAPI', 'LanceDB', 'React', 'Sigma.js', 'Ollama'],
+          link: 'https://github.com/Mpawlowski5467/Loom',
+          image: 'projects/loom.webp',
+          imageAlt: 'Loom graph view showing a vault of connected notes'
         },
         {
-          name: 'Car Parts E-commerce Platform',
-          desc: 'Full-stack application using JavaScript, Node.js, and MongoDB for online auto-parts sales.',
-          tags: ['JavaScript', 'Node.js', 'MongoDB'],
-          link: 'https://github.com/Mpawlowski5467'
+          name: 'SportsDash',
+          tagline: 'Self-hosted sports dashboard',
+          desc: 'Ten sports and 50+ leagues on one self-hosted screen: live scores, a full calendar, standings, stat leaders, playoff brackets, and push alerts through ntfy. Runs with docker compose or as a native macOS app, with no accounts, no tracking, and no API keys.',
+          tags: ['FastAPI', 'React', 'PostgreSQL', 'Redis', 'MapLibre', 'Tauri'],
+          link: 'https://github.com/Mpawlowski5467/SportsDash',
+          image: 'projects/sportsdash.webp',
+          imageAlt: 'SportsDash NBA playoff bracket view'
         },
         {
-          name: 'Chicago Event-Ticketing Website',
-          desc: 'Developing a platform for browsing and purchasing tickets to Chicago-area events.',
-          tags: ['Full Stack', 'API', 'Database'],
-          link: 'https://github.com/Mpawlowski5467'
+          name: 'Argus',
+          tagline: 'Quantitative equity scanner',
+          desc: 'Scans US stocks without survivorship bias: it parses SEC EDGAR filings into point-in-time signals, scores them with a walk-forward LightGBM model, and emits a backtested, cost-aware buy/sell verdict. A local LLM explains each call in plain language but never sets it. Runs unattended every night.',
+          tags: ['Python', 'LightGBM', 'DuckDB', 'SHAP', 'Local LLM'],
+          link: 'https://github.com/Mpawlowski5467/Argus',
+          image: 'projects/argus.webp',
+          imageAlt: 'Argus ticker view with a price chart and a buy signal (demo data)'
         }
       ]
     },
     education: {
-      title: 'Education',
-      tagline: '🎓 Academic Journey',
-      subtitle: 'Building knowledge through continuous learning and academic excellence',
       items: [
         { school: 'DePaul University', degree: 'B.S. in Information Technology', date: 'Sep 2023 – Mar 2026' },
         { school: 'Harper College', degree: 'Associate of Arts (A.A.), Information Technology', date: 'Aug 2021 – Jul 2023' }
       ],
-      highlightsTitle: 'Academic Highlights:',
+      highlightsTitle: 'highlights:',
       highlights: ['Graduated March 2026', 'GPA 3.40', "Dean's List · Fall 2023"]
-    },
-    skills: {
-      title: 'Skills',
-      tagline: '🛠️ Tech Stack',
-      subtitle: 'Technologies and tools I use to bring ideas to life',
-      comment: '// Ready to build amazing things! 🚀'
-    },
-    terminalPaths: {
-      about: 'about',
-      experience: 'work',
-      projects: 'projects',
-      education: 'edu',
-      skills: 'skills'
-    },
-    interests: {
-      title: 'Interests',
-      items: [
-        { icon: '⚽', text: 'Chelsea FC supporter' },
-        { icon: '🖥️', text: 'Homelabbing and self-hosting' },
-        { icon: '📚', text: 'Reading and hiking' },
-        { icon: '👥', text: 'Spending time with friends' },
-        { icon: '🍞', text: 'Baking' }
-      ]
     },
     footer: {
       name: 'Mateusz Pawłowski',
-      updated: 'Last updated'
+      updated: 'last updated'
+    },
+    a11y: {
+      skip: 'Skip to content',
+      backToTop: 'Back to top'
     }
   },
   pl: {
-    header: {
-      name: 'Mateusz Pawłowski',
-      tagline: '👋 Cześć, jestem',
-      role: 'Specjalista ds. AI i automatyzacji · Absolwent technologii informacyjnych'
-    },
     nav: {
-      about: 'O mnie',
-      experience: 'Doświadczenie',
-      projects: 'Projekty',
-      education: 'Edukacja',
-      skills: 'Umiejętności'
+      about: 'o mnie',
+      experience: 'praca',
+      projects: 'projekty',
+      education: 'edukacja',
+      skills: 'umiejętności',
+      menu: 'menu',
+      close: 'zamknij'
+    },
+    hero: {
+      name: 'Mateusz Pawłowski',
+      role: 'Specjalista ds. AI i automatyzacji',
+      company: 'Reyes Holdings',
+      location: 'Chicago i okolice',
+      skip: 'kliknij lub naciśnij dowolny klawisz, aby pominąć',
+      rackCaption: '# mój homelab w formie ilustracji (to nie są dane na żywo)'
+    },
+    contact: {
+      email: 'email',
+      linkedin: 'linkedin',
+      github: 'github'
     },
     about: {
-      title: 'O mnie',
-      p1: 'Jestem specjalistą ds. AI i automatyzacji w Reyes Holdings, gdzie w 2024 roku zacząłem jako stażysta AI, oraz absolwentem technologii informacyjnych na Uniwersytecie DePaul. Lubię tworzyć inteligentne systemy, które poprawiają doświadczenie użytkownika i zwiększają wydajność.',
-      location: 'Prospect Heights, IL',
-      email: 'mpawlowski5467@gmail.com',
-      linkText: 'LinkedIn',
-      github: 'GitHub'
+      p1: 'Jestem specjalistą ds. AI i automatyzacji w Reyes Holdings, gdzie w 2024 roku zacząłem jako stażysta AI, oraz absolwentem technologii informacyjnych na Uniwersytecie DePaul.',
+      p2: 'Po pracy najczęściej siedzę w swoim homelabie: to serwer Proxmox w przenośnej szafie rack, na którym działa 17 samodzielnie hostowanych usług, od zdjęć i dokumentów po automatyzację i monitoring. Nic nie jest wystawione do internetu; wszystko jest dostępne tylko w sieci lokalnej lub przez Tailscale, a cały lab jest zarządzany jako kod. Tam też uruchamiam lokalne modele LLM i buduję własne narzędzia, takie jak Loom i SportsDash.',
+      interestsTitle: 'zainteresowania',
+      interests: [
+        { icon: '⚽', text: 'Kibic Chelsea FC' },
+        { icon: '🖥️', text: 'Homelab i self-hosting' },
+        { icon: '📚', text: 'Czytanie i wędrówki' },
+        { icon: '🍞', text: 'Pieczenie' }
+      ]
     },
     experience: {
-      title: 'Doświadczenie',
-      tagline: '💼 Ścieżka zawodowa',
-      subtitle: 'Tworzę przyszłość z AI i inteligentnymi systemami',
       company: 'Reyes Holdings',
       location: 'Rosemont, IL',
-      current: 'Obecnie',
+      current: 'obecnie',
       roles: [
         { title: 'Specjalista ds. AI i automatyzacji', type: 'Pełny etat', date: 'Czerwiec 2026 – obecnie', current: true },
         { title: 'Stażysta AI', type: 'Staż', date: 'Czerwiec 2024 – czerwiec 2026' }
-      ],
-      bullets: [
-        'Zbudowałem chatbota onboardingowego wykorzystującego retrieval-augmented generation do odpowiadania na najczęstsze pytania nowych pracowników.',
-        'Zaprojektowałem ujednolicone szablony CSS i dokumentację dla interfejsów chatbotów w wielu jednostkach biznesowych.',
-        'Zaktualizowałem komponenty frontendowe OneReach.ai i stworzyłem niestandardowe animacje ładowania.',
-        'Rozwinąłem wyspecjalizowane chatboty Q&A dla zespołów cenowych i bezpieczeństwa z parsowaniem dokumentów i generowaniem raportów.',
-        'Testuję dynamiczne narzędzie ankietowe do próśb o promocyjne ceny dostawców i szczegółowego raportowania ofert.'
-      ],
-      skillsTitle: '🚀 Kluczowe technologie i umiejętności:',
-      skills: ['OneReach.ai', 'Retrieval-Augmented Generation', 'Tworzenie frontendu', 'Systemy stylów CSS', 'Przetwarzanie dokumentów', 'Tworzenie chatbotów']
+      ]
     },
     projects: {
-      title: 'Projekty',
-      tagline: '🚀 Wybrane projekty',
-      subtitle: 'Oto niektóre z projektów, które zbudowałem z pasją i zaangażowaniem',
-      github: 'GitHub',
-      demo: 'Demo',
+      repo: 'kod źródłowy',
+      demo: 'demo',
       items: [
         {
-          name: 'Strona szkoły polskiej im. Jana III Sobieskiego',
-          desc: 'Przeprojektowana witryna publiczna z nowoczesnym interfejsem i ulepszoną nawigacją.',
-          tags: ['React', 'CSS', 'UI/UX'],
-          link: 'https://github.com/Mpawlowski5467'
+          name: 'Loom',
+          tagline: 'Lokalny system pamięci AI',
+          desc: 'Osobisty system wiedzy, który przechowuje wszystko jako zwykły Markdown na Twoim dysku. Zespół agentów AI porządkuje, łączy, streszcza i weryfikuje notatki, a widok grafu pokazuje, jak są ze sobą powiązane. Działa na lokalnych modelach przez Ollama lub u dowolnego podłączonego dostawcy.',
+          tags: ['FastAPI', 'LanceDB', 'React', 'Sigma.js', 'Ollama'],
+          link: 'https://github.com/Mpawlowski5467/Loom',
+          image: 'projects/loom.webp',
+          imageAlt: 'Widok grafu w Loom z siecią połączonych notatek'
         },
         {
-          name: 'Platforma e-commerce z częściami samochodowymi',
-          desc: 'Aplikacja full-stack wykorzystująca JavaScript, Node.js i MongoDB do sprzedaży części samochodowych online.',
-          tags: ['JavaScript', 'Node.js', 'MongoDB'],
-          link: 'https://github.com/Mpawlowski5467'
+          name: 'SportsDash',
+          tagline: 'Samodzielnie hostowany panel sportowy',
+          desc: 'Dziesięć dyscyplin i ponad 50 lig na jednym ekranie: wyniki na żywo, pełny kalendarz, tabele, liderzy statystyk, drabinki play-off i powiadomienia push przez ntfy. Działa przez docker compose lub jako natywna aplikacja na macOS, bez kont, śledzenia i kluczy API.',
+          tags: ['FastAPI', 'React', 'PostgreSQL', 'Redis', 'MapLibre', 'Tauri'],
+          link: 'https://github.com/Mpawlowski5467/SportsDash',
+          image: 'projects/sportsdash.webp',
+          imageAlt: 'Drabinka play-off NBA w SportsDash'
         },
         {
-          name: 'Witryna z biletami na wydarzenia w Chicago',
-          desc: 'Tworzenie platformy do przeglądania i kupowania biletów na wydarzenia w okolicach Chicago.',
-          tags: ['Full Stack', 'API', 'Baza danych'],
-          link: 'https://github.com/Mpawlowski5467'
+          name: 'Argus',
+          tagline: 'Ilościowy skaner akcji',
+          desc: 'Skanuje amerykańskie akcje bez błędu przeżywalności: przetwarza raporty SEC EDGAR na sygnały z danego momentu, ocenia je modelem LightGBM trenowanym metodą walk-forward i wydaje przetestowany historycznie werdykt kupna lub sprzedaży z uwzględnieniem kosztów. Lokalny model LLM wyjaśnia każdą decyzję prostym językiem, ale nigdy jej nie podejmuje. Działa automatycznie każdej nocy.',
+          tags: ['Python', 'LightGBM', 'DuckDB', 'SHAP', 'Lokalny LLM'],
+          link: 'https://github.com/Mpawlowski5467/Argus',
+          image: 'projects/argus.webp',
+          imageAlt: 'Widok spółki w Argus z wykresem ceny i sygnałem kupna (dane demonstracyjne)'
         }
       ]
     },
     education: {
-      title: 'Edukacja',
-      tagline: '🎓 Ścieżka edukacyjna',
-      subtitle: 'Rozwijam wiedzę dzięki ciągłej nauce i dobrym wynikom w studiach',
       items: [
         { school: 'Uniwersytet DePaul', degree: 'Licencjat (B.S.) z technologii informacyjnych', date: 'Wrzesień 2023 – marzec 2026' },
         { school: 'Harper College', degree: 'Associate of Arts (A.A.), technologie informacyjne', date: 'Sierpień 2021 – lipiec 2023' }
       ],
-      highlightsTitle: 'Wyróżnienia akademickie:',
+      highlightsTitle: 'wyróżnienia:',
       highlights: ['Ukończone w marcu 2026', 'Średnia 3,40 (GPA)', 'Lista Dziekana · jesień 2023']
-    },
-    skills: {
-      title: 'Umiejętności',
-      tagline: '🛠️ Stos technologiczny',
-      subtitle: 'Technologie i narzędzia, dzięki którym realizuję pomysły',
-      comment: '// Gotowy, by budować niesamowite rzeczy! 🚀'
-    },
-    terminalPaths: {
-      about: 'about',
-      experience: 'work',
-      projects: 'projects',
-      education: 'edu',
-      skills: 'skills'
-    },
-    interests: {
-      title: 'Zainteresowania',
-      items: [
-        { icon: '⚽', text: 'Kibic Chelsea FC' },
-        { icon: '🖥️', text: 'Homelab i self-hosting' },
-        { icon: '📚', text: 'Czytanie i wędrówki' },
-        { icon: '👥', text: 'Spędzanie czasu z przyjaciółmi' },
-        { icon: '🍞', text: 'Pieczenie' }
-      ]
     },
     footer: {
       name: 'Mateusz Pawłowski',
-      updated: 'Ostatnia aktualizacja'
+      updated: 'ostatnia aktualizacja'
+    },
+    a11y: {
+      skip: 'Przejdź do treści',
+      backToTop: 'Wróć na górę'
     }
   }
 };

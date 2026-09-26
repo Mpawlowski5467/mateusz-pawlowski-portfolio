@@ -2,12 +2,25 @@ import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import { describe, it, expect, afterEach } from 'vitest'
 import { App } from '../App'
 
-afterEach(cleanup)
+afterEach(() => {
+  cleanup()
+  window.sessionStorage.clear()
+})
 
 describe('App', () => {
-  it('renders without crashing', () => {
-    const { container } = render(<App />)
-    expect(container).toBeTruthy()
+  it('renders the name as the page heading', () => {
+    render(<App />)
+    expect(screen.getByRole('heading', { level: 1, name: 'Mateusz Pawłowski' })).toBeTruthy()
+    expect(screen.getByText('Greater Chicago Area')).toBeTruthy()
+  })
+
+  it('lets visitors skip the terminal intro with a key press', () => {
+    render(<App />)
+    expect(screen.getByText('click or press any key to skip')).toBeTruthy()
+
+    fireEvent.keyDown(window, { key: 'Enter' })
+
+    expect(screen.queryByText('click or press any key to skip')).toBeNull()
   })
 
   it('shows the current role and switches everything to Polish', () => {
@@ -18,20 +31,23 @@ describe('App', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Switch to Polish' }))
 
     expect(screen.getByText('Specjalista ds. AI i automatyzacji')).toBeTruthy()
-    expect(screen.getByText('💼 Ścieżka zawodowa')).toBeTruthy()
+    expect(screen.getByText('Chicago i okolice')).toBeTruthy()
     expect(document.documentElement.lang).toBe('pl')
+  })
+
+  it('lists the current projects and not the old coursework ones', () => {
+    render(<App />)
+    for (const name of ['Loom', 'SportsDash', 'Argus']) {
+      expect(screen.getByRole('heading', { name })).toBeTruthy()
+    }
+    expect(screen.queryByText(/Car Parts E-commerce/)).toBeNull()
+    expect(screen.queryByText(/onboarding chatbot/)).toBeNull()
   })
 
   it('shows a real last-updated date in the footer', () => {
     render(<App />)
     const footer = document.querySelector('footer')
-    expect(footer.textContent).toMatch(/Last updated \w+ \d{1,2}, \d{4}/)
+    expect(footer.textContent).toMatch(/last updated \w+ \d{1,2}, \d{4}/)
     expect(footer.textContent).not.toMatch(/Invalid Date/)
-  })
-
-  it('only shows a Live demo button for projects that have a demo link', () => {
-    render(<App />)
-    expect(screen.getAllByRole('link', { name: 'GitHub' }).length).toBeGreaterThan(0)
-    expect(screen.queryByRole('link', { name: 'Live demo' })).toBeNull()
   })
 })
