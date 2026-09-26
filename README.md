@@ -14,7 +14,7 @@ Outside of work I run a Proxmox homelab in a portable rack with 17 self-hosted s
 
 - **Hero**: name, role, and location, typed out like a shell session, next to an ASCII drawing of my homelab rack
 - **01 about**: short bio (mostly homelab) and interests
-- **02 work**: my roles at Reyes Holdings, from AI intern to AI / Automation Associate
+- **02 work**: my roles at Reyes Holdings, from AI intern to AI / Automation Associate, and the automations and tools I've built there
 - **03 projects**: Loom, SportsDash, and Argus, with screenshots
 - **04 edu**: DePaul University and Harper College
 - **05 skills**: my stack, shown as a `skills.json` file
@@ -64,12 +64,13 @@ Then open the URL Vite prints (<http://localhost:5173> by default).
 ## Updating content
 
 - **Text**: all the wording lives in [`src/i18n.js`](src/i18n.js), in both English (`en`) and Polish (`pl`). Update both when you change something. That covers the hero, bio, interests, roles and dates, projects, education, and footer.
+- **Work projects**: the things I've built at Reyes are under `experience.projects` in `src/i18n.js` (`name`, `desc`, `tags`).
 - **Projects**: each project in `src/i18n.js` has `name`, `tagline`, `desc`, `tags`, `link` (the repo, shown as the **source** link), an optional `demo` (a live site, shown as a **live demo** link), and an `image` in [`public/projects/`](public/projects/) (1280×720 WebP).
 - **Skills**: the groups and items, with their icons, are at the top of [`src/components/Skills.jsx`](src/components/Skills.jsx). Icons come from `simple-icons`; anything missing there gets a short text mark, or a custom path in [`src/customIcons.js`](src/customIcons.js).
 - **Homelab rack**: the service names and hardware labels are in [`src/components/HomelabRack.jsx`](src/components/HomelabRack.jsx).
 - **Contact links**: in [`src/links.js`](src/links.js), used by the hero and the footer.
 - **Footer date**: "last updated" is filled in automatically from the date of the latest commit when the site is built.
-- **Link preview**: the image shown when the link is shared is [`public/og-image.png`](public/og-image.png), generated from [`scripts/og-image.html`](scripts/og-image.html) (instructions inside). The title and description are in [`index.html`](index.html).
+- **Link preview**: the image shown when the link is shared is [`public/og-image.png`](public/og-image.png), generated from [`scripts/og-image.html`](scripts/og-image.html), which mirrors the hero (instructions inside). The title and description are in [`index.html`](index.html).
 
 ## Deployment
 
