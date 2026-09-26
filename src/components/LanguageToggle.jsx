@@ -11,7 +11,7 @@ export function LanguageToggle() {
   return (
     <button
       onClick={toggleLanguage}
-      className="relative w-16 h-9 rounded-full bg-white/20 backdrop-blur-md border border-white/20 transition-all duration-300 ease-out hover:bg-white/30 focus:outline-none focus-visible:ring-2 ring-white active:scale-95 touch-manipulation"
+      className="relative w-16 h-9 p-0 min-h-0 min-w-0 flex-shrink-0 rounded-full bg-white/20 backdrop-blur-md border border-white/20 transition-all duration-300 ease-out hover:bg-white/30 focus:outline-none focus-visible:ring-2 ring-white active:scale-95 touch-manipulation"
       aria-label={`Switch to ${lang === 'en' ? 'Polish' : 'English'}`}
     >
       <div

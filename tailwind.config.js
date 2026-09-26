@@ -1,21 +1,20 @@
 /**
  * Tailwind configuration mapping design tokens to semantic color roles.
+ * Hex values (not CSS variables) so opacity modifiers like bg-foreground/5 work.
+ * Keep them in sync with the palette in src/index.css.
  */
+import colors from 'tailwindcss/colors'
+
 export default {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        primary: 'var(--primary)',       // Red Crayola - bold energy and passion
-        secondary: 'var(--secondary)',   // Naples Yellow - vibrant creativity
-        background: 'var(--background)', // Oxford Blue - professional depth
-        foreground: 'var(--foreground)', // Mint Cream - fresh contrast
-        neutral: 'var(--neutral)',       // Charcoal - sophisticated balance
-        'red-crayola': 'var(--red-crayola)',
-        'naples-yellow': 'var(--naples-yellow)',
-        'mint-cream': 'var(--mint-cream)',
-        'oxford-blue': 'var(--oxford-blue)',
-        'charcoal': 'var(--charcoal)',
+        gray: colors.neutral, // true grays (Tailwind's default gray is blue-tinted) for the monochrome look
+        background: '#000000', // --background (black)
+        foreground: '#E5E5E5', // --foreground (gray-100)
+        neutral: '#9A9A9A',    // --neutral (gray-300): secondary text, subtle borders
+        charcoal: '#5A5A5A',   // --charcoal (gray-500)
       },
     },
   },

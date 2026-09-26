@@ -61,7 +61,7 @@ export function Skills() {
     <section
       id="skills"
       ref={ref}
-      className={`max-w-6xl mx-auto my-20 px-6 transition-all duration-700 ${
+      className={`max-w-6xl mx-auto my-20 px-4 sm:px-6 transition-all duration-700 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
@@ -74,18 +74,18 @@ export function Skills() {
           </div>
           <span className="terminal-prompt">~/{t('terminalPaths.skills')}$</span>
         </div>
-        <div className="p-8">
-          <div className="text-center mb-16">
+        <div className="p-4 sm:p-8">
+          <div className="text-center mb-10 sm:mb-16">
             <div className="inline-block p-1 rounded-2xl bg-white/5 mb-6">
               <div className="bg-background rounded-xl px-6 py-2">
-                <span className="text-sm font-medium text-neutral">🛠️ Tech Stack</span>
+                <span className="text-sm font-medium text-neutral">{t('skills.tagline')}</span>
               </div>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               {t('skills.title')}
             </h2>
             <p className="text-lg text-neutral max-w-2xl mx-auto">
-              Technologies and tools I use to bring ideas to life
+              {t('skills.subtitle')}
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export function Skills() {
         {/* Code-like layout with staggered positioning */}
         <div className="relative min-h-[400px] sm:min-h-[500px] overflow-x-auto">
           {/* Simulate code indentation patterns */}
-          <div className="space-y-2 sm:space-y-3 min-w-[600px] sm:min-w-0">
+          <div className="space-y-2 sm:space-y-3">
             {/* Line 1: Backend skills */}
             <div className="flex items-center gap-3 pl-0">
               <span className="text-gray-500 font-mono text-sm">01</span>
@@ -127,7 +127,7 @@ export function Skills() {
               <span className="text-white font-mono text-sm font-semibold">const</span>
               <span className="text-gray-300 font-mono text-sm">frontend = [</span>
             </div>
-            <div className="flex flex-wrap gap-3 pl-8">
+            <div className="flex flex-wrap gap-2 sm:gap-3 pl-4 sm:pl-8">
               {frontend.map((skill, ) => (
                 <div
                   key={skill.name}
@@ -158,7 +158,7 @@ export function Skills() {
               <span className="text-white font-mono text-sm font-semibold">const</span>
               <span className="text-gray-300 font-mono text-sm">databases = {`{`}</span>
             </div>
-            <div className="flex flex-wrap gap-3 pl-8">
+            <div className="flex flex-wrap gap-2 sm:gap-3 pl-4 sm:pl-8">
               {databases.map((skill, ) => (
                 <div
                   key={skill.name}
@@ -194,7 +194,7 @@ export function Skills() {
               <span className="text-white font-mono text-sm font-semibold">return</span>
               <span className="text-gray-300 font-mono text-sm">[</span>
             </div>
-            <div className="flex flex-wrap gap-3 pl-12">
+            <div className="flex flex-wrap gap-2 sm:gap-3 pl-6 sm:pl-12">
               {platforms.map((skill, ) => (
                 <div
                   key={skill.name}
@@ -226,12 +226,12 @@ export function Skills() {
             {/* Closing comment */}
             <div className="flex items-center gap-3 pl-0 mt-6">
               <span className="text-gray-500 font-mono text-sm">11</span>
-              <span className="text-gray-400 font-mono text-sm italic">// Ready to build amazing things! 🚀</span>
+              <span className="text-gray-400 font-mono text-sm italic">{t('skills.comment')}</span>
             </div>
           </div>
 
           {/* Code editor style decorations */}
-          <div className="absolute top-4 right-4 flex gap-2">
+          <div className="absolute top-4 right-4 hidden sm:flex gap-2">
             <div className="w-3 h-3 rounded-full bg-gray-700"></div>
             <div className="w-3 h-3 rounded-full bg-gray-600"></div>
             <div className="w-3 h-3 rounded-full bg-gray-500"></div>
