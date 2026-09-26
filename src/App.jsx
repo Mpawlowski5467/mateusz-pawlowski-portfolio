@@ -3,7 +3,7 @@
   rely on CSS variables declared in index.css: --dock-h and --footer-h.
   Adjust those variables to tweak global spacing.
 */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { PersonalInfo } from './components/PersonalInfo.jsx'
 import { Experience } from './components/Experience.jsx'
 import { Projects } from './components/Projects.jsx'
@@ -19,6 +19,11 @@ import { translations } from './i18n.js'
 export function App() {
   const [lang, setLang] = useState('en')
   const t = (path) => path.split('.').reduce((obj, key) => obj?.[key], translations[lang])
+
+  // Keep <html lang> in sync so screen readers and translators know the page language
+  useEffect(() => {
+    document.documentElement.lang = lang
+  }, [lang])
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>

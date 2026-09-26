@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export function SkillIcon({ skill, colorClass = '', className = '' }) {
+export function SkillIcon({ skill, className = '' }) {
   const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
 

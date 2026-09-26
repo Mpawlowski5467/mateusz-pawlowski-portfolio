@@ -6,14 +6,14 @@ My personal portfolio site: who I am, where I've worked, what I've built, and th
 
 ## About me
 
-Hi, I'm Mateusz. I'm an Information Technology student at DePaul University and an AI intern at Reyes Holdings, where I build chatbots, including a retrieval-augmented generation (RAG) onboarding assistant for new hires and Q&A bots for the pricing and security teams, and work on OneReach.ai front-end components and chatbot UI templates.
+Hi, I'm Mateusz. I'm an AI / Automation Associate at Reyes Holdings and a DePaul University graduate in Information Technology (B.S., 2026). I joined Reyes as an AI intern in 2024, building chatbots, including a retrieval-augmented generation (RAG) onboarding assistant for new hires and Q&A bots for the pricing and security teams, and working on OneReach.ai front-end components and chatbot UI templates.
 
 Outside of work I'm into homelabbing and self-hosting, Chelsea FC, reading, hiking, and baking.
 
 ## What's on the site
 
 - **About**: short bio, location, interests, and contact links
-- **Experience**: my AI internship at Reyes Holdings
+- **Experience**: my roles at Reyes Holdings, from AI intern to AI / Automation Associate
 - **Projects**: a Polish school website redesign, a car-parts e-commerce platform, and a Chicago event-ticketing site
 - **Education**: DePaul University and Harper College
 - **Skills**: languages, frameworks, databases, and AI platforms, grouped by category
@@ -31,7 +31,7 @@ A few design details:
 | --- | --- |
 | Framework | [React 19](https://react.dev/) |
 | Build tool | [Vite 6](https://vite.dev/) |
-| Styling | [Tailwind CSS](https://tailwindcss.com/) (via CDN) + custom CSS in `src/index.css` |
+| Styling | [Tailwind CSS 3](https://v3.tailwindcss.com/) (built with PostCSS) + custom CSS in `src/index.css` |
 | Testing | [Vitest](https://vitest.dev/), [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/), jsdom |
 | Linting | [ESLint 9](https://eslint.org/) |
 | Hosting | GitHub Pages, deployed with GitHub Actions |
@@ -59,15 +59,12 @@ Then open the URL Vite prints (<http://localhost:5173> by default).
 
 ## Updating content
 
-- **Main content**: the bio, experience bullets, project names and descriptions, education, and interests live in [`src/i18n.js`](src/i18n.js), in both English (`en`) and Polish (`pl`). Update both when you change something.
-- **Hard-coded text**: some text lives directly in the components, in English only:
-  - Section taglines and headings in each section component
-  - The "Current Position" badge and tech chips in [`Experience.jsx`](src/components/Experience.jsx)
-  - The GPA and Dean's List chips in [`Education.jsx`](src/components/Education.jsx)
-  - Per-project tech tags in [`Projects.jsx`](src/components/Projects.jsx), matched to projects by position
-  - The background snippets in [`CodeBackground.jsx`](src/components/CodeBackground.jsx)
-  - The copyright year in [`Footer.jsx`](src/components/Footer.jsx)
-- **Skills**: the lists and their icons are at the top of [`src/components/Skills.jsx`](src/components/Skills.jsx).
+- **Text**: the wording for every section lives in [`src/i18n.js`](src/i18n.js), in both English (`en`) and Polish (`pl`). Update both when you change something. That includes the bio, your roles and dates, experience bullets and skill chips, education and highlights, section taglines, and interests.
+- **Projects**: each project in `src/i18n.js` has `name`, `desc`, `tags`, `link` (the repo, shown as the **GitHub** button), and an optional `demo` (a live site, shown as a **Live demo** button).
+- **Skills**: the skill lists, their icons, and the code-style labels (`const backend = [` …) are in [`src/components/Skills.jsx`](src/components/Skills.jsx).
+- **Background snippets**: in [`src/components/CodeBackground.jsx`](src/components/CodeBackground.jsx).
+- **Footer date**: "Last updated" is filled in automatically from the date of the latest commit when the site is built.
+- **Link preview**: the image shown when the link is shared is [`public/og-image.png`](public/og-image.png), generated from [`scripts/og-image.html`](scripts/og-image.html) (instructions inside). The title and description are in [`index.html`](index.html).
 - **Contact links**: hard-coded in [`src/components/PersonalInfo.jsx`](src/components/PersonalInfo.jsx) and [`src/components/Footer.jsx`](src/components/Footer.jsx). The email also appears in `src/i18n.js` (`about.email`) as the link label.
 
 ## Deployment
@@ -85,8 +82,9 @@ After that, the site deploys automatically. Every push to `main` runs [`.github/
 
 ```
 ├── .github/workflows/deploy.yml   # Build + deploy to GitHub Pages
-├── index.html                     # HTML entry point (loads Tailwind from its CDN)
-├── public/                        # Static files copied into the build as-is
+├── index.html                     # HTML entry point, page title, and link-preview tags
+├── public/                        # Static files copied into the build as-is (icons, preview image)
+├── scripts/og-image.html          # Source for the link-preview image
 ├── src/
 │   ├── main.jsx                   # React entry point
 │   ├── App.jsx                    # Page layout and language state
@@ -96,7 +94,8 @@ After that, the site deploys automatically. Every push to `main` runs [`.github/
 │   │                              #   footer, back-to-top button, and code background
 │   ├── context/                   # Language context
 │   └── __tests__/                 # Vitest tests
-├── tailwind.config.js             # Custom color names; not currently loaded by the site
+├── tailwind.config.js             # Tailwind theme: semantic colors (background, foreground, neutral)
+├── postcss.config.js              # Runs Tailwind during the build
 ├── eslint.config.js
 ├── package.json
 └── vite.config.js

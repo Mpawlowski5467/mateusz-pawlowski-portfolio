@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*
   Global variables and layout helpers.
   Adjust the values below to tweak spacing for the floating dock navbar and footer heights.
@@ -32,7 +36,7 @@
   --secondary: var(--gray-300);
   --background: var(--black);
   --foreground: var(--gray-100);
-  --neutral: var(--gray-500);
+  --neutral: var(--gray-300);
 
   /* Window/terminal chrome */
   --window-border: var(--gray-600);
@@ -396,6 +400,8 @@ a:hover, button:hover {
 
 /* Window frame styles for Hyprland aesthetic */
 .window-frame {
+  /* Mostly opaque so the animated background snippets don't run through the text */
+  background: rgba(10, 10, 10, 0.88);
   border: 2px solid var(--window-border);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4),

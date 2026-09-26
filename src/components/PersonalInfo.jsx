@@ -25,7 +25,7 @@ export function PersonalInfo() {
   const interestItems = Array.isArray(interests) ? interests : []
 
   return (
-    <section id="about" className="max-w-6xl mx-auto my-16 px-6">
+    <section id="about" className="max-w-6xl mx-auto my-16 px-4 sm:px-6">
       {/* Terminal header */}
       <div className="mb-8">
         <span className="terminal-prompt text-lg">~/{t('terminalPaths.about')}$</span>
@@ -35,7 +35,7 @@ export function PersonalInfo() {
       <div className="text-center mb-16">
         <div className="inline-block p-1 rounded-2xl bg-white/5 mb-6 float-animation">
           <div className="bg-background rounded-xl px-6 py-2">
-            <span className="text-sm font-medium text-neutral">👋 Hello, I'm</span>
+            <span className="text-sm font-medium text-neutral">{t('header.tagline')}</span>
           </div>
         </div>
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-tight">
@@ -76,7 +76,7 @@ export function PersonalInfo() {
       {/* About & Interests grid */}
       <div className="grid md:grid-cols-2 gap-12 items-start">
         {/* About section */}
-        <div className="bg-foreground/5 backdrop-blur-lg rounded-2xl p-8 border border-neutral/10 hover:border-white/40 hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 group">
+        <div className="bg-foreground/5 backdrop-blur-lg rounded-2xl p-5 sm:p-8 border border-neutral/10 hover:border-white/40 hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 group">
           <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
             <span className="text-2xl group-hover:scale-110 transition-transform duration-300">✨</span>
             {t('about.title')}
@@ -91,7 +91,7 @@ export function PersonalInfo() {
         </div>
 
         {/* Interests section */}
-        <div className="bg-foreground/5 backdrop-blur-lg rounded-2xl p-8 border border-neutral/10 hover:border-white/40 hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 group">
+        <div className="bg-foreground/5 backdrop-blur-lg rounded-2xl p-5 sm:p-8 border border-neutral/10 hover:border-white/40 hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 group">
           <h3 className="text-3xl font-bold text-gray-300 mb-6 flex items-center gap-3">
             <span className="text-2xl group-hover:scale-110 transition-transform duration-300">🌟</span>
             {t('interests.title')}
