@@ -6,7 +6,7 @@ My personal portfolio site: who I am, where I've worked, what I've built, and th
 
 ## About me
 
-Hi, I'm Mateusz. I'm an Information Technology student at DePaul University and an AI intern at Reyes Holdings, where I build chatbots and internal tools, including a retrieval-augmented (RAG) onboarding assistant for new hires and Q&A bots for the pricing and security teams, and work on OneReach.ai front-end components.
+Hi, I'm Mateusz. I'm an Information Technology student at DePaul University and an AI intern at Reyes Holdings, where I build chatbots, including a retrieval-augmented generation (RAG) onboarding assistant for new hires and Q&A bots for the pricing and security teams, and work on OneReach.ai front-end components and chatbot UI templates.
 
 Outside of work I'm into homelabbing and self-hosting, Chelsea FC, reading, hiking, and baking.
 
@@ -22,8 +22,8 @@ A few design details:
 
 - English ⇄ Polish language toggle
 - Floating dock navigation whose icons magnify as your cursor passes over them
-- Monochrome, Hyprland-inspired look: each section is a terminal-style window (`~/projects$`)
-- Animated code snippets drifting in the background
+- Monochrome, Hyprland-inspired look, with content sections in terminal-style windows (`~/projects$`, `~/work$`, …)
+- Code snippets that fade in at random spots in the background
 
 ## Tech stack
 
@@ -38,7 +38,7 @@ A few design details:
 
 ## Running locally
 
-You'll need [Node.js](https://nodejs.org/) 20 or newer (the deploy workflow uses Node 22).
+You'll need [Node.js](https://nodejs.org/) 22 or newer (the deploy workflow uses Node 22).
 
 ```bash
 git clone https://github.com/Mpawlowski5467/mateusz-pawlowski-portfolio.git
@@ -47,29 +47,39 @@ npm install
 npm run dev
 ```
 
-Then open <http://localhost:5173>.
+Then open the URL Vite prints (<http://localhost:5173> by default).
 
 | Command | What it does |
 | --- | --- |
 | `npm run dev` | Start the dev server with hot reload |
 | `npm run build` | Build the production site into `dist/` |
-| `npm run preview` | Serve the production build locally |
+| `npm run preview` | Serve the production build locally (<http://localhost:4173>) |
 | `npm test` | Run the tests (watch mode; add `-- --run` to run once) |
 | `npm run lint` | Lint the code with ESLint |
 
 ## Updating content
 
-- **Text**: nearly all of it lives in [`src/i18n.js`](src/i18n.js), which holds both the English (`en`) and Polish (`pl`) versions. Update both when you change something.
+- **Main content**: the bio, experience bullets, project names and descriptions, education, and interests live in [`src/i18n.js`](src/i18n.js), in both English (`en`) and Polish (`pl`). Update both when you change something.
+- **Hard-coded text**: some text lives directly in the components, in English only:
+  - Section taglines and headings in each section component
+  - The "Current Position" badge and tech chips in [`Experience.jsx`](src/components/Experience.jsx)
+  - The GPA and Dean's List chips in [`Education.jsx`](src/components/Education.jsx)
+  - Per-project tech tags in [`Projects.jsx`](src/components/Projects.jsx), matched to projects by position
+  - The background snippets in [`CodeBackground.jsx`](src/components/CodeBackground.jsx)
+  - The copyright year in [`Footer.jsx`](src/components/Footer.jsx)
 - **Skills**: the lists and their icons are at the top of [`src/components/Skills.jsx`](src/components/Skills.jsx).
-- **Contact links**: in [`src/components/PersonalInfo.jsx`](src/components/PersonalInfo.jsx) and [`src/components/Footer.jsx`](src/components/Footer.jsx).
+- **Contact links**: hard-coded in [`src/components/PersonalInfo.jsx`](src/components/PersonalInfo.jsx) and [`src/components/Footer.jsx`](src/components/Footer.jsx). The email also appears in `src/i18n.js` (`about.email`) as the link label.
 
 ## Deployment
 
-The site deploys automatically. Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which installs dependencies, runs the tests, builds the site with Vite, and publishes `dist/` to GitHub Pages. You can also run it by hand from the **Actions** tab (**Deploy to GitHub Pages → Run workflow**).
+**One-time setup (do this before the first deploy):**
+
+1. In the repo, go to **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
+2. Optional: on the repo home page, click the gear next to **About** and tick **Use your GitHub Pages website**. That puts the live link at the top of the repo.
+
+After that, the site deploys automatically. Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which installs dependencies, runs the tests, builds the site with Vite, and publishes `dist/` to GitHub Pages. You can also re-run it from the **Actions** tab (**Deploy to GitHub Pages → Run workflow** on `main`). Do that if a run failed because Pages wasn't enabled yet.
 
 `vite.config.js` sets `base: './'` so the built site's asset paths work under the `/mateusz-pawlowski-portfolio/` subpath that GitHub Pages uses.
-
-**One-time setup:** in the repo, go to **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
 
 ## Project structure
 
@@ -82,9 +92,13 @@ The site deploys automatically. Every push to `main` runs [`.github/workflows/de
 │   ├── App.jsx                    # Page layout and language state
 │   ├── i18n.js                    # All site text, English + Polish
 │   ├── index.css                  # Theme variables and global styles
-│   ├── components/                # One component per section, plus navbar, footer, background
+│   ├── components/                # Section components, plus navbar, language toggle,
+│   │                              #   footer, back-to-top button, and code background
 │   ├── context/                   # Language context
 │   └── __tests__/                 # Vitest tests
+├── tailwind.config.js             # Custom color names; not currently loaded by the site
+├── eslint.config.js
+├── package.json
 └── vite.config.js
 ```
 
