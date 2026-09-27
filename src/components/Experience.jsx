@@ -5,6 +5,7 @@ import { Section } from './Section.jsx'
 export function Experience() {
   const { t } = useContext(LanguageContext)
   const roles = t('experience.roles')
+  const projects = t('experience.projects')
 
   return (
     <Section id="experience" index={2} title={t('nav.experience')}>
@@ -38,6 +39,35 @@ export function Experience() {
             </li>
           ))}
         </ol>
+
+        {/* Things I've built at the company */}
+        <div className="mt-10 border-t border-white/10 pt-8">
+          <h4 className="mb-5 font-mono text-sm text-neutral">
+            <span aria-hidden="true">$ ls ~/work/reyes</span>
+            <span className="sr-only">{t('experience.projectsTitle')}</span>
+          </h4>
+          <ul className="grid gap-4 md:grid-cols-2">
+            {Array.isArray(projects) && projects.map((project, idx) => (
+              <li
+                key={project.name}
+                className="flex flex-col rounded-lg border border-white/10 bg-white/[0.02] p-5 transition-colors hover:border-white/30"
+              >
+                <p className="mb-2 font-mono text-xs text-neutral" aria-hidden="true">
+                  {String(idx + 1).padStart(2, '0')}
+                </p>
+                <h5 className="mb-2 text-lg font-semibold text-white">{project.name}</h5>
+                <p className="mb-4 text-[15px] leading-relaxed text-foreground/80">{project.desc}</p>
+                <ul className="mt-auto flex flex-wrap gap-2" aria-label="Stack">
+                  {project.tags?.map((tag) => (
+                    <li key={tag} className="rounded border border-white/15 px-2 py-0.5 font-mono text-xs text-neutral">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </Section>
   )

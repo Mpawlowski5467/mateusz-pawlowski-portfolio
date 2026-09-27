@@ -42,6 +42,29 @@ export const translations = {
       roles: [
         { title: 'AI / Automation Associate', type: 'Full-time', date: 'Jun 2026 – Present', current: true },
         { title: 'AI Intern', type: 'Internship', date: 'Jun 2024 – Jun 2026' }
+      ],
+      projectsTitle: "What I've built at Reyes",
+      projects: [
+        {
+          name: 'AR Logistics Invoice Automation',
+          desc: 'The finance team needed to generate weekly freight invoices and match them with proof-of-delivery documents. I built a skill that users trigger by emailing a spreadsheet to an allowlisted address. It classifies each load as standard or return (dunnage), checks POD requirements, pulls PODs from the TMS API, and returns a packaged archive with a summary report.',
+          tags: ['OneReach.ai', 'JavaScript/Node.js', 'E2Open TMS API', 'Email gateway']
+        },
+        {
+          name: 'Supplier POS Request Portal',
+          desc: 'I built a customer-facing web portal where supplier users sign in and submit point-of-sale material requests. Account search runs server-side across 515K records, and each request is written to the data warehouse before the confirmation email is sent, so no request gets lost.',
+          tags: ['JavaScript', 'Power Pages', 'OneReach.ai', 'Snowflake', 'PostgreSQL', 'Azure/MSAL']
+        },
+        {
+          name: 'Purchase Order Invoice Parser',
+          desc: 'This tool turns raw supplier balance sheets into structured, per-PO invoices. It was first built for one brand, and I refactored it into a registry-based design so each new brand only needs a product template.',
+          tags: ['JavaScript', 'OneReach.ai', 'Excel/CSV parsing']
+        },
+        {
+          name: 'Price Promotion Request Workflow',
+          desc: 'This is a conversational workflow where suppliers submit pricing promotions. It calculates profitability metrics in Snowflake and posts a pricing grid to a supplier dashboard for the pricing team to review.',
+          tags: ['OneReach.ai', 'Snowflake SQL', 'Power Pages', 'MSAL/JWT']
+        }
       ]
     },
     projects: {
@@ -136,6 +159,29 @@ export const translations = {
       roles: [
         { title: 'Specjalista ds. AI i automatyzacji', type: 'Pełny etat', date: 'Czerwiec 2026 – obecnie', current: true },
         { title: 'Stażysta AI', type: 'Staż', date: 'Czerwiec 2024 – czerwiec 2026' }
+      ],
+      projectsTitle: 'Co zbudowałem w Reyes',
+      projects: [
+        {
+          name: 'Automatyzacja faktur logistycznych (AR)',
+          desc: 'Dział finansów musiał co tydzień generować faktury za fracht i dopasowywać je do potwierdzeń dostawy (POD). Zbudowałem skill, który użytkownicy uruchamiają, wysyłając arkusz kalkulacyjny e-mailem na zatwierdzony adres. Klasyfikuje każdy ładunek jako standardowy lub zwrotny (dunnage), sprawdza wymagania dotyczące POD, pobiera dokumenty POD z API systemu TMS i odsyła spakowane archiwum z raportem podsumowującym.',
+          tags: ['OneReach.ai', 'JavaScript/Node.js', 'E2Open TMS API', 'Bramka e-mail']
+        },
+        {
+          name: 'Portal zamówień materiałów POS dla dostawców',
+          desc: 'Zbudowałem portal internetowy dla klientów, w którym użytkownicy po stronie dostawców logują się i składają zamówienia na materiały POS (point-of-sale). Wyszukiwanie kont działa po stronie serwera na 515 tys. rekordów, a każde zamówienie jest zapisywane w hurtowni danych przed wysłaniem e-maila z potwierdzeniem, więc żadne zamówienie nie ginie.',
+          tags: ['JavaScript', 'Power Pages', 'OneReach.ai', 'Snowflake', 'PostgreSQL', 'Azure/MSAL']
+        },
+        {
+          name: 'Parser faktur do zamówień (PO)',
+          desc: 'Narzędzie zamienia surowe zestawienia sald od dostawców na uporządkowane faktury dla każdego zamówienia (PO). Najpierw powstało dla jednej marki, a potem przebudowałem je na architekturę opartą na rejestrze, dzięki czemu każda nowa marka potrzebuje tylko szablonu produktu.',
+          tags: ['JavaScript', 'OneReach.ai', 'Parsowanie Excel/CSV']
+        },
+        {
+          name: 'Proces zgłaszania promocji cenowych',
+          desc: 'Konwersacyjny proces, w którym dostawcy zgłaszają promocje cenowe. Oblicza wskaźniki rentowności w Snowflake i publikuje siatkę cenową na panelu dostawcy, gdzie przegląda ją zespół cenowy.',
+          tags: ['OneReach.ai', 'Snowflake SQL', 'Power Pages', 'MSAL/JWT']
+        }
       ]
     },
     projects: {

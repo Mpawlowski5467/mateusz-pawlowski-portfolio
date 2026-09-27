@@ -44,6 +44,17 @@ describe('App', () => {
     expect(screen.queryByText(/onboarding chatbot/)).toBeNull()
   })
 
+  it('lists the projects built at Reyes under work, in both languages', () => {
+    render(<App />)
+    for (const name of ['AR Logistics Invoice Automation', 'Supplier POS Request Portal', 'Purchase Order Invoice Parser', 'Price Promotion Request Workflow']) {
+      expect(screen.getByRole('heading', { name })).toBeTruthy()
+    }
+
+    fireEvent.click(screen.getByRole('button', { name: 'Switch to Polish' }))
+
+    expect(screen.getByRole('heading', { name: 'Portal zamówień materiałów POS dla dostawców' })).toBeTruthy()
+  })
+
   it('shows a real last-updated date in the footer', () => {
     render(<App />)
     const footer = document.querySelector('footer')
