@@ -42,6 +42,10 @@ const skills = {
     { name: 'Ollama', icon: siOllama },
     { name: 'OpenRouter', icon: siOpenrouter },
   ],
+  platforms: [
+    { name: 'Power Pages', mark: 'PP' },
+    { name: 'E2Open', mark: 'E2' },
+  ],
   infra: [
     { name: 'Docker', icon: siDocker },
     { name: 'Linux', icon: siLinux },
